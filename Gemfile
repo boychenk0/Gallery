@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
-
+gem 'jquery-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -13,14 +13,12 @@ gem 'rails', '3.2.13'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
+  gem "libv8", "~> 3.11.8"
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer', :platform=>:ruby, :require=>"v8"
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -41,13 +39,9 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
-gem 'libv8'
+
 gem 'pg'
 gem 'simple_form'
-
-group :assets do
-  gem 'therubyracer', :platform=>:ruby, :require=>"v8"
-end
 
 group :development do
   gem 'better_errors'
