@@ -36,3 +36,38 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'bootstrap-sass'
+gem 'devise'
+gem 'figaro'
+gem 'haml-rails'
+gem 'libv8'
+gem 'pg'
+gem 'simple_form'
+
+group :assets do
+  gem 'therubyracer', :platform=>:ruby, :require=>"v8"
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
+  gem 'html2haml'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'puma'
+  gem 'rspec-rails'
+end
+
+group :production do
+  gem 'unicorn'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'email_spec'
+end
+
