@@ -3,10 +3,14 @@ TitsProj::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :images, only: [:index]
-  resources :img_categories, only: [:index, :show] do
-    get '/:id', to: 'images#show'
+  resources :images, only: [:index] do
+    resources :img_comments, only:[:create]
   end
+  resources :img_categories, only: [:index, :show] do
+    resources :images, only: [:show]
+  end
+
+
 
 
   devise_for :users

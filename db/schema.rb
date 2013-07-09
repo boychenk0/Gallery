@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709125448) do
+ActiveRecord::Schema.define(:version => 20130709151925) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20130709125448) do
   create_table "images", :force => true do |t|
     t.string   "url"
     t.integer  "img_category_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "likes_count",     :default => 0
-    t.integer  "comments_count",  :default => 0
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "likes_count",        :default => 0
+    t.integer  "img_comments_count", :default => 0
   end
 
   create_table "img_categories", :force => true do |t|
