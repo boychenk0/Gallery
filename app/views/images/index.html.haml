@@ -1,2 +1,8 @@
-%h1 Images#index
-%p Find me in app/views/images/index.html.haml
+%ul.img
+  -@images.each do |img|
+    %li
+      = image_tag img.url, size: '128x128', alt: 'Image', :class => 'img-polaroid'
+      = pluralize(img.likes.size, 'like')
+      = pluralize(img.img_comments.size, 'comment')
+= paginate @images
+

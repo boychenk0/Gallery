@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+@import "bootstrap";
+#header_img {
+  background: url("header.jpg") no-repeat;
+  background-position: center;
+  background-size: 70%;
+  height: 200px;
+  margin:0 auto;
+  width: 100%;
+}
+#menu{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

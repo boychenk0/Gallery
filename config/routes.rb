@@ -1,9 +1,16 @@
 TitsProj::Application.routes.draw do
-  #get "images/index"
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   resources :images, only: [:index]
+  resources :img_categories, only: [:index, :show] do
+    get '/:id', to: 'images#show'
+  end
+
 
   devise_for :users
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
