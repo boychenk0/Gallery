@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title Gallery
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #content
+      .well.green
+        Приветствуем вас,
+        - if user_signed_in?
+          = current_user.email
+          %span.pull-right
+            = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-link"
+            = link_to "Profile", profile_show_path, :class => "btn btn-link"
+            = link_to "Home", posts_path, :class => "btn btn-link"
+        - else
+          Гость
+          %span.pull-right
+            = link_to 'Sign in', new_user_session_path, :class => "btn btn-link"
+            = link_to 'Registration', new_user_registration_path, :class => "btn btn-link"
+            = link_to "Home", images_path, :class => "btn btn-link"
+      / <h1 class = "text-center">Welcome to my Blog</h1>
+
+      %h1{:class => "text-center green"}
+        Welcome to my Gallery
+      %br
+      %br
+      = yield
+      %br
+      %br
+    %div{:class => "well", :id =>"footer"}
+      POWERED by YaR

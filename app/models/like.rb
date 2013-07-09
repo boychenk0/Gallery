@@ -1,4 +1,5 @@
 class Like < ActiveRecord::Base
-  attr_accessible :image_id, :status, :user_id
+  attr_accessible :image, :status, :user
   belongs_to :image
+  belongs_to :user
 end
