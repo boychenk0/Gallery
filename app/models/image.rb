@@ -4,7 +4,7 @@ class Image < ActiveRecord::Base
   has_many :img_comments, :dependent => :destroy
   has_many :likes, :dependent => :destroy
   belongs_to :img_category
-  validate :name, :presense => true
-  validate :image, :presense => true
-  validate :image_category, :numericality => {:only_integer => true}
+  validate :url, :presense => true
+  validate :img_category, :presense => true
+  validate :img_category, :numericality => {:only_integer => true}
 end
