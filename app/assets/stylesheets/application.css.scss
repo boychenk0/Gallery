@@ -10,27 +10,105 @@
  *
  *= require_self
  *= require_tree .
+ *= require_jquery.gpop.css
  */
 @import "bootstrap";
-#header_img {
-  background: url("header.jpg") no-repeat;
-  background-position: center;
-  background-size: 70%;
-  height: 200px;
-  margin:0 auto;
-  width: 100%;
+.en{
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+}
+body{
+  overflow-y: scroll;
+  position: relative;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+  margin: 0;
+  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+}
+.mainContainer{
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+}
+.header{
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+}
+.header_message{
+  overflow: hidden;
+  background: linear-gradient(#FFF7CB, #FFF4B7) repeat scroll 0 0 transparent;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  color: #717171;
+  font-size: 15px;
+  margin: 0 7px;
+  padding: 1em;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+.messageContent{
+  float: left;
+  margin: 0;
+  text-shadow: 0 1px 0 #FFFFFF;
+  color: #717171;
+  font-size: 15px;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+.buttonsWrapper{
+  position: absolute;
+  right: 14px;
+  top: 2px;
+  color: #717171;
+  font-size: 15px;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+.BoardPage{
+  min-height: 100px;
+  animation: 0.3s ease 0s normal forwards 1 fadeIn;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+}
+.BoardHeader{
+  width: 1250px;
+  margin: 0 auto;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+}
+.BoardHeader h1{
+  color: rgba(21, 21, 21, 0.8);
+  font-size: 47px;
+  font-weight: bold;
+  line-height: 52px;
+  margin: 34px auto 0;
+  max-width: 736px;
+  text-align: center;
+  text-shadow: 1px 2px 4px #E3E3E3, 0 0 0 #000000, 1px 2px 4px #E3E3E3, 0 1px 0 #FFFFFF;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+.description{
+  font-size: 18px;
+  line-height: 26px;
+  margin: 5px auto;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.67);
+  width: 736px;
+  color: #6C6C6C;
+  text-align: center;
+  font-family: "Helvetica Neue",arial,sans-serif;
 }
 #footer {
-  position: absolute;
-  height: 50px;
-  width: 100%;
+  background: linear-gradient(#FFF7CB, #FFF4B7) repeat scroll 0 0 transparent;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  color: #717171;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 15px;
+  margin: 0 7px;
+  overflow: hidden;
+  padding: 1em;
+  line-height: 1.25em;
 }
-//#menu{
-//  margin-top: 10px;
-//  margin-bottom: 10px;
-//}
-//#main_block{
-//  margin: 10px;
-//  margin-right: 20px;
-//  margin-left: 20px;
-//}

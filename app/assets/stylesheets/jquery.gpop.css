@@ -1,0 +1,152 @@
+/* Demo Page Css 
+––––––––––––––––––––––––––––––––––––––––––––––––*/
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.25em;
+}
+h1 {
+  font-size: 235%;
+  margin: 0.5 0em;
+  line-height: 2em;
+  font-weight: 100;
+}
+h2 {
+  font-size: 180%;
+  margin: 0.5 0em;
+  line-height: 2em;
+  font-weight: 100;
+}
+h4 {
+  font-size: 120%;
+  margin: 0.4em 0;
+  font-weight: 100;
+}
+p {
+  font-size: 0.875em;
+  margin: 0.4em 0;
+  font-weight: 100;
+}
+a {
+  color: #333;
+  font-size: 0.75em;
+  margin: 0.4em 0;
+  font-weight: 100;
+  text-decoration: none;
+}
+footer {
+  height: 3em;
+}
+.pluginHeading {
+  margin-bottom: 2em;
+  border-left: 3px solid #8B8970;
+  padding-left: 1.2em;
+}
+
+/* Grid 
+––––––––––––––––––––––––––––––––––––––––––––––––*/
+#demo1 ul li {
+  width: 32.33%;
+}
+#demo2 ul li {
+  width: 18%;
+}
+#demo3 ul li {
+  width: 32.33%;
+}
+#demo4 ul li {
+  width: 24%;
+}
+#demo5 ul li {
+  width: 19%;
+}
+/* Wapper */
+.gPopDemoWapper {
+  margin: 0 auto;
+  max-width: 1300px;
+  overflow: hidden;
+}
+
+/* Plugin Css
+––––––––––––––––––––––––––––––––––––––––––––––––*/
+.gPop-gallery {
+  display: block;
+  margin-left: 1%;
+}
+.gPop-gallery ul {
+  width: 100%;
+  list-style-type: none;
+  display: inline-block;
+}
+.gPop-gallery ul li {
+  float: left;
+  margin-right: 1%;
+  margin-bottom: 1em;
+  overflow: hidden;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.gPop-gallery ul li img {
+  width: 100%;
+}
+.gPop-gallery ul li div {
+  display: none;
+}
+.gpop-clonedImage {
+box-shadow: 1px 1px 10px 5px rgba(115,115,115,0.06);
+-webkit-box-shadow: 1px 1px 10px 5px rgba(115,115,115,0.06);
+-moz-box-shadow: 1px 1px 10px 5px rgba(115,115,115,0.06);
+}
+.gpop-clonedImage {
+  float: left;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 0.3%;
+  cursor: pointer;
+}
+.gpop-clonedImageInvisible {
+  display: none;
+}
+.gpop-clonedImageVisible {
+  display: block;
+}
+
+/* Media Queries Css
+––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* phone */
+@media (max-width: 480px) {
+
+.gPopDemoWapper {
+  margin: 0 20px;
+  max-width: 480px;
+  float: none;
+}
+
+#demo1 ul li {
+  width: 100%;
+}
+#demo2 ul li{
+  width: 100%;
+}
+#demo3 ul li {
+  width: 100%;
+}
+#demo4 ul li {
+  width: 100%;
+}
+#demo5 ul li {
+  width: 100%;
+}
+#demo6 ul li {
+  width: 100%;
+}
+}
+
+

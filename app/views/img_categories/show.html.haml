@@ -1,11 +1,20 @@
 %h2.text-center
   = @category.name.capitalize
-%ul.img
-  -@images.each do |img|
-    %li
-      = link_to "/img_categories/#{@category.id}/images/#{img.id}", :id => '1' do
-        = image_tag img.url, size: '128x128', alt: 'Image', :class => 'img-polaroid'
-      = pluralize(img.likes.size, 'like')
-      = pluralize(img.img_comments.size, 'comment')
+.gPopDemoWapper
+  %div{:class=>"gPop-gallery", :id=>"demo2"}
+    %ul
+      -@images.each do |img|
+        %li
+          = link_to "/img_categories/#{@category.id}/images/#{img.id}", :id => '1' do
+            = image_tag img.url, size: '300x300', alt: 'Image'
+          %div
+            %p
+              = pluralize(img.likes.size, 'like')
+            %p
+              = pluralize(img.img_comments.size, 'comment')
 = paginate @images
+
+
+
+
 

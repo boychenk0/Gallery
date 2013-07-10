@@ -1,31 +1,51 @@
 !!!
-%html
+%html{:class => 'en'}
   %head
     %title Gallery
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    #content
-      .well.green
-        Приветствуем вас,
-        - if user_signed_in?
-          = current_user.email
-          %span.pull-right
-            = link_to 'Home', img_categories_path, :class => 'btn btn-link'
-            = link_to 'Events', '#', method: 'get', class: 'btn btn-link'
-            = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-link'
-        - else
-          Гость
-          %span.pull-right
-            = link_to 'Home', images_path, :class => 'btn btn-link'
-            = link_to 'Registration', new_user_registration_path, :class => 'btn btn-link'
-            = link_to 'Sign in', new_user_session_path, :class => 'btn btn-link'
-      %h1{:class => 'text-center green'}
-        Welcom to my Gallery
-      -##header_img
-      -#  image_block
-      .main_block
-        = yield
-    %div{:class => 'well', :id =>'footer'}
-      POWERED by YaR
+    %div{:class=>'mainContainer'}
+      %div{:class=>'header'}
+        %div{:class=>'header_message'}
+          -if !user_signed_in?
+            %p{:class=>'messageContent'}
+              %strong Welcome, Guest
+            %div{:class=>'buttonsWrapper'}
+              = link_to 'Login', new_user_session_path, :class => 'btn btn-primary'
+              = link_to 'Registration', new_user_registration_path, :class => 'btn btn-primary'
+          - else
+            %p{:class=>'messageContent'}
+              %strong Welcome,
+              = current_user.email
+            %div{:class=>'buttonsWrapper'}
+              = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
+      %div{:class=>'BoardPage'}
+        %div{:class=>'BoardHeader'}
+          %h1 Welcome to my Gallery
+          %p{:class => 'description'}We are glad to see boobs lovers
+      = yield
+      %div{:id =>'footer'}
+        POWERED by YaR
+
+
+    -##content
+    -#  .well.green
+    -#    Приветствуем вас,
+    -#    - if user_signed_in?
+    -#      = current_user.email
+    -#      %span.pull-right
+    -#        = link_to 'Home', img_categories_path, :class => 'btn btn-link'
+    -#        = link_to 'Events', '#', method: 'get', class: 'btn btn-link'
+    -#        = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-link'
+    -#    - else
+    -#      Гость
+    -#      %span.pull-right
+    -#        = link_to 'Home', images_path, :class => 'btn btn-link'
+    -#        = link_to 'Registration', new_user_registration_path, :class => 'btn btn-link'
+    -#        = link_to 'Sign in', new_user_session_path, :class => 'btn btn-link'
+    -#  %h1{:class => 'text-center green'}
+    -#    Welcom to my Gallery
+    -#  .main_block
+    -#    = yield
