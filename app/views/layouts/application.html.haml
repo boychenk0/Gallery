@@ -12,24 +12,20 @@
         - if user_signed_in?
           = current_user.email
           %span.pull-right
+            = link_to 'Home', img_categories_path, :class => 'btn btn-link'
+            = link_to 'Events', '#', method: 'get', class: 'btn btn-link'
             = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-link'
-            = link_to 'Home', images_path, :class => 'btn btn-link'
         - else
           Гость
           %span.pull-right
-            = link_to 'Sign in', new_user_session_path, :class => 'btn btn-link'
-            = link_to 'Registration', new_user_registration_path, :class => 'btn btn-link'
             = link_to 'Home', images_path, :class => 'btn btn-link'
-      -#%h1{:class => 'text-center green'}
-      -#  Welcom to my Gallery
-      #header_img
+            = link_to 'Registration', new_user_registration_path, :class => 'btn btn-link'
+            = link_to 'Sign in', new_user_session_path, :class => 'btn btn-link'
+      %h1{:class => 'text-center green'}
+        Welcom to my Gallery
+      -##header_img
       -#  image_block
-      #menu
-        .btn-group
-          = link_to 'All images', images_path, method: 'get', class: "btn"
-          = link_to 'Categories', img_categories_path, method: 'get', class: "btn"
-          = link_to 'Events', "#", method: 'get', class: "btn"
-      #main_block
-      = yield
+      .main_block
+        = yield
     %div{:class => 'well', :id =>'footer'}
       POWERED by YaR

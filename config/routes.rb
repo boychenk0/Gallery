@@ -1,5 +1,7 @@
 TitsProj::Application.routes.draw do
 
+  root :to => 'img_categories#index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -9,9 +11,6 @@ TitsProj::Application.routes.draw do
   resources :img_categories, only: [:index, :show] do
     resources :images, only: [:show]
   end
-
-
-
 
   devise_for :users
   ActiveAdmin.routes(self)
@@ -65,7 +64,7 @@ TitsProj::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'images#index'
+
 
   # See how all your routes lay out with "rake routes"
 
