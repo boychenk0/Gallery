@@ -1,32 +1,66 @@
 // Place all the styles related to the images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.img {
-  margin: 1.5em auto 0.5em;
-  max-width: 1300px;
-  list-style: none outside none;
-  overflow: hidden;
-}
-ul, ol {
-  text-align: center;
-}
-.img li {
-  margin: 0 0.5% 1%;
-  width: 15%;
-  display: block;
-  float: left;
-  margin-right: 10%;
-  max-width: 120px;
-}
-.img_show img{
-  margin-left: 30%;
-}
 #img_comment_body{
-  height: 200px;
+  height: 120px;
   width: 500px;
 }
-#like{
+#likeblock{
   height: 50px;
-  width: 120px;
-  margin-left: 30%;
+  width: 150px;
+  float: right;
+  margin-right: 55px;
+  margin-top: -65px;
+  position: relative;
+}
+.imageshow{
+  width: 49%;
+  float: left;
+}
+.likecount{
+  font-family: 'Cardo', serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 6px 6px 6px #ccc;
+  text-transform: none;
+  line-height: 1.41;
+}
+.comment{
+  width: 40%;
+}
+.com{
+  max-width: 563px;
+  padding-left: 15px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  border: 0 none;
+  margin: 0;
+  font-size: 1em;
+  color: #666666;
+  line-height: 1.4;
+  border-collapse: collapse;
+  empty-cells: show;
+  font-family: "Roboto",Arial,sans-serif;
+}
+#name{
+  line-height: 1.4;
+  font-size: 1em;
+  border-collapse: collapse;
+  empty-cells: show;
+  color: #666666;
+  font-family: "Roboto",Arial,sans-serif;
+}
+.reviev-text{
+  overflow-x: hidden;
+  padding-bottom: 0;
+  margin-top: 7px;
+  border: 0 none;
+  font-size: 1em;
+  border-collapse: collapse;
+  empty-cells: show;
+  color: #666666;
+  line-height: 1.4;
+  font-family: "Roboto",Arial,sans-serif;
 }

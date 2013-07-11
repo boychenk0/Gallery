@@ -1,25 +1,24 @@
-.img_show
-  = image_tag @image.url, :height => 650, :width => 650, :class => 'img-polaroid'
-  #like
-    = link_to "#" do
-      = image_tag 'like.jpg'
-  = pluralize(@image.likes_count, 'like')
+.row
+  .span9
+    = image_tag @image.url, :height => 650, :width => 650, :class => 'img-polaroid'
 
-  %div{id:"pv_like_wrap", class:"fl_l", onclick:"Photoview.like()", onmouseout:"Photoview.likeOut()", onmouseover:"Photoview.likeOver()"}
+    #likeblock
+      %span{:class => 'likecount'}
+        = @image.likes.size
+      %span{:id => 'like'}
+        = image_tag 'like.jpg', :width => 120, :id => @image.id, :class => 'imglike'
 
-#comments
-  - @comments.each do |comment|
-    %p.text-warning
-
-    %alert.alert-info= comment.body
-    -#.text-warning
-    -#  #{comment.user.email}
-    -#  = time_ago_in_words comment.created_at
-    -#  ago
-    -#  -#- if current_user == comment.user
-      -#  = link_to "Delete comment", [@post, comment], :method => :delete, :confirm => "Are your sure?"
-- if user_signed_in?
-  = form_for ([@image, @image.img_comments.new]) do |f|
-    %p= f.text_area :body
-    %p= f.submit "Add comment", :class => "btn"
+  .span5
+    %h2 Comments
+    #comments
+      - @comments.each do |comment|
+        #com
+          %strong=comment.user.email
+          %span=comment.created_at.strftime("%Y-%m-%d %H:%M")
+          %p{:class=>'reviev-text'}= comment.body
+          %hr
+    - if user_signed_in?
+      = form_for ([@image, @image.img_comments.build]) do |f|
+        %p= f.text_area :body
+        %p= f.submit "Add comment", :class => "btn"
 

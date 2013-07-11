@@ -32,6 +32,7 @@ body{
   color: #211922;
   font-family: "Helvetica Neue",arial,sans-serif;
   font-size: 12px;
+
 }
 .header{
   color: #211922;
@@ -107,8 +108,14 @@ body{
   color: #717171;
   font-family: "Helvetica Neue",arial,sans-serif;
   font-size: 15px;
-  margin: 0 7px;
+  margin: 0 7px 7px 7px;
+  margin-top: 10px;
   overflow: hidden;
   padding: 1em;
   line-height: 1.25em;
+  width: 97%;
+}
+.mainContent{
+  border-top: 1px solid #CCCCCC;
+  margin-top: 5px;
 }

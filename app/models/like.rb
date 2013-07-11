@@ -4,4 +4,5 @@ class Like < ActiveRecord::Base
   belongs_to :user
   validate :image, :presense => true, :numericality => {:only_integer => true}
   validate :user, :presense => true, :numericality => {:only_integer => true}
+  validates :image_id, :uniqueness => {:scope => :user_id }
 end

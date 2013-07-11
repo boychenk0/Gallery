@@ -14,19 +14,23 @@
               %strong Welcome, Guest
             %div{:class=>'buttonsWrapper'}
               = link_to 'Login', new_user_session_path, :class => 'btn btn-primary'
+              = link_to 'Facebook login', '/auth/facebook', :class => 'btn btn-primary'
               = link_to 'Registration', new_user_registration_path, :class => 'btn btn-primary'
+              = link_to 'Home',  img_categories_path, :class => 'btn btn-primary'
           - else
             %p{:class=>'messageContent'}
               %strong Welcome,
               = current_user.email
             %div{:class=>'buttonsWrapper'}
               = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
+              = link_to 'Home',  img_categories_path, :class => 'btn btn-primary'
       %div{:class=>'BoardPage'}
         %div{:class=>'BoardHeader'}
           %h1 Welcome to my Gallery
           %p{:class => 'description'}We are glad to see boobs lovers
-      = yield
-      %div{:id =>'footer'}
+      %div{:class => 'mainContent'}
+        = yield
+      %footer{:id =>'footer'}
         POWERED by YaR
 
 
