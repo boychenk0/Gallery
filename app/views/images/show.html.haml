@@ -5,8 +5,12 @@
     #likeblock
       %span{:class => 'likecount'}
         = @image.likes.size
-      %span{:id => 'like'}
-        = image_tag 'like.jpg', :width => 120, :id => @image.id, :class => 'imglike'
+      - if @status == true
+        %span{:class => 'like'}
+          = image_tag 'like.jpg', :width => 120, :id => @image.id, :class => 'imglike'
+      - else
+        %span{:class => 'like'}
+          = image_tag 'unlike.jpg', :width => 120, :id => @image.id, :class => 'imglike'
 
   .span5
     %h2 Comments

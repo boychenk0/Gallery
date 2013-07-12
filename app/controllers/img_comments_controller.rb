@@ -1,5 +1,5 @@
 class ImgCommentsController < ApplicationController
-  before_filter :authenticate_user!, :except => []
+  before_filter :authenticate_user!
 
   def create
     @image = Image.find(params[:image_id])

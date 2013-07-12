@@ -2,7 +2,8 @@ TitsProj::Application.routes.draw do
 
   root :to => 'img_categories#index'
   get '/auth/:provider/callback' => 'images#authf' # For socials networks
-  post '/images/like' => 'images#like'
+  post 'admin/parsing' => 'admin/parsing#create_images' # for parsing
+  post '/images/like' => 'images#like'#for likes
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

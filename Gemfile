@@ -9,15 +9,13 @@ gem 'kaminari'
 gem 'carrierwave'
 #activeAcmin
 gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
-
 gem 'devise'
-gem 'figaro'
 gem 'haml-rails'
 gem 'pg'
-gem 'simple_form'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'nokogiri'
+gem 'curb'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
