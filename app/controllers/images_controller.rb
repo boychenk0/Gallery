@@ -1,5 +1,5 @@
-require 'curb'
-require 'nokogiri'
+#require 'curb'
+#require 'nokogiri'
 
 class ImagesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :authf]

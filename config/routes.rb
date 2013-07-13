@@ -2,7 +2,9 @@ TitsProj::Application.routes.draw do
 
   root :to => 'img_categories#index'
   get '/auth/:provider/callback' => 'images#authf' # For socials networks
-  post 'admin/parsing' => 'admin/parsing#create_images' # for parsing
+  post 'admin/parsing' => 'admin/parsing#parse_images' # for parsing
+  post 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
+  get 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
   post '/images/like' => 'images#like'#for likes
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -14,7 +16,8 @@ TitsProj::Application.routes.draw do
     resources :images, only: [:show]
   end
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations =>
+                                         "registrations"}
   ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation:

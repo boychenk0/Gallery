@@ -9,14 +9,15 @@ ActiveAdmin.register_page "Parsing" do
     end
   end
 
-  page_action :create_images, :method => :post do
-    images = []
+  page_action :parse_images, :method => :post do
+    @images = []
+    @categories = ImgCategory.all
     curl =  Curl.get(params[:image][:url]) do |http|
       logger.info http.body_str
     end
     curl = Nokogiri::HTML(curl.body_str)
     curl.css('img').each do |img|
-      images << img['src']
+      @images << img['data-src']
       logger.info img['src']
     end
 
@@ -25,7 +26,13 @@ ActiveAdmin.register_page "Parsing" do
     #uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => params[:file_addr].split("/").last)
     #@pic = Picture.create!(:title=>params[:file_addr],:filename=>uploaded_file)
     #@pic.categories = Category.where(:name => params[:categories])
-    render :json => images
+    #render :json => images
+    render :layout => 'active_admin'
+  end
+
+  page_action :create_image, :method => :post do
+     logger.info '123123'*30
+     render :json => {:ok=>'okay'}, layout: false
   end
 
 end
