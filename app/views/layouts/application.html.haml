@@ -1,55 +1,38 @@
 !!!
-%html{:class => 'en'}
+%html
   %head
     %title Gallery
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %div{:class=>'mainContainer'}
-      %div{:class=>'header'}
-        %div{:class=>'header_message'}
+    %div{:id=>'page'}
+      %div{:id=>'page-header'}
+        %div{:id=>'page-header-top_panel'}
           -if !user_signed_in?
-            %p{:class=>'messageContent'}
+            %p{:id=>'page-header-top_panel-message'}
               %strong Welcome, Guest
-            %div{:class=>'buttonsWrapper'}
+            %div{:id=>'page-header-top_panel-buttons'}
               = link_to 'Login', new_user_session_path, :class => 'btn btn-primary'
               = link_to 'Facebook login', '/auth/facebook', :class => 'btn btn-primary'
               = link_to 'Registration', new_user_registration_path, :class => 'btn btn-primary'
               = link_to 'Home',  img_categories_path, :class => 'btn btn-primary'
           - else
-            %p{:class=>'messageContent'}
+            %p{:id=>'page-header-top_panel-message'}
               %strong Welcome,
               = current_user.email
-            %div{:class=>'buttonsWrapper'}
+            %div{:id=>'page-header-top_panel-buttons'}
               = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
-              = link_to 'Home',  img_categories_path, :class => 'btn btn-primary'
-      %div{:class=>'BoardPage'}
-        %div{:class=>'BoardHeader'}
+              = link_to 'Home',  root_path, :class => 'btn btn-primary'
+
+        %div{:id=>'page-header-panel'}
           %h1 Welcome to my Gallery
-          %p{:class => 'description'}We are glad to see boobs lovers
-      %div{:class => 'mainContent'}
+          %p We are glad to see boobs lovers
+      %div{:id => 'page-main'}
         = yield
-      %footer{:id =>'footer'}
+
+      %div{:id => 'page-footer_cleaner'}
+    %div{:id => 'footer'}
+      %div{:id=>'footer-message'}
         POWERED by YaR
 
-
-    -##content
-    -#  .well.green
-    -#    Приветствуем вас,
-    -#    - if user_signed_in?
-    -#      = current_user.email
-    -#      %span.pull-right
-    -#        = link_to 'Home', img_categories_path, :class => 'btn btn-link'
-    -#        = link_to 'Events', '#', method: 'get', class: 'btn btn-link'
-    -#        = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-link'
-    -#    - else
-    -#      Гость
-    -#      %span.pull-right
-    -#        = link_to 'Home', images_path, :class => 'btn btn-link'
-    -#        = link_to 'Registration', new_user_registration_path, :class => 'btn btn-link'
-    -#        = link_to 'Sign in', new_user_session_path, :class => 'btn btn-link'
-    -#  %h1{:class => 'text-center green'}
-    -#    Welcom to my Gallery
-    -#  .main_block
-    -#    = yield

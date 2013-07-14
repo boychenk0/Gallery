@@ -13,33 +13,40 @@
  *= require_jquery.gpop.css
  */
 @import "bootstrap";
-.en{
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  font-size: 12px;
-  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+
+* html #page{
+  height: 100%;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body{
-  overflow-y: scroll;
-  position: relative;
+  line-height: 22px;
   color: #211922;
   font-family: "Helvetica Neue",arial,sans-serif;
   font-size: 12px;
-  margin: 0;
   background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
 }
-.mainContainer{
+#page {
+  min-height: 100%;
+  margin: 0 0 -60px 0;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 13px;
+  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+}
+#page-footer_cleaner {
+  height: 60px;
+  clear: both;
+}
+//--------------------------------------------header-------------------------------------------------------------------
+#page-header {}
+#page-header-top_panel{
   color: #211922;
   font-family: "Helvetica Neue",arial,sans-serif;
   font-size: 12px;
-
-}
-.header{
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  font-size: 12px;
-}
-.header_message{
   overflow: hidden;
   background: linear-gradient(#FFF7CB, #FFF4B7) repeat scroll 0 0 transparent;
   border-radius: 0 0 3px 3px;
@@ -50,7 +57,7 @@ body{
   padding: 1em;
   font-family: "Helvetica Neue",arial,sans-serif;
 }
-.messageContent{
+#page-header-top_panel-message{
   float: left;
   margin: 0;
   text-shadow: 0 1px 0 #FFFFFF;
@@ -58,7 +65,7 @@ body{
   font-size: 15px;
   font-family: "Helvetica Neue",arial,sans-serif;
 }
-.buttonsWrapper{
+#page-header-top_panel-buttons{
   position: absolute;
   right: 14px;
   top: 2px;
@@ -66,21 +73,13 @@ body{
   font-size: 15px;
   font-family: "Helvetica Neue",arial,sans-serif;
 }
-.BoardPage{
+#page-header-panel{
   min-height: 100px;
-  animation: 0.3s ease 0s normal forwards 1 fadeIn;
   color: #211922;
   font-family: "Helvetica Neue",arial,sans-serif;
   font-size: 12px;
 }
-.BoardHeader{
-  width: 1250px;
-  margin: 0 auto;
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  font-size: 12px;
-}
-.BoardHeader h1{
+#page-header-panel h1{
   color: rgba(21, 21, 21, 0.8);
   font-size: 47px;
   font-weight: bold;
@@ -91,31 +90,29 @@ body{
   text-shadow: 1px 2px 4px #E3E3E3, 0 0 0 #000000, 1px 2px 4px #E3E3E3, 0 1px 0 #FFFFFF;
   font-family: "Helvetica Neue",arial,sans-serif;
 }
-.description{
+#page-header-panel p{
   font-size: 18px;
   line-height: 26px;
   margin: 5px auto;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.67);
-  width: 736px;
   color: #6C6C6C;
   text-align: center;
   font-family: "Helvetica Neue",arial,sans-serif;
 }
+//-------------------------------------end----header-------------------------------------------------------------------
+
 #footer {
+  height: 50px;
+}
+#footer-message{
   background: linear-gradient(#FFF7CB, #FFF4B7) repeat scroll 0 0 transparent;
-  border-radius: 0 0 3px 3px;
+  border-radius: 3px 3px 0 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  color: #717171;
+  color: #211922;
   font-family: "Helvetica Neue",arial,sans-serif;
   font-size: 15px;
-  margin: 0 7px 7px 7px;
-  margin-top: 10px;
+  margin: 10px 7px 0 7px;
   overflow: hidden;
-  padding: 1em;
   line-height: 1.25em;
-  width: 97%;
-}
-.mainContent{
-  border-top: 1px solid #CCCCCC;
-  margin-top: 5px;
+  padding: 1em;
 }

@@ -1,6 +1,6 @@
 TitsProj::Application.routes.draw do
 
-  root :to => 'img_categories#index'
+  root :to => 'images#index'
   get '/auth/:provider/callback' => 'images#authf' # For socials networks
   post 'admin/parsing' => 'admin/parsing#parse_images' # for parsing
   post 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img

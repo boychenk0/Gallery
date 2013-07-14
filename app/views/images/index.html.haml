@@ -1,10 +1,32 @@
-%h2.text-center
-  All images
-%ul.img
-  -@images.each do |img|
-    %li
-      = image_tag img.url, size: '128x128', alt: 'Image', :class => 'img-polaroid'
-      = pluralize(img.likes.size, 'like')
-      = pluralize(img.img_comments.size, 'comment')
-= paginate @images
+.span4
+  %h2{:id=>'cssmenu-title'}
+    Categories
+  %div{:id=>'cssmenu'}
+    %ul
+      %li
+        = link_to root_path do
+          %span All images (#{Image.count})
+      -@categories.each do |category|
+        %li
+          =link_to category do
+            %span
+              = category.name
+              (#{category.images.count})
+.span10
+  %h2.text-center
+    All images
+  .gPopDemoWapper
+    %div{:class=>"gPop-gallery", :id=>"demo2"}
+      %ul
+        -@images.each do |img|
+          %li
+            = link_to "/img_categories/#{img.img_category.id}/images/#{img.id}", :id => '1' do
+              = image_tag img.url, size: '300x300', alt: 'Image'
+            %div
+              %p
+                = pluralize(img.likes.size, 'like')
+              %p
+                = pluralize(img.img_comments.size, 'comment')
+  .text-center
+    = paginate @images
 

@@ -6,6 +6,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.order('created_at DESC').page(params[:page]).per(5)
+    @categories = ImgCategory.all
   end
   def show
     session[:return_to] = request.fullpath

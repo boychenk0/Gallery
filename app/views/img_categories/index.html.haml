@@ -1,7 +1,30 @@
 .titlepage
-  %h2.text-center
-    Categories
-%ul
-  -@categories.each do |category|
-    %li
-      =link_to category.name, category
+  .span4
+    %h2
+      Categories
+    %div{:id=>'cssmenu'}
+      %ul
+        %li
+          = link_to root_path do
+            %span All images
+        -@categories.each do |category|
+          %li
+            =link_to category do
+              %span
+                = category.name
+  .span10
+    %h2.text-center
+      = @category.name.capitalize
+    .gPopDemoWapper
+      %div{:class=>"gPop-gallery", :id=>"demo2"}
+        %ul
+          -@images.each do |img|
+            %li
+              = link_to "/img_categories/#{@category.id}/images/#{img.id}", :id => '1' do
+                = image_tag img.url, size: '300x300', alt: 'Image'
+              %div
+                %p
+                  = pluralize(img.likes.size, 'like')
+                %p
+                  = pluralize(img.img_comments.size, 'comment')
+    = paginate @images

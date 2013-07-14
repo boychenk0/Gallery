@@ -1,6 +1,42 @@
 // Place all the styles related to the images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// -----------------------------css menu ---------------------------------------------------------
+#cssmenu {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+#cssmenu{
+  width: 218px;
+}
+#cssmenu ul{
+  list-style: none;
+  text-indent: 0px;
+}
+#cssmenu li{
+  margin-top: 3px;
+}
+#cssmenu a{
+  font: 12px Verdana;
+  padding: 4px;
+  color: #646464;
+  display:block;
+  padding: 6px 30px;
+  height: 20px;
+  text-decoration: none;
+  background: url('background.gif');
+}
+#cssmenu a:hover{
+  background: url('highlight.gif') no-repeat right;
+  padding: 6px 40px;
+}
+#cssmenu-title{
+  width: 218px;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  padding: 6px 30px;
+}
+//---------------------------------------end css menu------------------------------------------------
 #img_comment_body{
   height: 120px;
   width: 500px;

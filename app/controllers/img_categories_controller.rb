@@ -4,6 +4,7 @@ class ImgCategoriesController < ApplicationController
   def index
     session[:return_to] = request.fullpath
     @categories = ImgCategory.all
+    @images = Image.order('created_at DESC').page(params[:page]).per(5)
   end
 
   def show
