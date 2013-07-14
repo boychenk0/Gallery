@@ -20,11 +20,11 @@
         %ul
           -@images.each do |img|
             %li
-              = link_to "/img_categories/#{@category.id}/images/#{img.id}", :id => '1' do
+              = link_to "/categories/#{@category.id}/images/#{img.id}", :id => '1' do
                 = image_tag img.url, size: '300x300', alt: 'Image'
               %div
                 %p
                   = pluralize(img.likes.size, 'like')
                 %p
-                  = pluralize(img.img_comments.size, 'comment')
+                  = pluralize(img.comments.size, 'comment')
     = paginate @images

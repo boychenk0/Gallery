@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ImgCategory.create(:name => 'tits')
-ImgCategory.create(:name => 'cats')
-ImgCategory.create(:name => 'christmas')
-ImgCategory.create(:name => 'alcohol')
-ImgCategory.create(:name => 'ruby')
+Category.create(:name => 'tits')
+Category.create(:name => 'cats')
+Category.create(:name => 'christmas')
+Category.create(:name => 'alcohol')
+Category.create(:name => 'ruby')

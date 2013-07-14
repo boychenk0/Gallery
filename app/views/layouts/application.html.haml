@@ -16,7 +16,7 @@
               = link_to 'Login', new_user_session_path, :class => 'btn btn-primary'
               = link_to 'Facebook login', '/auth/facebook', :class => 'btn btn-primary'
               = link_to 'Registration', new_user_registration_path, :class => 'btn btn-primary'
-              = link_to 'Home',  img_categories_path, :class => 'btn btn-primary'
+              = link_to 'Home',  root_path, :class => 'btn btn-primary'
           - else
             %p{:id=>'page-header-top_panel-message'}
               %strong Welcome,

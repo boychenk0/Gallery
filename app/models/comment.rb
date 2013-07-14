@@ -1,4 +1,4 @@
-class ImgComment < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   attr_accessible :body, :image, :created_at, :user
   belongs_to :image, :counter_cache => true
   validate :image, :presense => true, :numericality => {:only_integer => true}

@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :uid, :provider, :nickname, :captcha, :captcha_key
   has_many :likes, :dependent => :destroy
   has_many :images, :through => :likes
-  has_many :img_comments, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 end

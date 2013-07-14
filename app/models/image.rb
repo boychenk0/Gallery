@@ -1,15 +1,15 @@
 class Image < ActiveRecord::Base
-  attr_accessible :url, :img_category
+  attr_accessible :url, :category
   mount_uploader :url, ImageUploader
 
-  has_many :img_comments, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   has_many :likes, :dependent => :destroy
   has_many :users, :through => :likes
 
-  belongs_to :img_category
+  belongs_to :category
 
   validate :url, :presense => true
-  validate :img_category, :presense => true
-  validate :img_category, :numericality => {:only_integer => true}
+  validate :category, :presense => true
+  validate :category, :numericality => {:only_integer => true}
 end

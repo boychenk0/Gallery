@@ -10,15 +10,14 @@ TitsProj::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :images, only: [:index] do
-    resources :img_comments, only:[:create]
+    resources :comments, only:[:create]
   end
-  resources :img_categories, only: [:index, :show] do
+  resources :categories, only: [:index, :show] do
     resources :images, only: [:show]
   end
 
   devise_for :users, :controllers => {:registrations =>
                                          "registrations"}
-  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

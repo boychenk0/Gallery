@@ -22,7 +22,7 @@
           %p{:class=>'reviev-text'}= comment.body
           %hr
     - if user_signed_in?
-      = form_for ([@image, @image.img_comments.build]) do |f|
+      = form_for ([@image, @image.comments.build]) do |f|
         %p= f.text_area :body
         %p= f.submit "Add comment", :class => "btn"
 

@@ -2,17 +2,17 @@
 #require 'nokogiri'
 
 class ImagesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :authf]
+  before_filter :authenticate_user!, :except => [:show, :authf, :index]
 
   def index
-    @images = Image.order('created_at DESC').page(params[:page]).per(5)
-    @categories = ImgCategory.all
+    @images = Image.order('created_at DESC').page(params[:page]).per(5).preload(:category)
+    @categories = Category.all
   end
   def show
     session[:return_to] = request.fullpath
     @image = Image.find(params[:id])
-    @comments = @image.img_comments.where("body != ''")
-    @comment = @image.img_comments.build
+    @comments = @image.comments.where("body != ''")
+    @comment = @image.comments.build
     if user_signed_in?
       @status = (Like.where(:image_id => @image.id, :user_id => current_user.id)).blank? ? true : false
     elsif

@@ -11,7 +11,7 @@ def upload_file_and_create_categories(dir, cat)
   dir.entries.each do |e|
     file_or_dir = File.join(dir.path, e)
     if File.directory?(file_or_dir) && file_or_dir != File.join(dir.path, '.') && file_or_dir != File.join(dir.path, '..')
-      category = ImgCategory.find_or_create_by_name(e)
+      category = Category.find_or_create_by_name(e)
       dir = Dir.new(file_or_dir)
       upload_file_and_create_categories(dir, category)
     elsif File.file?(file_or_dir) && !cat.nil? && ['.jpg', '.jpeg', '.png'].include?(File.extname(file_or_dir))

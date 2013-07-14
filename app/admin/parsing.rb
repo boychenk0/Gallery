@@ -11,13 +11,13 @@ ActiveAdmin.register_page "Parsing" do
 
   page_action :parse_images, :method => :post do
     @images = []
-    @categories = ImgCategory.all
+    @categories = Category.all
     curl =  Curl.get(params[:image][:url]) do |http|
       logger.info http.body_str
     end
     curl = Nokogiri::HTML(curl.body_str)
     curl.css('img').each do |img|
-      @images << img['data-src']
+      @images << img['src']
       logger.info img['src']
     end
 

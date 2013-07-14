@@ -1,4 +1,4 @@
-ActiveAdmin.register ImgComment do
+ActiveAdmin.register Comment  do
   index do
     selectable_column
     column :id

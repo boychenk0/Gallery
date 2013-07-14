@@ -7,7 +7,7 @@ ActiveAdmin.register Image do
       end
       column :url
       column :likes_count
-      column :img_comments_count
+      column :comments_count
       column :created_at
       column :updated_at
       default_actions

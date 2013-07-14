@@ -15,7 +15,7 @@
               (#{category.images.size})
 .span10
   %h2.text-center
-    All images
+    = @category.name.capitalize
   .gPopDemoWapper
     %div{:class=>"gPop-gallery", :id=>"demo2"}
       %ul
@@ -30,4 +30,10 @@
                 = pluralize(img.comments.size, 'comment')
   .text-center
     = paginate @images
+
+
+
+
+
+
 
