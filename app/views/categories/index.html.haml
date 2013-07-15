@@ -1,7 +1,7 @@
 .titlepage
   .span4
     %h2
-      Categories
+      =t('.categories')
     %div{:id=>'cssmenu'}
       %ul
         %li
@@ -24,7 +24,7 @@
                 = image_tag img.url, size: '300x300', alt: 'Image'
               %div
                 %p
-                  = pluralize(img.likes.size, 'like')
+                  = pluralize(img.likes.size, t('.like'))
                 %p
-                  = pluralize(img.comments.size, 'comment')
+                  = pluralize(img.comments.size, t('.comment'))
     = paginate @images

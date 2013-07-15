@@ -6,6 +6,7 @@ TitsProj::Application.routes.draw do
   post 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
   get 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
   post '/images/like' => 'images#like'#for likes
+  post '/images/subscribe' => 'images#subscribe'#for subscribe
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

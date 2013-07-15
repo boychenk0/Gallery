@@ -1,17 +1,12 @@
-.span10
-  %div.image_list
-    %ul.images
-      - @images.map do |img|
-        %li.img
-          = image_tag img, :height => 200, :width => 200
-          %select{:name=>'category', :class=>'imgselect'}
+%div.image_list
+  %ul.images
+    - count = 0
+    - @images.map do |img|
+      %li.img{:id=>"#{count+=1}"}
+        = image_tag img, :height => 280, :width => 280
+        .imgselect
+          = t('.category')
+          %select{:name=>'category'}
             -@categories.each do |cat|
               %option{:value=>"#{cat.id}"}=cat.name
-.span5
-  %div{:id=>"droppable", :class=>"ui-widget-header"}
-    %p Drop here
-
--#%div{:id=>"draggable", :class=>"ui-widget-content"}
--#  %p Drag me to my target
--#%div{:id=>"droppable", :class=>"ui-widget-header"}
--#  %p Drop here
+        =button_to_function "OK", "create_image(this)", class: "btn pull-right"

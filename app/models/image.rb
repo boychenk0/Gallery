@@ -12,4 +12,9 @@ class Image < ActiveRecord::Base
   validate :url, :presense => true
   validate :category, :presense => true
   validate :category, :numericality => {:only_integer => true}
+
+  after_save :notification
+  def notification
+    SubscribeMailer.new_image(self.category.users, self.category, self).deliver
+  end
 end

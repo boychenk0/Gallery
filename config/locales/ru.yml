@@ -1,0 +1,36 @@
+ru:
+  layouts:
+    application:
+      gallery: "Галлерея"
+      welcome_g: "Приветствуем Вас, Гость"
+      welcome: "Приветствуем Вас, "
+      login: "Логин"
+      f_login: "Фейсбук логин"
+      registration: "Регистрация"
+      home: "Домой"
+      sign_out: "Выйти"
+      welcome_to_my_gallery: "Добро пожаловать в мою галлерею"
+      we_are_glad_to: "Мы рады видеть любителей фото"
+      powered: "Разработал YaR"
+  images:
+    index:
+      all_image: "Все изображения"
+      like: "нравится"
+      comment: "комментарий"
+    show:
+      comments: "Комментарии"
+      add_comment: "Добавить коментарий"
+  categories:
+    index:
+      categories: "Категории"
+      like: "нравится"
+      comment: "комментарий"
+    show:
+      categories: "Категории"
+      all_image: "Все изображения"
+      like: "нравится"
+      comment: "комментарий"
+  admin:
+    parsing:
+      parse_images:
+        category: "Категории:"

@@ -5,7 +5,8 @@
     %ul
       %li
         = link_to root_path do
-          %span All images (#{Image.count})
+          %span
+            = t('.all_image') + " (#{Image.count})"
       -#    Fix mE!!
       -@categories.each do |category|
         %li
@@ -13,9 +14,16 @@
             %span
               = category.name
               (#{category.images.size})
+          -if user_signed_in?
+            - if !(@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
+              =image_tag 'unsubscribe.jpg', :height=>50, :width=>100, :id=>"#{category.id}", :class=>'subscribe'
+            - else
+              =image_tag 'subscribe.jpg', :height=>50, :width=>100, :id=>"#{category.id}", :class=>'subscribe'
+          - else
+            =image_tag 'subscribe.jpg', :height=>50, :width=>100, :id=>"#{category.id}", :class=>'subscribe'
 .span10
   %h2.text-center
-    All images
+    =t('.all_image')
   .gPopDemoWapper
     %div{:class=>"gPop-gallery", :id=>"demo2"}
       %ul
@@ -25,9 +33,9 @@
               = image_tag img.url, size: '300x300', alt: 'Image'
             %div
               %p
-                = pluralize(img.likes.size, 'like')
+                = pluralize(img.likes.size, t('.like'))
               %p
-                = pluralize(img.comments.size, 'comment')
-  .text-center
+                = pluralize(img.comments.size, t('.comment'))
+  .btn-group.text-center
     = paginate @images
 

@@ -13,7 +13,8 @@
           = image_tag 'unlike.jpg', :width => 120, :id => @image.id, :class => 'imglike'
 
   .span5
-    %h2 Comments
+    %h2
+      =t('.comments')
     #comments
       - @comments.each do |comment|
         #com
@@ -24,5 +25,5 @@
     - if user_signed_in?
       = form_for ([@image, @image.comments.build]) do |f|
         %p= f.text_area :body
-        %p= f.submit "Add comment", :class => "btn"
+        %p= f.submit t('.add_comment'), :class => "btn"
 

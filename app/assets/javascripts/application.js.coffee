@@ -13,6 +13,38 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
+#= require pusher
 #= require jquery.gpop.js
 #= require_tree .
+
+#$(document).ready ->
+#  Pusher.host = 'localhost:8080'
+#  Pusher.ws_port = 8080;
+#  Pusher.wss_port = 8080;
+#  pusher = new Pusher('1c81fd8f32b04884c7ac10a7df682973', { encrypted: false })
+#  channel = pusher.subscribe('test-channel')
+#
+#  channel.bind "test-event",(response)->
+#    alert(response)
+#    $('#chat .message').text(response.comment)
+#  console.log response
+
+
+#фронтенд:
+#Pusher.host = host;
+#Pusher.ws_port = ws_port;
+#var pusher = new Pusher(app_key);
+#var channel = pusher.subscribe("test-channel", {encrypted: false})
+#channel.bind("test-event", function(response){
+#console.log(response)
+#})
+#бэкэнд:
+#Pusher.host   = host
+#Pusher.port   = api_port
+#Pusher.app_id = 1 #любой можно подставить
+#Pusher.key = Settings.jagan.app_key
+#Pusher.secret = Settings.jagan.app_secret
+#Pusher.encrypted = false
+#
+#Pusher["test-channel"].trigger("test-event", {message: "hello"})
 

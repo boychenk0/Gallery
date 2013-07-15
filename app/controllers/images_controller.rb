@@ -46,4 +46,18 @@ class ImagesController < ApplicationController
     sign_in @user
     redirect_to session[:return_to]
   end
+
+  #subscribe
+  def subscribe
+    cat_id = params[:id]
+    status = false
+    if (@s = Subscribe.where(:category_id=>cat_id, :user_id=>current_user.id)).blank?
+      current_user.subscribes.create(:category_id=>cat_id)
+      status = true
+    else
+      @s.destroy_all
+      status = false
+    end
+    render :json=>{:status=>status, :id=>cat_id}, layout: false
+  end
 end

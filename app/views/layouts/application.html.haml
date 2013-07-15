@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title Gallery
+    %title
+      = t('.gallery')
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -11,28 +12,31 @@
         %div{:id=>'page-header-top_panel'}
           -if !user_signed_in?
             %p{:id=>'page-header-top_panel-message'}
-              %strong Welcome, Guest
+              %strong
+                =t('.welcome_g')
             %div{:id=>'page-header-top_panel-buttons'}
-              = link_to 'Login', new_user_session_path, :class => 'btn btn-primary'
-              = link_to 'Facebook login', '/auth/facebook', :class => 'btn btn-primary'
-              = link_to 'Registration', new_user_registration_path, :class => 'btn btn-primary'
-              = link_to 'Home',  root_path, :class => 'btn btn-primary'
+              = link_to t('.login'), new_user_session_path, :class => 'btn btn-primary'
+              = link_to t('.f_login'), '/auth/facebook', :class => 'btn btn-primary'
+              = link_to t('.registration'), new_user_registration_path, :class => 'btn btn-primary'
+              = link_to t('.home'),  root_path, :class => 'btn btn-primary'
           - else
             %p{:id=>'page-header-top_panel-message'}
-              %strong Welcome,
+              %strong
+                = t('.welcome')
               = current_user.email
             %div{:id=>'page-header-top_panel-buttons'}
-              = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
-              = link_to 'Home',  root_path, :class => 'btn btn-primary'
+              = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
+              = link_to t('.home'),  root_path, :class => 'btn btn-primary'
 
         %div{:id=>'page-header-panel'}
-          %h1 Welcome to my Gallery
-          %p We are glad to see boobs lovers
+          %h1
+            = t('.welcome_to_my_gallery')
+          %p
+            = t('.we_are_glad_to')
       %div{:id => 'page-main'}
         = yield
-
       %div{:id => 'page-footer_cleaner'}
     %div{:id => 'footer'}
       %div{:id=>'footer-message'}
-        POWERED by YaR
+        = t('.powered')
 

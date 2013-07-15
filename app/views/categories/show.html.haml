@@ -1,11 +1,12 @@
 .span4
   %h2{:id=>'cssmenu-title'}
-    Categories
+    =t('.categories')
   %div{:id=>'cssmenu'}
     %ul
       %li
         = link_to root_path do
-          %span All images (#{Image.count})
+          %span
+            =t('. all_image') + "(#{Image.count})"
       -#    Fix mE!!
       -@categories.each do |category|
         %li
@@ -25,9 +26,9 @@
               = image_tag img.url, size: '300x300', alt: 'Image'
             %div
               %p
-                = pluralize(img.likes.size, 'like')
+                = pluralize(img.likes.size, t('.like'))
               %p
-                = pluralize(img.comments.size, 'comment')
+                = pluralize(img.comments.size, t('.comment'))
   .text-center
     = paginate @images
 

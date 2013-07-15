@@ -17,4 +17,16 @@ $(document).ready ->
         $(".imglike").attr('src', '/assets/like.jpg')
       $(".likecount").text(response.all_likes)
 
-#      $(".all_likes span").text(response.all_likes)
+  $(".subscribe").click ->
+    id = $(this).attr("id")
+    $.ajax(
+      url: "/images/subscribe"
+      data:
+        id: id
+      dataType: "json"
+      type: "post"
+    ).success (response) ->
+      if (response.status == true)
+        $("##{response.id}").attr('src', '/assets/unsubscribe.jpg')
+      else
+        $("##{response.id}").attr('src', '/assets/subscribe.jpg')
