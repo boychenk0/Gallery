@@ -1,0 +1,28 @@
+.row
+  .span9
+    = image_tag @image.url, :height => 650, :width => 650, :class => 'img-polaroid'
+
+    #likeblock
+      %span{:class => 'likecount'}
+        = @image.likes.size
+      - if @status == true
+        %span{:class => 'like'}
+          = image_tag 'like.jpg', :width => 120, :id => @image.id, :class => 'imglike'
+      - else
+        %span{:class => 'like'}
+          = image_tag 'unlike.jpg', :width => 120, :id => @image.id, :class => 'imglike'
+
+  .span5
+    %h2 Comments
+    #comments
+      - @comments.each do |comment|
+        #com
+          %strong=comment.user.email
+          %span=comment.created_at.strftime("%Y-%m-%d %H:%M")
+          %p{:class=>'reviev-text'}= comment.body
+          %hr
+    - if user_signed_in?
+      = form_for ([@image, @image.comments.build]) do |f|
+        %p= f.text_area :body
+        %p= f.submit "Add comment", :class => "btn"
+

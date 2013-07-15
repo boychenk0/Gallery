@@ -1,0 +1,118 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require_jquery.gpop.css
+ */
+@import "bootstrap";
+
+* html #page{
+  height: 100%;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body{
+  line-height: 22px;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+}
+#page {
+  min-height: 100%;
+  margin: 0 0 -60px 0;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 13px;
+  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+}
+#page-footer_cleaner {
+  height: 60px;
+  clear: both;
+}
+//--------------------------------------------header-------------------------------------------------------------------
+#page-header {}
+#page-header-top_panel{
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+  overflow: hidden;
+  background: linear-gradient(#FFF7CB, #FFF4B7) repeat scroll 0 0 transparent;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  color: #717171;
+  font-size: 15px;
+  margin: 0 7px;
+  padding: 1em;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+#page-header-top_panel-message{
+  float: left;
+  margin: 0;
+  text-shadow: 0 1px 0 #FFFFFF;
+  color: #717171;
+  font-size: 15px;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+#page-header-top_panel-buttons{
+  position: absolute;
+  right: 14px;
+  top: 2px;
+  color: #717171;
+  font-size: 15px;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+#page-header-panel{
+  min-height: 100px;
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 12px;
+}
+#page-header-panel h1{
+  color: rgba(21, 21, 21, 0.8);
+  font-size: 47px;
+  font-weight: bold;
+  line-height: 52px;
+  margin: 34px auto 0;
+  max-width: 736px;
+  text-align: center;
+  text-shadow: 1px 2px 4px #E3E3E3, 0 0 0 #000000, 1px 2px 4px #E3E3E3, 0 1px 0 #FFFFFF;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+#page-header-panel p{
+  font-size: 18px;
+  line-height: 26px;
+  margin: 5px auto;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.67);
+  color: #6C6C6C;
+  text-align: center;
+  font-family: "Helvetica Neue",arial,sans-serif;
+}
+//-------------------------------------end----header-------------------------------------------------------------------
+
+#footer {
+  height: 50px;
+}
+#footer-message{
+  background: linear-gradient(#FFF7CB, #FFF4B7) repeat scroll 0 0 transparent;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  color: #211922;
+  font-family: "Helvetica Neue",arial,sans-serif;
+  font-size: 15px;
+  margin: 10px 7px 0 7px;
+  overflow: hidden;
+  line-height: 1.25em;
+  padding: 1em;
+}

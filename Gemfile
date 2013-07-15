@@ -2,23 +2,21 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
-gem 'jquery-rails'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-  gem "libv8", "~> 3.11.8"
-  gem 'uglifier', '>= 1.0.3'
-  gem 'therubyracer', :platform=>:ruby, :require=>"v8"
-end
+gem 'jquery-rails', '~> 2.3.0'
+#kaminari for paginate
+gem 'kaminari'
+#carrerwave for images
+gem 'carrierwave'
+#activeAcmin
+gem 'activeadmin'
+gem 'devise'
+gem 'haml-rails'
+gem 'pg'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'nokogiri'
+gem 'curb'
+gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -35,13 +33,14 @@ end
 # To use debugger
 # gem 'debugger'
 
-gem 'bootstrap-sass'
-gem 'devise'
-gem 'figaro'
-gem 'haml-rails'
-
-gem 'pg'
-gem 'simple_form'
+group :assets do
+  gem 'bootstrap-sass', '~> 2.3.2.0'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem "libv8", "~> 3.11.8"
+  gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer', :platform=>:ruby, :require=>"v8"
+end
 
 group :development do
   gem 'better_errors'

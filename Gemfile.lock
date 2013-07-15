@@ -14,6 +14,18 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    activeadmin (0.6.0)
+      arbre (>= 1.0.1)
+      bourbon (>= 1.0.0)
+      devise (>= 1.1.2)
+      fastercsv
+      formtastic (>= 2.0.0)
+      inherited_resources (>= 1.3.1)
+      jquery-rails (>= 1.0.0)
+      kaminari (>= 0.13.0)
+      meta_search (>= 0.9.2)
+      rails (>= 3.0.0)
+      sass (>= 3.1.0)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -29,6 +41,8 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.5)
+    arbre (1.0.1)
+      activesupport (>= 3.0.0)
     arel (3.0.2)
     bcrypt-ruby (3.1.0)
     better_errors (0.9.0)
@@ -38,6 +52,9 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -45,6 +62,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -53,6 +74,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    curb (0.8.4)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     devise (2.2.4)
@@ -72,9 +94,12 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    figaro (0.7.0)
-      bundler (~> 1.0)
-      rails (>= 3, < 5)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
+    fastercsv (1.5.5)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
+    galetahub-simple_captcha (0.1.5)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -82,6 +107,8 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    has_scope (0.5.1)
+    hashie (2.0.5)
     hike (1.2.3)
     hpricot (0.8.6)
     html2haml (1.0.1)
@@ -89,12 +116,21 @@ GEM
       haml (>= 4.0.0.rc.1)
       hpricot (~> 0.8.6)
       ruby_parser (~> 3.1.1)
+    httpauth (0.2.0)
     i18n (0.6.1)
+    inherited_resources (1.4.0)
+      has_scope (~> 0.5.0)
+      responders (~> 0.9)
     journey (1.0.4)
-    jquery-rails (3.0.2)
+    jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
@@ -102,13 +138,35 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_search (1.1.3)
+      actionpack (~> 3.1)
+      activerecord (~> 3.1)
+      activesupport (~> 3.1)
+      polyamorous (~> 0.5.0)
     mime-types (1.23)
     mini_portile (0.5.1)
     multi_json (1.7.7)
+    multipart-post (1.2.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
     orm_adapter (0.4.0)
     pg (0.15.1)
+    polyamorous (0.5.0)
+      activerecord (~> 3.0)
     polyglot (0.3.3)
     puma (2.3.1)
       rack (>= 1.1, < 2.0)
@@ -139,6 +197,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    responders (0.9.3)
+      railties (~> 3.1)
     rspec-core (2.14.0)
     rspec-expectations (2.14.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -158,9 +218,6 @@ GEM
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sexp_processor (4.2.1)
-    simple_form (2.1.0)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -191,26 +248,32 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-sass (~> 2.3.2.0)
   capybara
+  carrierwave
   coffee-rails (~> 3.2.1)
+  curb
   database_cleaner
   devise
   email_spec
   factory_girl_rails
-  figaro
+  galetahub-simple_captcha
   haml-rails
   html2haml
-  jquery-rails
+  jquery-rails (~> 2.3.0)
+  kaminari
   libv8 (~> 3.11.8)
+  nokogiri
+  omniauth
+  omniauth-facebook
   pg
   puma
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2.3)
-  simple_form
   therubyracer
   uglifier (>= 1.0.3)
   unicorn

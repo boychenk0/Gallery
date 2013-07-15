@@ -1,2 +1,33 @@
-%h1 Images#index
-%p Find me in app/views/images/index.html.haml
+.span4
+  %h2{:id=>'cssmenu-title'}
+    Categories
+  %div{:id=>'cssmenu'}
+    %ul
+      %li
+        = link_to root_path do
+          %span All images (#{Image.count})
+      -#    Fix mE!!
+      -@categories.each do |category|
+        %li
+          =link_to category do
+            %span
+              = category.name
+              (#{category.images.size})
+.span10
+  %h2.text-center
+    All images
+  .gPopDemoWapper
+    %div{:class=>"gPop-gallery", :id=>"demo2"}
+      %ul
+        -@images.each do |img|
+          %li
+            = link_to "/categories/#{img.category.id}/images/#{img.id}", :id => '1' do
+              = image_tag img.url, size: '300x300', alt: 'Image'
+            %div
+              %p
+                = pluralize(img.likes.size, 'like')
+              %p
+                = pluralize(img.comments.size, 'comment')
+  .text-center
+    = paginate @images
+
