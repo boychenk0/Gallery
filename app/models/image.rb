@@ -7,7 +7,7 @@ class Image < ActiveRecord::Base
   has_many :likes, :dependent => :destroy
   has_many :users, :through => :likes
 
-  belongs_to :category
+  belongs_to :category, :counter_cache => true
 
   validate :url, :presense => true
   validate :category, :presense => true

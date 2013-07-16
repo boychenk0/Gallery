@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
   def index
     @images = Image.order('created_at DESC').page(params[:page]).per(5).preload(:category)
     @categories = Category.all
+    ActiveSupport::Notifications.instrument("images.index", :search => 'trololo')
   end
   def show
     session[:return_to] = request.fullpath
