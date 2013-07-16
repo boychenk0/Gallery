@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :subscribes, :dependent => :destroy
   has_many :categories, :through => :subscribes
+  has_many :events, :dependent=>:destroy
+  def self.current
+    Thread.current[:user]
+  end
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
 end

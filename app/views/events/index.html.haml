@@ -1,0 +1,22 @@
+%h1 Events#index
+%p Find me in app/views/events/index.html.haml
+%table{:border=>'1'}
+  %tr
+    %th Пользователь
+    %th Действие
+    %th Время
+    %th Картинка
+  - @events.each do |e|
+    %tr
+      %td
+        =e.user.email
+      %td
+        =e.eventable_type
+      %td
+        =e.created_at
+      %td
+        -#=image_tag e.eventable.image.url, :height => 50, :width => 50
+
+
+
+

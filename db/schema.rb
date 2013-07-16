@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715134446) do
+ActiveRecord::Schema.define(:version => 20130716152638) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(:version => 20130715134446) do
     t.integer  "user_id"
   end
 
+  create_table "events", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.string   "eventable_type", :null => false
+    t.integer  "eventable_id",   :null => false
+    t.datetime "created_at",     :null => false
+  end
+
   create_table "images", :force => true do |t|
     t.string   "url"
     t.integer  "category_id"
@@ -75,6 +82,10 @@ ActiveRecord::Schema.define(:version => 20130715134446) do
     t.integer  "image_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "navigations", :force => true do |t|
+    t.string "url"
   end
 
   create_table "simple_captcha_data", :force => true do |t|

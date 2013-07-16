@@ -13,12 +13,14 @@ TitsProj::Application.routes.draw do
   resources :images, only: [:index] do
     resources :comments, only:[:create]
   end
+  resources :events, only: [:index, :show]
   resources :categories, only: [:index, :show] do
     resources :images, only: [:show]
   end
 
+
   devise_for :users, :controllers => {:registrations =>
-                                         "registrations"}
+                                         "registrations", :sessions => "sessions"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

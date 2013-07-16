@@ -5,9 +5,9 @@ class ImagesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :authf, :index]
 
   def index
+    session[:return_to] = request.fullpath
     @images = Image.order('created_at DESC').page(params[:page]).per(5).preload(:category)
     @categories = Category.all
-    ActiveSupport::Notifications.instrument("images.index", :search => 'trololo')
   end
   def show
     session[:return_to] = request.fullpath
@@ -28,8 +28,9 @@ class ImagesController < ApplicationController
     like_id = params[:id]
     status = false
     if (@l = Like.where(:image_id => like_id, :user_id => current_user.id)).blank?
-      current_user.likes.create(:image_id => like_id)
+      like = current_user.likes.create(:image_id => like_id)
       status = true
+      ActiveSupport::Notifications.instrument("images.like", :like => like, :user => current_user)
     else
       @l.destroy_all
       status = false
@@ -45,6 +46,7 @@ class ImagesController < ApplicationController
                                         :nickname => auth[:extra][:raw_info][:name], :password =>  Devise.friendly_token[0,20],
                                         :email => "#{auth[:provider]}@#{auth[:extra][:raw_info][:name].delete ' '}.com")
     sign_in @user
+    ActiveSupport::Notifications.instrument("images.authf", :user => @user)
     redirect_to session[:return_to]
   end
 

@@ -1,6 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
   include SimpleCaptcha::ControllerHelpers
 
+
+
   def create
     if simple_captcha_valid?
       super
