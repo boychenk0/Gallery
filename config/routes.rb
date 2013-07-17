@@ -14,6 +14,12 @@ TitsProj::Application.routes.draw do
     resources :comments, only:[:create]
   end
   resources :events, only: [:index, :show]
+  get 'events/:user_id/navigation/' => 'events#navigation'
+  get 'events/:user_id/sign_in/' => 'events#sign_in'
+  get 'events/:user_id/sign_out/' => 'events#sign_out'
+  get 'events/:user_id/likes/' => 'events#likes'
+  get 'events/:user_id/comments/' => 'events#comments'
+
   resources :categories, only: [:index, :show] do
     resources :images, only: [:show]
   end

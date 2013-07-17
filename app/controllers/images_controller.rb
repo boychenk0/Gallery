@@ -30,7 +30,7 @@ class ImagesController < ApplicationController
     if (@l = Like.where(:image_id => like_id, :user_id => current_user.id)).blank?
       like = current_user.likes.create(:image_id => like_id)
       status = true
-      ActiveSupport::Notifications.instrument("images.like", :like => like, :user => current_user)
+      Event.track_event('like', {:like => like, :user => current_user})
     else
       @l.destroy_all
       status = false
@@ -42,11 +42,15 @@ class ImagesController < ApplicationController
   #authorization facebook
   def authf
     auth = (env['omniauth.auth'])
+    #logger.info auth
+    #logger.info '='*30
+    #logger.info auth.info.email
+    #logger.info auth[:user_info][:email]
     @user = User.find_or_create_by_uid(:uid => auth[:uid], :provider => auth[:provider],
                                         :nickname => auth[:extra][:raw_info][:name], :password =>  Devise.friendly_token[0,20],
                                         :email => "#{auth[:provider]}@#{auth[:extra][:raw_info][:name].delete ' '}.com")
     sign_in @user
-    ActiveSupport::Notifications.instrument("images.authf", :user => @user)
+    Event.track_event('authf', {:user => @user})
     redirect_to session[:return_to]
   end
 

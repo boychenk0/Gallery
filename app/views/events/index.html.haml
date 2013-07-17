@@ -1,21 +1,29 @@
-%h1 Events#index
-%p Find me in app/views/events/index.html.haml
-%table{:border=>'1'}
-  %tr
-    %th Пользователь
-    %th Действие
-    %th Время
-    %th Картинка
-  - @events.each do |e|
+%table{:id =>'hor-minimalist-b'}
+  %thead
     %tr
-      %td
-        =e.user.email
-      %td
-        =e.eventable_type
-      %td
-        =e.created_at
-      %td
-        -#=image_tag e.eventable.image.url, :height => 50, :width => 50
+      %th Пользователь
+      %th{:colspan => 5} Действия
+  %tfoot
+    %tr
+      %td{:colspan => 5}
+        =paginate @users
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          =user.nickname
+        %td
+          =link_to 'navigation', "events/#{user.id}/navigation/"
+        %td
+          =link_to 'sign_in', "events/#{user.id}/sign_in/", :user_id => user.id, :event => 'sign_in'
+        %td
+          =link_to 'sign_out', "events/#{user.id}/sign_out/", :user_id => user.id, :event => 'sign_out'
+        %td
+          =link_to 'likes', "events/#{user.id}/likes/", :user_id => user.id, :event => 'likes'
+        %td
+          =link_to 'comments', "events/#{user.id}/comments/", :user_id => user.id, :event => 'comments'
+
+
 
 
 

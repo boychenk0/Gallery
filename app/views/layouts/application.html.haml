@@ -19,15 +19,16 @@
               = link_to t('.f_login'), '/auth/facebook', :class => 'btn btn-primary'
               = link_to t('.registration'), new_user_registration_path, :class => 'btn btn-primary'
               = link_to t('.home'),  root_path, :class => 'btn btn-primary'
+              = link_to t('.events'), events_path, :class => 'btn btn-primary'
           - else
             %p{:id=>'page-header-top_panel-message'}
               %strong
                 = t('.welcome')
-              = current_user.email
+              = current_user.nickname
             %div{:id=>'page-header-top_panel-buttons'}
               = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
               = link_to t('.home'),  root_path, :class => 'btn btn-primary'
-
+              = link_to t('.events'), events_path, :class => 'btn btn-primary'
         %div{:id=>'page-header-panel'}
           %h1
             = t('.welcome_to_my_gallery')
