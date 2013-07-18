@@ -1,41 +1,41 @@
-.span4
-  %h2{:id=>'cssmenu-title'}
-    Categories
-  %div{:id=>'cssmenu'}
-    %ul
-      %li
-        = link_to root_path do
-          %span
-            = t('.all_image') + " (#{Image.count})"
-      -#    Fix mE!!
-      -@categories.each do |category|
-        %li
-          =link_to category do
-            %span
-              = category.name
-              (#{category.images.size})
-          -if user_signed_in?
-            - if !(@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
-              =image_tag 'unsubscribe.jpg', :height=>50, :width=>100, :id=>"#{category.id}", :class=>'subscribe'
-            - else
-              =image_tag 'subscribe.jpg', :height=>50, :width=>100, :id=>"#{category.id}", :class=>'subscribe'
-          - else
-            =image_tag 'subscribe.jpg', :height=>50, :width=>100, :id=>"#{category.id}", :class=>'subscribe'
-.span10
-  %h2.text-center
-    =t('.all_image')
-  .gPopDemoWapper
-    %div{:class=>"gPop-gallery", :id=>"demo2"}
-      %ul
-        -@images.each do |img|
-          %li
-            = link_to "/categories/#{img.category.id}/images/#{img.id}", :id => '1' do
-              = image_tag img.url, size: '300x300', alt: 'Image'
-            %div
-              %p
-                = pluralize(img.likes.size, t('.like'))
-              %p
-                = pluralize(img.comments.size, t('.comment'))
-  .btn-group.text-center
-    = paginate @images
+-# =t('.all_image')
+.container-fluid
+  .row-fluid
+    .span3
+      =render 'categories_menu'
+    .span9
+      .page-images
+        %h3.text-center
+          =t('.all_image')
+        %section{:id=>"wrapper"}
+          -@images.each do |img|
+            %div{:class=>"imgholder"}
+              %div{:class=>"outer1 circle"}
+              %div{:class=>"outer2 circle"}
+              %figure
+                = link_to "/categories/#{img.category.id}/images/#{img.id}" do
+                  = image_tag img.url
+                %figcaption{:class=>"caption"}
+                  .text-center
+                    = pluralize(img.comments.size, t('.comment'))
+                    %br
+                    = pluralize(img.likes.size, t('.like'))
+          %div{:class=>"clearfix"}
+        .btn-group.paginate
+          = paginate @images
+
+      -#.gPopDemoWapper
+      -#  %div{:class=>"gPop-gallery", :id=>"demo2"}
+      -#    %ul
+      -#      -@images.each do |img|
+      -#        %li
+      -#
+      -#          = link_to "/categories/#{img.category.id}/images/#{img.id}", :id => '1' do
+      -#            = image_tag img.url, size: '300x300', alt: 'Image'
+      -#          %div
+      -#            %p
+      -#              = pluralize(img.likes.size, t('.like'))
+      -#            %p
+      -#              = pluralize(img.comments.size, t('.comment'))
+
 

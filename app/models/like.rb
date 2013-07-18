@@ -3,7 +3,7 @@ class Like < ActiveRecord::Base
   belongs_to :image, :counter_cache => true
   belongs_to :user
   has_many :events, :as => :eventable, :dependent => :destroy
-  validate :image, :presense => true, :numericality => {:only_integer => true}
-  validate :user, :presense => true, :numericality => {:only_integer => true}
+  validates :image, :presence => true, :numericality => {:only_integer => true}
+  validates :user, :presence => true, :numericality => {:only_integer => true}
   validates :image_id, :uniqueness => {:scope => :user_id }
 end

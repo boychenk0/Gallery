@@ -1,7 +1,6 @@
 TitsProj::Application.routes.draw do
 
   root :to => 'images#index'
-  get '/auth/:provider/callback' => 'images#authf' # For socials networks
   post 'admin/parsing' => 'admin/parsing#parse_images' # for parsing
   post 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
   get 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
@@ -13,7 +12,7 @@ TitsProj::Application.routes.draw do
   resources :images, only: [:index] do
     resources :comments, only:[:create]
   end
-  resources :events, only: [:index, :show]
+  resources :events, only: [:index]
   get 'events/:user_id/navigation/' => 'events#navigation'
   get 'events/:user_id/sign_in/' => 'events#sign_in'
   get 'events/:user_id/sign_out/' => 'events#sign_out'
@@ -23,10 +22,10 @@ TitsProj::Application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :images, only: [:show]
   end
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"} do
+    get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
+  end
 
-
-  devise_for :users, :controllers => {:registrations =>
-                                         "registrations", :sessions => "sessions"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,30 +1,30 @@
-.titlepage
-  .span4
-    %h2
-      =t('.categories')
-    %div{:id=>'cssmenu'}
-      %ul
-        %li
-          = link_to root_path do
-            %span All images
-        -@categories.each do |category|
-          %li
-            =link_to category do
-              %span
-                = category.name
-  .span10
-    %h2.text-center
-      = @category.name.capitalize
-    .gPopDemoWapper
-      %div{:class=>"gPop-gallery", :id=>"demo2"}
-        %ul
-          -@images.each do |img|
-            %li
-              = link_to "/categories/#{@category.id}/images/#{img.id}", :id => '1' do
-                = image_tag img.url, size: '300x300', alt: 'Image'
-              %div
-                %p
-                  = pluralize(img.likes.size, t('.like'))
-                %p
-                  = pluralize(img.comments.size, t('.comment'))
-    = paginate @images
+-#.titlepage
+-#  .span3
+-#    %h2
+-#      =t('.categories')
+-#    %div{:id=>'cssmenu'}
+-#      %ul
+-#        %li
+-#          = link_to root_path do
+-#            %span All images
+-#        -@categories.each do |category|
+-#          %li
+-#            =link_to category do
+-#              %span
+-#                = category.name
+-#  .span9
+-#    %h2.text-center
+-#      = @category.name.capitalize
+-#    .gPopDemoWapper
+-#      %div{:class=>"gPop-gallery", :id=>"demo2"}
+-#        %ul
+-#          -@images.each do |img|
+-#            %li
+-#              = link_to "/categories/#{@category.id}/images/#{img.id}", :id => '1' do
+-#                = image_tag img.url, size: '300x300', alt: 'Image'
+-#              %div
+-#                %p
+-#                  = pluralize(img.likes.size, t('.like'))
+-#                %p
+-#                  = pluralize(img.comments.size, t('.comment'))
+-#    = paginate @images

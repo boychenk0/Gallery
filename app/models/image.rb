@@ -9,9 +9,9 @@ class Image < ActiveRecord::Base
 
   belongs_to :category, :counter_cache => true
 
-  validate :url, :presense => true
-  validate :category, :presense => true
-  validate :category, :numericality => {:only_integer => true}
+  validates :url, :presence => true
+  validates :category, :presence => true
+  validates :category, :numericality => {:only_integer => true}
 
   after_save :notification
   def notification

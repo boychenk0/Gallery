@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :image, :counter_cache => true
   belongs_to :user
   has_many :events, :as => :eventable, :dependent => :destroy
-  validate :image, :presense => true, :numericality => {:only_integer => true}
-  validate :body, :presense => true, :length => {:maximum => 500}
+
+  #validates :image, :presence => true, :numericality => {:only_integer => true}
+  validates :body, :presence => true, :length => {:maximum => 500}
 end
