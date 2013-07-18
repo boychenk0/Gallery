@@ -29,6 +29,7 @@ ActiveAdmin.register_page "Parsing" do
      tempfile=Tempfile.new(Time.now.to_f.to_s)
      tempfile.write curl.body_str.force_encoding('utf-8')
      uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => params[:src].split("/").last)
+     logger.info uploaded_file
      @img = category.images.create!(:url=>uploaded_file)
 
      render :json => {:src=>src, :category=>category, :parent => parent}, layout: false
