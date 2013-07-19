@@ -20,7 +20,7 @@
           =t('.comments')
         #comments-form
           - if user_signed_in?
-            = form_for ([@image, @image.comments.build]), :remote=>true do |f|
+            = form_for ([@image, @image.comments.build]) do |f|
               %p= f.text_area :body
               %p= f.submit t('.add_comment'), :class => "btn"
         #comments-body

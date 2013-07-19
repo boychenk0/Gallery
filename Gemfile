@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
-gem 'jquery-rails', '~> 2.3.0'
+gem 'jquery-rails'
 #kaminari for paginate
 gem 'kaminari'
 #carrerwave for images
@@ -18,7 +18,7 @@ gem 'nokogiri'
 gem 'curb'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'rmagick'
-gem 'pusher'
+gem 'pusher', '~> 0.9.4'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

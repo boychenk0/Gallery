@@ -7,7 +7,22 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+
     %div{:id=>'page'}
+      #panel
+        #chat-body
+          - @messages.each do |mes|
+            .chat-mes
+              %strong=mes.user.nickname
+              %span=mes.created_at
+              %p=mes.body
+        #chat-form
+          =form_for @message, :remote => true do |f|
+            = f.text_area :body
+            = f.submit 'Send', :class => 'btn'
+        %div{:style=>'clear:both;'}
+        %div{:style=>'clear:both;'}
+      %a{:id=>'trigger', :href=>'#'}Chat
       %div{:id => 'page-header_cleaner'}
       %div{:id=>'page-header'}
         %div{:id=>'page-header-top_panel'}

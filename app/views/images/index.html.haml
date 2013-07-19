@@ -24,18 +24,5 @@
         .btn-group.paginate
           = paginate @images
 
-      -#.gPopDemoWapper
-      -#  %div{:class=>"gPop-gallery", :id=>"demo2"}
-      -#    %ul
-      -#      -@images.each do |img|
-      -#        %li
-      -#
-      -#          = link_to "/categories/#{img.category.id}/images/#{img.id}", :id => '1' do
-      -#            = image_tag img.url, size: '300x300', alt: 'Image'
-      -#          %div
-      -#            %p
-      -#              = pluralize(img.likes.size, t('.like'))
-      -#            %p
-      -#              = pluralize(img.comments.size, t('.comment'))
 
 

@@ -24,6 +24,7 @@ TitsProj::Application.routes.draw do
   end
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"} do
     get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
+    resources :messages, only:[:create]
   end
 
 

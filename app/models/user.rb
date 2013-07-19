@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :subscribes, :dependent => :destroy
   has_many :categories, :through => :subscribes
   has_many :events, :dependent=>:destroy
+  has_many :messages, :dependent=>:destroy
 
   validates :nickname, :presence => true
 end

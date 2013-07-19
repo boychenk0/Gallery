@@ -3,14 +3,14 @@ development:
   encoding: utf8
   username: 
   password: 
-  database: gallery_dev
+  database: tits_proj_development
 
 test:
   adapter: postgresql
   encoding: utf8
   username:
   password:
-  database: gallery_test
+  database: tits_proj_test
 
 production:
   adapter: postgresql
