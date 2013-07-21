@@ -13,139 +13,92 @@
  *= require_jquery.gpop.css
  */
 @import "bootstrap";
-
-* html #page{
-  height: 100%;
-}
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-body{
-  line-height: 22px;
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  font-size: 12px;
-  //background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
-}
-#page {
-  min-height: 100%;
-  margin: 0 0 -60px 0;
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  font-size: 13px;
-  //background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
-}
-#page-header_cleaner {
-  height: 60px;
-  clear: both;
-}
-#page-footer_cleaner {
-  height: 60px;
-  clear: both;
-}
-//--------------------------------------------header-------------------------------------------------------------------
-#page-header {
-  //position:fixed; left:0; top:0; right:0;
-  margin-bottom: 30px;
-}
-#page-header-top_panel{
-  height: 25px;
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  font-size: 12px;
-  overflow: hidden;
-  background: linear-gradient(#B8860B, #FFF4B7) repeat scroll 0 0 transparent;
-  border-radius: 0 0 3px 3px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  color: #717171;
-  font-size: 15px;
-  margin: 0 7px;
-  padding: 1em;
-  font-family: "Helvetica Neue",arial,sans-serif;
-  position:fixed; left:0; top:0; right:0;
-  z-index: 10;
-}
-#page-header-top_panel-message{
-  float: left;
-  margin: 0;
-  text-shadow: 0 1px 0 #FFFFFF;
-  color: #717171;
-  font-size: 15px;
-  font-family: "Helvetica Neue",arial,sans-serif;
-}
-#page-header-top_panel-buttons{
-  position: absolute;
-  right: 14px;
-  top: 2px;
-  color: #717171;
-  font-size: 15px;
-  font-family: "Helvetica Neue",arial,sans-serif;
-}
-#page-header-panel{
-  min-height: 100px;
-  color: #211922;
-  font-family: 'GrutchShaded', helvetica, sans-serif;
-  font-size: 12px;
-}
 @font-face {
   font-family: 'UpperEastSide';
   src: url('GrutchShaded.ttf');
   font-weight: normal;
   font-style: normal;
 }
-#page-header-panel h1{
-  //color: rgba(21, 21, 21, 0.8);
+html, body {
+  height: 100%;
+  padding: 0;
+}
+body{
+  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+}
+#page {
+  min-height: 100%;
+  margin: 0 0 -60px 0;
+}
+#header_cleaner {
+  height: 60px;
+  clear: both;
+}
+#footer_cleaner {
+  height: 60px;
+  clear: both;
+}
+#header {
+  margin-bottom: 30px;
+}
+#top_panel{
+  height: 25px;
+  overflow: hidden;
+  background: linear-gradient(#B8860B, #FFF4B7) repeat scroll 0 0 transparent;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  margin: 0 7px;
+  padding: 1em;
+  position:fixed; left:0; top:0; right:0;
+  z-index: 10;
+}
+#top_panel-message{
+  margin: 0;
+  text-shadow: 0 1px 0 #FFFFFF;
+  color: #717171;
+  font-size: 15px;
+}
+#top_panel-buttons{
+  position: absolute;
+  right: 14px;
+  top: 10px;
+}
+#title{
+  min-height: 100px;
+  color: #211922;
+}
+
+#title h1{
   font-size: 57px;
-  //font-weight: bold;
   line-height: 52px;
   margin: 34px auto 0;
   max-width: 736px;
   text-align: center;
   text-shadow: 1px 2px 4px #E3E3E3, 0 0 0 #000000, 1px 2px 4px #E3E3E3, 0 1px 0 #FFFFFF;
   font-family: 'UpperEastSide', helvetica, sans-serif;
-  //font-family: "Helvetica Neue",arial,sans-serif;
 }
-#page-header-panel p{
+#title p{
   font-size: 18px;
-  line-height: 26px;
-  margin: 15px auto;
+  margin: 20px auto;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.67);
   color: #6C6C6C;
   text-align: center;
-  font-family: "Helvetica Neue",arial,sans-serif;
 }
-//-------------------------------------end----header-------------------------------------------------------------------
-
 #footer {
   height: 50px;
 }
 #footer-message{
-  background: linear-gradient(#FFF7CB, #B8860B) repeat scroll 0 0 transparent;
-  border-radius: 3px 3px 0 0;
+  background: linear-gradient(#FFF4B7, #B8860B) repeat scroll 0 0 transparent;
+  border-radius: 5px 5px 0 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  color: #211922;
-  font-family: "Helvetica Neue",arial,sans-serif;
+  color: #717171;
   font-size: 15px;
   margin: 10px 7px 0 7px;
   overflow: hidden;
-  line-height: 1.25em;
   padding: 1em;
 }
-
-//--------------------------chat
-.chatBox
-{
-  background :#ffffff;
-  font-size: 14px;
-  padding: 5px;
-  margin: 5px;
-  width:90%;
-}
-
 //-----------------------------------chat----------------------------------------------
-#panel {
+#chat {
   position: absolute;
   top: 50px;
   right: 0;
@@ -160,31 +113,8 @@ body{
   height: 70%;
   padding: 30px 130px 30px 30px;
   filter: alpha(opacity=85);
-  opacity: 1;
+  opacity: 0.85;
   z-index: 9;
-}
-
-#panel p{
-  margin: 0 0 15px 0;
-  padding: 0;
-  color: #cccccc;
-}
-
-#panel a, #panel a:visited{
-  margin: 0;
-  padding: 0;
-  color: #9FC54E;
-  text-decoration: none;
-  border-bottom: 1px solid #9FC54E;
-  ;
-}
-
-#panel a:hover, #panel a:visited:hover{
-  margin: 0;
-  padding: 0;
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 1px solid #ffffff;
 }
 
 a#trigger{
@@ -197,7 +127,7 @@ a#trigger{
   color:#fff;
   padding: 20px 15px 20px 40px;
   font-weight: 700;
-  background:#333333 url(images/plus.png) 15% 55% no-repeat;
+  background:#333333;
   border:1px solid #444444;
   -moz-border-radius-topleft: 20px;
   -webkit-border-top-left-radius: 20px;
@@ -219,7 +149,7 @@ a#trigger:hover{
   color:#fff;
   padding: 20px 20px 20px 40px;
   font-weight: 700;
-  background:#222222 url(images/plus.png) 15% 55% no-repeat;
+  background:#222222;
   border:1px solid #444444;
   -moz-border-radius-topleft: 20px;
   -webkit-border-top-left-radius: 20px;
@@ -231,7 +161,7 @@ a#trigger:hover{
 }
 
 a.active#trigger {
-  background:#222222 url(images/minus.png) 15% 55% no-repeat;
+  background:#222222;
 }
 ul{
   padding: 0;
@@ -243,11 +173,6 @@ ul li{
   padding: 0;
   margin: 0;
   list-style-type: none;
-}
-
-hr{
-  background-color: #333333;
-  height: 1px;
 }
 #chat-body{
   height: 70%;
@@ -269,4 +194,56 @@ hr{
 #chat-form #new_message textarea{
   height: 90%;
   width: 100%;
+}
+//---------------------------------------------------------left menu--------------------------------------------
+@font-face {
+  font-family: 'Impact_Label';
+  src: url('Impact_Label.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+#left_panel{
+  background: #EEEED1;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  border-radius: 10px 10px 10px 10px;
+  padding: 10px;
+}
+#left_panel ul li {
+  list-style: none;
+  margin-bottom: 0.8em;
+  font-family: 'Impact_Label', helvetica, sans-serif;
+  font-size: 28px;
+  padding: 12px;
+}
+
+#left_panel li a {
+  color: #544738;
+  text-decoration: none;
+  float: left;
+}
+
+#left_panel .left a:hover {
+
+  /*Transition*/
+  -webkit-transition:All .3s ease;
+  -moz-transition:All .3s ease;
+  -o-transition:All .3s ease;
+
+  /*Transform*/
+  -webkit-transform: rotate(-10deg) scale(1.2);
+  -moz-transform: rotate(-10deg) scale(1.2);
+  -o-transform: rotate(-10deg) scale(1.2);
+}
+
+#left_panel .right a:hover {
+
+  /*Transition*/
+  -webkit-transition:All .3s ease;
+  -moz-transition:All .3s ease;
+  -o-transition:All .3s ease;
+
+  /*Transform*/
+  -webkit-transform: rotate(10deg) scale(1.2);
+  -moz-transform: rotate(10deg) scale(1.2);
+  -o-transform: rotate(10deg) scale(1.2);
 }

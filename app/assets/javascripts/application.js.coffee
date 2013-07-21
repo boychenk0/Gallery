@@ -18,7 +18,7 @@
 
 $(document).ready ->
   $("#trigger").click ->
-    $("#panel").toggle "fast"
+    $("#chat").toggle "fast"
     $(this).toggleClass "active"
     false
 
@@ -31,3 +31,4 @@ $(document).ready ->
   channel.bind "my_event", (response) ->
     console.log(response)
     $('#chat-body').append("<div class='chat-mes'><strong>#{response.user['nickname']}</strong><span>#{response.message['created_at']}</span><p>#{response.message['body']}</p></div>")
+    $('#message_body').val('')

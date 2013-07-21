@@ -1,177 +1,18 @@
-// Place all the styles related to the images controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-// -----------------------------css menu ---------------------------------------------------------
-//#cssmenu {
-//  margin: 0;
-//  padding: 0;
-//  font-family: Verdana, Helvetica, Arial, sans-serif;
-//}
-//#cssmenu{
-//  width: 218px;
-//}
-//#cssmenu ul{
-//  list-style: none;
-//  text-indent: 0px;
-//}
-//#cssmenu li{
-//  margin-top: 3px;
-//}
-//#cssmenu a{
-//  font: 12px Verdana;
-//  padding: 4px;
-//  color: #646464;
-//  display:block;
-//  padding: 6px 30px;
-//  height: 20px;
-//  text-decoration: none;
-//  background: url('background.gif');
-//}
-//#cssmenu a:hover{
-//  background: url('highlight.gif') no-repeat right;
-//  padding: 6px 40px;
-//}
-//#cssmenu-title{
-//  width: 218px;
-//  font-family: Verdana, Helvetica, Arial, sans-serif;
-//  padding: 6px 30px;
-//}
-//---------------------------------------end css menu------------------------------------------------
-//-----------------------------------------new----- menu-----------------------------------
-#menu{
-  background: #EEEED1;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  border-radius: 10px 10px 10px 10px;
-  padding: 10px;
-}
-#menu ul li {
-  list-style: none;
-  margin-bottom: 0.8em;
-  font-family: 'GrutchShaded', helvetica, sans-serif;
-  font-size: 35px;
-  padding: 12px;
-}
+//// Place all the styles related to the images controller here.
+//// They will automatically be included in application.css.
+//// You can use Sass (SCSS) here: http://sass-lang.com/
 
-#menu li a {
-  color: #544738;
-  text-decoration: none;
-  float: left;
-}
-
-#menu .left a:hover {
-
-  /*Transition*/
-  -webkit-transition:All .3s ease;
-  -moz-transition:All .3s ease;
-  -o-transition:All .3s ease;
-
-  /*Transform*/
-  -webkit-transform: rotate(-10deg) scale(1.2);
-  -moz-transform: rotate(-10deg) scale(1.2);
-  -o-transform: rotate(-10deg) scale(1.2);
-}
-
-#menu .right a:hover {
-
-  /*Transition*/
-  -webkit-transition:All .3s ease;
-  -moz-transition:All .3s ease;
-  -o-transition:All .3s ease;
-
-  /*Transform*/
-  -webkit-transform: rotate(10deg) scale(1.2);
-  -moz-transform: rotate(10deg) scale(1.2);
-  -o-transform: rotate(10deg) scale(1.2);
-}
-@font-face {
-  font-family: 'GrutchShaded';
-  src: url('Impact_Label.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-.page-image-show{
-  height: 100%;
-  width: 610px;
-  margin-bottom: 10px;
-}
-//-------------------------------------end----new----- menu-----------------------------------
-#comments{
-  background: #FFF8DC;
-  width: 100%;
-  border-radius: 10px 10px 10px 10px;
-  padding: 10px;
-}
-#comment_body{
-  height: 120px;
-  width: 500px;
-}
-#likeblock{
-  height: 50px;
-  width: 150px;
-  float: right;
-  margin-right: 15px;
-  margin-top: -480px;
-  position: relative;
-  z-index: 1;
-}
-.imageshow{
-  width: 49%;
-  float: left;
-}
-.likecount{
-  font-family: 'Cardo', serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  text-shadow: 6px 6px 6px #ccc;
-  text-transform: none;
-  line-height: 1.41;
-}
-.comment{
-  width: 40%;
-}
-.com{
-  max-width: 563px;
-  padding: 10px;
-  width: 100%;
-  margin: 10px;
-  font-size: 1em;
-  color: #666666;
-  line-height: 1.4;
-  empty-cells: show;
-  font-family: "Roboto",Arial,sans-serif;
-  background: #FFDEAD;
-  border-radius:10px;
-
-}
-.com hr{
-  margin: 0;
-}
-#name{
-  line-height: 1.4;
-  font-size: 1em;
-  border-collapse: collapse;
-  empty-cells: show;
-  color: #666666;
-  font-family: "Roboto",Arial,sans-serif;
-}
-.reviev-text{
-  overflow-x: hidden;
-  padding-bottom: 0;
-  margin-top: 7px;
-  border: 0 none;
-  font-size: 1em;
-  border-collapse: collapse;
-  empty-cells: show;
-  color: #666666;
-  line-height: 1.4;
-  font-family: "Roboto",Arial,sans-serif;
-}
-.page-images{
+#images{
   background: #F0FFF0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   border-radius: 10px 10px 10px 10px;
   padding: 10px;
+}
+#images h3{
+  text-align: center;
+}
+#images-sorted{
+  font-size: 10px;
 }
 .paginate{
   display: block;
@@ -343,3 +184,72 @@
   -webkit-transform: scale(1,1) rotate(-10deg);
 }
 // --------------------end----------photos---------------------------------------------------
+
+//---------------------------------------show ----------------------------------------------------------
+.image-show{
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+#likeblock{
+  height: 50px;
+  width: 152px;
+  float: right;
+  margin-right: 15px;
+  margin-top: -480px;
+  position: relative;
+  z-index: 1;
+}
+.likecount{
+  font-family: 'Cardo', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 6px 6px 6px #ccc;
+  text-transform: none;
+  line-height: 1.41;
+}
+#comments{
+  background: #FFF8DC;
+  width: 100%;
+  border-radius: 10px 10px 10px 10px;
+  padding: 10px;
+}
+#comment_body{
+  height: 120px;
+  width: 500px;
+}
+.comment{
+  width: 40%;
+}
+.com{
+  max-width: 563px;
+  padding: 10px;
+  width: 100%;
+  margin: 10px;
+  font-size: 1em;
+  color: #666666;
+  line-height: 1.4;
+  empty-cells: show;
+  font-family: "Roboto",Arial,sans-serif;
+  background: #FFDEAD;
+  border-radius:10px;
+}
+.com hr{
+  margin: 0;
+}
+.rewiev-text{
+  overflow-x: hidden;
+  padding-bottom: 0;
+  margin-top: 7px;
+  border: 0 none;
+  font-size: 1em;
+  border-collapse: collapse;
+  empty-cells: show;
+  color: #666666;
+  line-height: 1.4;
+  font-family: "Roboto",Arial,sans-serif;
+}
+
+
+

@@ -1,15 +1,19 @@
--# =t('.all_image')
 .container-fluid
   .row-fluid
     .span3
-      =render 'categories_menu'
+      =render 'layouts/categories_menu'
     .span9
-      .page-images
-        %h3.text-center
+      #images
+        %h3
           = @category.name.capitalize
+          #images-sorted
+            sorted by
+            =link_to 'created', root_path
+            =link_to 'likes', root_path
+            =link_to 'comments', root_path
         %section{:id=>"wrapper"}
           -@images.each do |img|
-            %div{:class=>"imgholder"}
+            .imgholder
               %div{:class=>"outer1 circle"}
               %div{:class=>"outer2 circle"}
               %figure
@@ -20,7 +24,7 @@
                     = pluralize(img.comments.size, t('.comment'))
                     %br
                     = pluralize(img.likes.size, t('.like'))
-          %div{:class=>"clearfix"}
+          .clearfix
         .btn-group.paginate
           = paginate @images
 

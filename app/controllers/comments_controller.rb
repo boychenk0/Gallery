@@ -1,10 +1,8 @@
-#require 'pusher'
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
     @image = Image.find(params[:image_id])
-    #logger.info @image
     @comment = @image.comments.build(params[:comment].merge(:user => current_user))
     if @comment.save
         #Pusher.url = "http://74c9b81466fe7a2eb84e:21002de0cdb237e1d3da@api.pusherapp.com/apps/48385"

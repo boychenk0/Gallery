@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     #ActiveSupport::Notifications.instrument("application.track_url", :url => request.url, :user => current_user) if !current_user.nil?
   end
   def message
-    @messages = Message.all
+    @messages = Message.message_on_last_hour.preload(:user)
     @message = Message.new
   end
 end
