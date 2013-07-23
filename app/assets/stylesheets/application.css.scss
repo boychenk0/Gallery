@@ -14,7 +14,7 @@
  */
 @import "bootstrap";
 @font-face {
-  font-family: 'UpperEastSide';
+  font-family: 'GrutchShaded';
   src: url('GrutchShaded.ttf');
   font-weight: normal;
   font-style: normal;
@@ -75,7 +75,7 @@ body{
   max-width: 736px;
   text-align: center;
   text-shadow: 1px 2px 4px #E3E3E3, 0 0 0 #000000, 1px 2px 4px #E3E3E3, 0 1px 0 #FFFFFF;
-  font-family: 'UpperEastSide', helvetica, sans-serif;
+  font-family: 'GrutchShaded', helvetica, sans-serif;
 }
 #title p{
   font-size: 18px;
@@ -207,13 +207,25 @@ ul li{
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   border-radius: 10px 10px 10px 10px;
   padding: 10px;
+  width: 95%;
+}
+#left_panel #title_cat{
+  font-family: 'Impact_Label', helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
 }
 #left_panel ul li {
   list-style: none;
   margin-bottom: 0.8em;
   font-family: 'Impact_Label', helvetica, sans-serif;
-  font-size: 28px;
+  font-size: 23px;
   padding: 12px;
+}
+#left_panel span{
+  height: 30px;
+  float: left;
+  margin-right: 5px;
 }
 
 #left_panel li a {

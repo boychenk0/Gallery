@@ -1,9 +1,10 @@
 TitsProj::Application.routes.draw do
 
   root :to => 'images#index'
-  post 'admin/parsing' => 'admin/parsing#parse_images' # for parsing
-  post 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
-  get 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
+
+  post 'admin/images/parse/create_image' => 'admin/images#create_parse_image' #for parsing
+  post 'admin/images/parse' => 'admin/images#parse_images'#for create_img
+  get  'admin/images/parse'
   post '/images/like' => 'images#like'#for likes
   post '/images/subscribe' => 'images#subscribe'#for subscribe
   devise_for :admin_users, ActiveAdmin::Devise.config

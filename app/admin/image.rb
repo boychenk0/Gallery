@@ -1,62 +1,73 @@
 ActiveAdmin.register Image do
+  action_item do
+    link_to "Parse", admin_images_parse_path
+  end
   index do
       selectable_column
       column :id
       column "View" do |img|
         image_tag(img.url, :size => '128x128')
       end
-      column :url
-      column :likes_count
-      column :comments_count
+      column 'Url' do |img|
+        div :class => 'url' do
+          img.url
+        end
+      end
+      column 'likes', :sortable => :likes do |img|
+        div :class => 'likecount' do
+          img.likes_count
+        end
+      end
+      column 'comments', :sortable => :comments do |img|
+        div :class => 'comcount' do
+          img.comments_count
+        end
+      end
       column :created_at
       column :updated_at
       default_actions
   end
 
   controller do
+    cache_sweeper :image_sweeper, :only => [:create_parse_image]
+
+    #get
     def index
       params[:order] = 'likes_count_desc'
       super
     end
+
+    #get
+    def parse
+    end
+
+    #post
+    def parse_images
+      #page_action :parse_images, :method => :post do
+      @images = []
+      @categories = Category.all
+      curl =  Curl.get(params[:image][:url]) do |http|
+      end
+      curl = Nokogiri::HTML(curl.body_str)
+      curl.css('img').each do |img|
+        @images << img['src']
+      end
+      render :layout => 'active_admin'
+    end
+    #post
+    def create_parse_image
+      #page_action :create_image, :method => :post do
+      src = params[:src]
+      category = Category.find(params[:category])
+      parent = params[:parent]
+      curl =  Curl.get(params[:src])
+      tempfile=Tempfile.new(Time.now.to_f.to_s)
+      tempfile.write curl.body_str.force_encoding('utf-8')
+      uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => params[:src].split("/").last)
+      logger.info uploaded_file
+      @img = category.images.create!(:url=>uploaded_file)
+      render :json => {:src=>src, :category=>category, :parent => parent}, layout: false
+
+    end
   end
 end
-
-#form do |f|
-  #  f.semantic_errors :base
-  #  f.inputs "Project Details" do
-  #    f.input :name
-  #    f.input :description, as: :html_editor
-  #    f.input :since
-  #    f.input :till
-  #    f.input :team_size
-  #    f.input :url
-  #    f.input :technologies, :as => :check_boxes
-  #    f.input :services, :as => :check_boxes
-  #    f.has_many :upload_files do |file|
-  #      file.input :filename, :as => :file, :label => 'Image', :hint => file.template.image_tag(file.object.filename.url, :height => 200, :width => 200)
-  #      file.input :id, :as => :hidden
-  #    end
-  #  end
-  #  f.actions
-  #
-  #end
- #  def create
- #    @project = Project.new(project_params)
- #    if @project.save
- #      redirect_to admin_project_url(@project), notice: 'Project was successfully created.'
- #    else
- #      render :new
- #    end
- #  end
- #  def update
- #    @project = Project.find(params[:id])
- #    if @project.update(project_params)
- #      redirect_to edit_admin_project_url(@project), notice: 'Project was successfully updated.'
- #    else
- #      render :edit
- #    end
- #  end
- #  private
- #  def project_params
- #    params.require(:project).permit(:name, :description, :since, :till, :team_size, :url, upload_files_attributes: [:filename, :id])
- #  end

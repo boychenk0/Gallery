@@ -1,10 +1,11 @@
 class ImagesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :authf, :index]
+  cache_sweeper :image_sweeper, :only => [:like]
 
   def index
     session[:return_to] = request.fullpath
     @images = Image.order('created_at DESC').page(params[:page]).per(5).preload(:category)
-    @categories = Category.all
+    @categories = Category.category_sort
   end
 
   def show
@@ -49,4 +50,5 @@ class ImagesController < ApplicationController
     end
     render :json=>{:status=>status, :id=>category.id}, layout: false
   end
+
 end

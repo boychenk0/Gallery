@@ -65,5 +65,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'
+  gem "rspec", "~> 2.14.1"
+  gem "shoulda-matchers", "~> 2.2.0"
 end
 
