@@ -1,10 +1,12 @@
 ActiveAdmin.register Image do
+
   action_item do
     link_to "Parse", admin_images_parse_path
   end
-  index do
+
+  index  do
       selectable_column
-      column :id
+      column :id, :sortable => true
       column "View" do |img|
         image_tag(img.url, :size => '128x128')
       end
@@ -13,28 +15,56 @@ ActiveAdmin.register Image do
           img.url
         end
       end
-      column 'likes', :sortable => :likes do |img|
+      column 'category' do |img|
+        img.category.name
+      end
+      column 'likes', :sortable => :likes_count do |img|
         div :class => 'likecount' do
           img.likes_count
         end
       end
-      column 'comments', :sortable => :comments do |img|
+      column 'comments', :sortable => :comments_count do |img|
         div :class => 'comcount' do
           img.comments_count
         end
       end
-      column :created_at
-      column :updated_at
+      column "created_at", :sortable => :created_at do |img|
+        img.created_at.strftime('%Y-%m-%d, %H:%M') # if the format is different that expected
+      end
       default_actions
+  end
+  show :title => 'Image' do
+
+    render 'admin/images/show'
+  end
+
+  form :html => {:enctype => 'multipart/form-data'} do |f|
+    f.semantic_errors :base
+    f.inputs 'Image Details' do
+      f.input :category, :as => :select
+      f.input :url, :as => :file, :label => 'Image'#, :hint => file.template.image_tag(file.object.url.url, :width => 200, :height => 200)
+    end
+    f.actions
   end
 
   controller do
     cache_sweeper :image_sweeper, :only => [:create_parse_image]
 
+    def scoped_collection
+      Image.includes(:category)
+    end
+
     #get
     def index
-      params[:order] = 'likes_count_desc'
       super
+    end
+
+    #post create
+    def create
+      category = Category.find(params[:image][:category_id])
+      category.images.create(:url => params[:image][:url])
+      flash[:notice] = 'Images created'
+      redirect_to admin_images_path
     end
 
     #get
@@ -43,7 +73,6 @@ ActiveAdmin.register Image do
 
     #post
     def parse_images
-      #page_action :parse_images, :method => :post do
       @images = []
       @categories = Category.all
       curl =  Curl.get(params[:image][:url]) do |http|
@@ -54,9 +83,9 @@ ActiveAdmin.register Image do
       end
       render :layout => 'active_admin'
     end
+
     #post
     def create_parse_image
-      #page_action :create_image, :method => :post do
       src = params[:src]
       category = Category.find(params[:category])
       parent = params[:parent]
@@ -67,7 +96,7 @@ ActiveAdmin.register Image do
       logger.info uploaded_file
       @img = category.images.create!(:url=>uploaded_file)
       render :json => {:src=>src, :category=>category, :parent => parent}, layout: false
-
     end
+
   end
 end

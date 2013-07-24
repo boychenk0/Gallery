@@ -1,5 +1,6 @@
 class SubscribeMailer < ActionMailer::Base
-  default from: 'emailfaceit@gmail.com'
+  default from: 'emailfaceit@gmail.com', to: 'test@gmail.com'
+
 
   def new_image(users, category, img)
     @img = img

@@ -59,6 +59,22 @@ body.active_admin li.img{
   border-color:black;
   border-width:thin;
 }
+#adminshow{
+  width: 100%;
+}
+#adminimageshow{
+  text-align: center;
+}
+#adminlikesshow{
+  width: 49%;
+  float: left;
+  margin-right: 5px;
+}
+#admincommentsshow{
+  width: 49%;
+  float: left;
+  margin-left: 5px;
+}
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:

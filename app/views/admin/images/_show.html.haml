@@ -1,0 +1,41 @@
+#adminshow
+  #adminimageshow
+    = image_tag @image.url
+  #adminlikesshow
+    %h3 Likes:
+    %table
+      %thead
+        %tr
+          %th Пользователь
+      %tfoot
+        %tr
+          %td{:colspan => 5}
+      %tbody
+        - @image.likes.each do |like|
+          %tr
+            %td
+              =like.user.nickname
+  #admincommentsshow
+    %h3 Comments:
+    %table
+      %thead
+        %tr
+          %th Пользователь
+          %th Комментарий
+          %th Создано
+      %tfoot
+        %tr
+          %td{:colspan => 5}
+            -#=paginate @image
+      %tbody
+        - @image.comments.each do |com|
+          %tr
+            %td
+              =com.user.nickname
+            %td
+              =com.body
+            %td
+              =com.created_at
+            %td
+              -#=comments_default_actions
+

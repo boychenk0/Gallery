@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :_category do
-    name "MyString"
+  factory :category do |c|
+    c.sequence(:name) {|n| "TestCategory#{n}"}
   end
 end

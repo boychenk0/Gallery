@@ -1,7 +1,18 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  images_count :integer          default(0)
+#
+
 class Category < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :images, :dependent => :delete_all
+  has_many :images, :dependent => :destroy
   has_many :subscribes, :dependent => :destroy
   has_many :users, :through => :subscribes
 

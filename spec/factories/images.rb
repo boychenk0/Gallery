@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :image do
-    url "MyString"
-    comment_count 1
-    likes 1
+    #association :user
+    association :category, :factory => :category
+    url { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'factories', 'files', 'test.jpg')) }
   end
 end

@@ -4,13 +4,13 @@ TitsProj::Application.routes.draw do
 
   post 'admin/images/parse/create_image' => 'admin/images#create_parse_image' #for parsing
   post 'admin/images/parse' => 'admin/images#parse_images'#for create_img
-  get  'admin/images/parse'
+  get  'admin/images/parse'#parse page
   post '/images/like' => 'images#like'#for likes
-  post '/images/subscribe' => 'images#subscribe'#for subscribe
+  post '/categories/subscribe' => 'categories#subscribe'#for subscribe
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :images, only: [:index] do
+  resources :images, only: [:index, :create] do
     resources :comments, only:[:create]
   end
   resources :events, only: [:index]
@@ -23,7 +23,7 @@ TitsProj::Application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :images, only: [:show]
   end
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"} do
+  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
     get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
     resources :messages, only:[:create]
   end

@@ -16,20 +16,6 @@ $(document).ready ->
       else
         $(".imglike").attr('src', '/assets/like.jpg')
       $(".likecount").text(response.all_likes)
-
-  $(".subscribe").click ->
-    id = $(this).attr("id")
-    $.ajax(
-      url: "/images/subscribe"
-      data:
-        id: id
-      dataType: "json"
-      type: "post"
-    ).success (response) ->
-      if (response.status == true)
-        $("##{response.id}").attr('src', '/assets/unsubscribe1.jpg')
-      else
-        $("##{response.id}").attr('src', '/assets/subscribe1.jpg')
 #  create_image = (ui) ->
 #  console.log $(ui).parent().find("img").attr("src")
 #  console.log $(ui).parent().find("select option:selected").val()

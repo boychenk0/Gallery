@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
 
   def index
     session[:return_to] = request.fullpath
-    @images = Image.order('created_at DESC').page(params[:page]).per(5).preload(:category)
+    @images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
     @categories = Category.category_sort
   end
 
@@ -13,8 +13,8 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @comments = @image.comments.order('created_at DESC').where("body != ''").page(params[:page]).per(5).preload(:user)
     @comment = @image.comments.build
-    if user_signed_in?
-      @status = (Like.where(:image_id => @image.id, :user_id => current_user.id)).blank? ? true : false
+    if user_signed_in? && (Like.where(:image_id => @image.id, :user_id => current_user.id)).blank?
+      @status = true
     elsif
       @status = true
     end
@@ -36,19 +36,6 @@ class ImagesController < ApplicationController
     render :json => {:all_likes=>all_likes, :status => status}, layout: false
   end
 
-  #subscribe
-  def subscribe
-    #cat_id = params[:id]
-    category = Category.find(params[:id])
-    status = false
-    if (@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
-      current_user.subscribes.create(:category=>category)
-      status = true
-    else
-      @s.destroy_all
-      status = false
-    end
-    render :json=>{:status=>status, :id=>category.id}, layout: false
-  end
+
 
 end

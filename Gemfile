@@ -21,6 +21,7 @@ gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'rmagick'
 gem 'pusher', '~> 0.9.4'
 
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -49,6 +50,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
   gem 'html2haml'
+  gem 'bullet'
+  gem 'annotate', '>=2.5.0'
 end
 
 group :development, :test do

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :subscribe do
-    user_id "MyString"
-    category_id "MyString"
+    association :user, :factory=>:user
+    association :category, :factory=>:category
   end
 end
