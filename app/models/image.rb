@@ -13,6 +13,7 @@
 
 class Image < ActiveRecord::Base
   attr_accessible :url, :category
+
   mount_uploader :url, ImageUploader
 
   has_many :comments, :dependent => :destroy
@@ -26,6 +27,6 @@ class Image < ActiveRecord::Base
 
   after_save :notification
   def notification
-    SubscribeMailer.new_image(self.category.users, self.category, self).deliver
+    SubscribeMailer.new_image(self.category.users, self.category, self).deliver if !self.category.users.blank?
   end
 end

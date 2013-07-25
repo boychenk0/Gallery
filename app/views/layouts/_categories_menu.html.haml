@@ -6,7 +6,7 @@
       %li{:class=>'right'}
         = link_to root_path do
           = t('.all_image') + " (#{Image.count})" #FIX ME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-        - Category.category_sort.each.with_index do |category, index|
+        - Category.category_sort_by_images_count.each.with_index do |category, index|
           %li{:class => (index % 2).zero? ? 'left' : 'right'}
             %span
               -if user_signed_in?

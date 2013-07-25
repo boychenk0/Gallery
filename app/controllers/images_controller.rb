@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
   def index
     session[:return_to] = request.fullpath
     @images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
-    @categories = Category.category_sort
+    @categories = Category.category_sort_by_images_count
   end
 
   def show

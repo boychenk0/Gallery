@@ -34,22 +34,24 @@ describe Image do
   it { should validate_presence_of(:url) }
   it { should validate_presence_of(:category) }
 
-  #it "has a counter cache" do
-  #  user = FactoryGirl.create(:user)
-  #  expect {
-  #    user.media.create(caption: "Test media")
-  #  }.to change { User.last.media_count }.by(1)
-  #end
-
-  before(:each)do
-    img = []
-    3.times do
-      img << FactoryGirl.create(:image)
-    end
-    puts img[0].inspect
-    puts img[0].category.inspect
-    cat = img[0].category
-    puts cat.images_count
-    puts img[0].category.users
+  it "has a category counter cache" do
+    category = FactoryGirl.create(:category)
+    expect{
+      3.times do
+        FactoryGirl.create(:image, :category => category)
+      end
+      category.reload
+    }.to change{category.images_count}.by(3)
   end
+
+  it "sends a e-mail" do
+    user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category)
+    FactoryGirl.create(:subscribe, :category => category, :user => user)
+    FactoryGirl.create(:subscribe, :category => category, :user => user2)
+    FactoryGirl.create(:image, :category => category)
+    ActionMailer::Base.deliveries.last.to.should == [user.email, user2.email]
+  end
+
 end

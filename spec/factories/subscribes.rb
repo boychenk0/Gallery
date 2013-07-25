@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :subscribe do
-    association :user, :factory=>:user
-    association :category, :factory=>:category
+    #association :user, :factory=>:user
+    #association :category, :factory=>:category
   end
 end

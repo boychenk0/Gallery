@@ -12,5 +12,20 @@
 require 'spec_helper'
 
 describe Like do
-  #pending "add some examples to (or delete) #{__FILE__}"
+
+  it "has a likes counter cache" do
+    likes = []
+    users = []
+    3.times do
+      users << FactoryGirl.create(:user)
+    end
+    category = FactoryGirl.create(:category)
+    image = FactoryGirl.create(:image, :category => category)
+    expect{
+      3.times do |n|
+        likes << FactoryGirl.create(:like, :image=>image, :user => users[n])
+      end
+      image.reload
+    }.to change{image.likes_count}.by(3)
+  end
 end

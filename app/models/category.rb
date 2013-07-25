@@ -18,6 +18,6 @@ class Category < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
 
-  scope :category_sort, :order =>'images_count DESC'
+  scope :category_sort_by_images_count, :order =>'images_count DESC'
 
 end
