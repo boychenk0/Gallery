@@ -3,12 +3,11 @@
 # Table name: images
 #
 #  id             :integer          not null, primary key
-#  url            :string(255)
-#  category_id    :integer
+#  url            :string(255)      not null
+#  comments_count :integer          default(0), not null
+#  likes_count    :integer          default(0), not null
+#  category_id    :integer          not null
 #  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  likes_count    :integer          default(0)
-#  comments_count :integer          default(0)
 #
 
 class Image < ActiveRecord::Base

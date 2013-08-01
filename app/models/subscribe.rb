@@ -3,10 +3,9 @@
 # Table name: subscribes
 #
 #  id          :integer          not null, primary key
-#  user_id     :integer
-#  category_id :integer
+#  user_id     :integer          not null
+#  category_id :integer          not null
 #  created_at  :datetime         not null
-#  updated_at  :datetime         not null
 #
 
 class Subscribe < ActiveRecord::Base

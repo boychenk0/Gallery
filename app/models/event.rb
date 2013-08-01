@@ -11,6 +11,7 @@
 
 class Event < ActiveRecord::Base
   attr_accessible :eventable_id, :eventable_type, :user, :created_at
+
   belongs_to :user
   belongs_to :eventable, :polymorphic => true
 

@@ -3,10 +3,9 @@
 # Table name: categories
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string(255)      not null
+#  images_count :integer          default(0), not null
 #  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  images_count :integer          default(0)
 #
 
 class Category < ActiveRecord::Base

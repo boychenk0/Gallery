@@ -2,7 +2,10 @@
 
 FactoryGirl.define do
   factory :event do
-    #association :user
-    #association :eventable#, :factory => :comment
+    association :user
+    association :eventable#, :factory => :comment
   end
+  #factory :comment_user, :parent => :comment do
+  #  association :commentable, :factory => :user
+  #end
 end

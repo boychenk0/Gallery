@@ -8,7 +8,6 @@ end
 
 
 def upload_file_and_create_categories(dir, cat)
-  puts dir
   dir.entries.each do |e|
     puts e
     file_or_dir = File.join(dir.path, e)

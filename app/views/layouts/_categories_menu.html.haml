@@ -1,22 +1,22 @@
-- cache 'categories' do
-  #left_panel
-    #title_cat
-      Categories
-    %ul
-      %li{:class=>'right'}
-        = link_to root_path do
-          = t('.all_image') + " (#{Image.count})" #FIX ME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-        - Category.category_sort_by_images_count.each.with_index do |category, index|
-          %li{:class => (index % 2).zero? ? 'left' : 'right'}
-            %span
-              -if user_signed_in?
-                - if !(@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
-                  =image_tag 'unsubscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
-                - else
-                  =image_tag 'subscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
+-#- cache 'categories' do
+#left_panel
+  #title_cat
+    Categories
+  %ul
+    %li{:class=>'right'}
+      = link_to root_path do
+        = t('.all_image') + " (#{Image.count})" #FIX ME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+      - Category.category_sort_by_images_count.each.with_index do |category, index|
+        %li{:class => (index % 2).zero? ? 'left' : 'right'}
+          %span
+            -if user_signed_in?
+              - if !(@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
+                =image_tag 'unsubscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
               - else
                 =image_tag 'subscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
-            =link_to category do
-              %span
-                = category.name
-                (#{category.images.size})
+            - else
+              =image_tag 'subscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
+          =link_to category do
+            %span
+              = category.name
+              (#{category.images.size})
