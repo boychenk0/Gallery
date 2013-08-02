@@ -1,33 +1,36 @@
 TitsProj::Application.routes.draw do
 
   root :to => 'images#index'
-
-  post 'admin/images/parse/create_image' => 'admin/images#create_parse_image' #for parsing
-  post 'admin/images/parse' => 'admin/images#parse_images'#for create_img
-  get  'admin/images/parse'#parse page
-  post '/images/like' => 'images#like'#for likes
-  post '/categories/subscribe' => 'categories#subscribe'#for subscribe
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
-  resources :images, only: [:index, :create] do
-    resources :comments, only:[:create]
-  end
-  resources :events, only: [:index]
-  get 'events/:user_id/navigation/' => 'events#navigation'
-  get 'events/:user_id/sign_in/' => 'events#sign_in'
-  get 'events/:user_id/sign_out/' => 'events#sign_out'
-  get 'events/:user_id/likes/' => 'events#likes'
-  get 'events/:user_id/comments/' => 'events#comments'
-
-  resources :categories, only: [:index, :show] do
-    resources :images, only: [:show]
+  resource :admin do
+    post 'images/parse/create_image' => 'admin/images#create_parse_image' #for parsing
+    post 'images/parse' => 'admin/images#parse_images'#for create_img
+    get  'images/parse' => 'admin/images#parse'#parse page
   end
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
     get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
-    resources :messages, only:[:create]
   end
-
+  resources :messages, only:[:create]
+  resources :images, only: [:index, :create] do
+    post '/like' => 'images#like', on: :collection #for likes
+    resources :comments, only:[:create]
+  end
+  resources :categories, only: [:index, :show] do
+    post '/subscribe' => 'categories#subscribe', on: :collection #for subscribe
+    resources :images, only: [:show] do
+      resource :comments, only:[:create]
+    end
+  end
+  resources :events, only: [:index] do
+    collection do
+      get ':user_id/navigation/' => 'events#navigation'
+      get ':user_id/sign_in/' => 'events#sign_in'
+      get ':user_id/sign_out/' => 'events#sign_out'
+      get ':user_id/likes/' => 'events#likes'
+      get ':user_id/comments/' => 'events#comments'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
