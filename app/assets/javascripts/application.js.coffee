@@ -28,7 +28,12 @@ $(document).ready ->
   pusher = new Pusher("74c9b81466fe7a2eb84e")
   channel = pusher.subscribe("test_channel")
   console.log pusher.connection.state
-  channel.bind "my_event", (response) ->
+  channel.bind("my_event", (response) ->
     console.log(response)
     $('#chat-body').append("<div class='chat-mes'><strong>#{response.user['nickname']}</strong><span>#{response.message['created_at']}</span><p>#{response.message['body']}</p></div>")
     $('#message_body').val('')
+  )
+  $('form#new_message').bind "ajax:error", (evt, data) ->
+    if data.status == 401
+      document.location.href = 'http://localhost:3000/users/sign_in'
+

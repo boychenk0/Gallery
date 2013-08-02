@@ -4,18 +4,20 @@
 $(document).ready ->
   $(".like").click ->
     id = $(".imglike").attr("id")
-    $.ajax(
+    $.ajax
       url: "/images/like"
       data:
         id: id
       dataType: "json"
       type: "post"
-    ).success (response) ->
-      if (response.status == true)
-        $(".imglike").attr('src', '/assets/unlike.jpg')
-      else
-        $(".imglike").attr('src', '/assets/like.jpg')
-      $(".likecount").text(response.all_likes)
+      success: (response) ->
+        if (response.status == true)
+          $(".imglike").attr('src', '/assets/unlike.jpg')
+        else
+          $(".imglike").attr('src', '/assets/like.jpg')
+        $(".likecount").text(response.all_likes)
+      error: (xhr, ajaxOptions, thrownError) ->
+        document.location.href = 'http://localhost:3000/users/sign_in'
 #  create_image = (ui) ->
 #  console.log $(ui).parent().find("img").attr("src")
 #  console.log $(ui).parent().find("select option:selected").val()

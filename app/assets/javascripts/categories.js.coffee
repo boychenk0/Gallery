@@ -7,14 +7,16 @@
 $(document).ready ->
   $(".subscribe").click ->
     id = $(this).attr("id")
-    $.ajax(
+    $.ajax
       url: "/categories/subscribe"
       data:
         id: id
       dataType: "json"
       type: "post"
-    ).success (response) ->
-      if (response.status == true)
-        $("##{response.id}").attr('src', '/assets/unsubscribe1.jpg')
-      else
-        $("##{response.id}").attr('src', '/assets/subscribe1.jpg')
+      success: (response) ->
+        if (response.status == true)
+          $("##{response.id}").attr('src', '/assets/unsubscribe1.jpg')
+        else
+          $("##{response.id}").attr('src', '/assets/subscribe1.jpg')
+      error: (xhr, ajaxOptions, thrownError) ->
+        document.location.href = 'http://localhost:3000/users/sign_in'

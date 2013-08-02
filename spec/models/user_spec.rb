@@ -23,5 +23,19 @@
 require 'spec_helper'
 
 describe User do
-  #pending "add some examples to (or delete) #{__FILE__}"
+
+  it {should have_db_column(:uid).of_type(:float).with_options(:default => 0.0)}
+  it {should have_db_column(:provider).of_type(:string).with_options(:limit => 255, :default => '')}
+  it {should have_db_column(:nickname).of_type(:string).with_options(:limit => 255, :default => '', :null => false)}
+
+  it {should have_many(:images).through(:likes)}
+  it {should have_many(:categories).through(:subscribes)}
+  it {should have_many(:comments).dependent(:destroy)}
+  it {should have_many(:subscribes).dependent(:destroy)}
+  it {should have_many(:likes).dependent(:destroy)}
+  it {should have_many(:events).dependent(:destroy)}
+  it {should have_many(:messages).dependent(:destroy)}
+
+  it {should validate_presence_of(:nickname)}
+
 end

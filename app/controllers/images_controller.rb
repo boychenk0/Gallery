@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :authf, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
   cache_sweeper :image_sweeper, :only => [:like]
 
   def index
@@ -13,9 +13,10 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @comments = @image.comments.order('created_at DESC').where("body != ''").page(params[:page]).per(5).preload(:user)
     @comment = @image.comments.build
-    if user_signed_in? && (Like.where(:image_id => @image.id, :user_id => current_user.id)).blank?
-      @status = true
-    elsif
+    logger.info user_signed_in?
+    if user_signed_in? && !(Like.where(:image_id => @image.id, :user_id => current_user.id)).blank?
+      @status = false
+    else
       @status = true
     end
   end

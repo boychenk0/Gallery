@@ -1,12 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
-  #def index
-  #  session[:return_to] = request.fullpath
-  #  @categories = Category.all
-  #  @images = Image.order('created_at DESC').page(params[:page]).per(5)
-  #end
-
   def show
     session[:return_to] = request.fullpath
     @categories = Category.all
@@ -17,7 +11,6 @@ class CategoriesController < ApplicationController
   #subscribe
   def subscribe
     category = Category.find(params[:id])
-    status = false
     if (@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
       current_user.subscribes.create(:category=>category)
       status = true

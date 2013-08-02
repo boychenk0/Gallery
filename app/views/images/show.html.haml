@@ -19,10 +19,9 @@
         %h2
           =t('.comments')
         #comments-form
-          - if user_signed_in?
-            = form_for ([@image, @image.comments.build]), :remote =>true do |f|
-              %p= f.text_area :body
-              %p= f.submit t('.add_comment'), :class => "btn"
+          = form_for ([@image, @image.comments.build]), :remote =>true do |f|
+            %p= f.text_area :body
+            %p= f.submit t('.add_comment'), :class => "btn"
         #comments-body
           - @comments.each_with_index do |comment, index|
             .com{:id => index}
