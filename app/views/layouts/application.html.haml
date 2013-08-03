@@ -30,23 +30,26 @@
               %strong=t('.welcome_g')
             #top_panel-buttons
               = link_to t('.login'), new_user_session_path, :class => 'btn btn-inverse'
-              = link_to t('.f_login'), '/auth/facebook', :class => 'btn btn-inverse'
+              = link_to '/auth/facebook' do
+                =image_tag 'LoginWithFacebook.png', :size => '150x40'
               = link_to t('.registration'), new_user_registration_path, :class => 'btn btn-inverse'
-              = link_to t('.home'),  root_path, :class => 'btn btn-inverse'
-              = link_to t('.events'), events_path, :class => 'btn btn-inverse'
+              -#= link_to t('.home'),  root_path, :class => 'btn btn-inverse'
+              -#= link_to t('.events'), events_path, :class => 'btn btn-inverse'
           - else
             %p{:id=>'top_panel-message'}
               %strong= t('.welcome')
               = current_user.nickname
             #top_panel-buttons
               = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-inverse'
-              = link_to t('.home'),  root_path, :class => 'btn btn-inverse'
-              = link_to t('.events'), events_path, :class => 'btn btn-inverse'
+              -#= link_to t('.home'),  root_path, :class => 'btn btn-inverse'
+              -#= link_to t('.events'), events_path, :class => 'btn btn-inverse'
         #title
           %h1
             = t('.welcome_to_my_gallery')
           %p
             = t('.we_are_glad_to')
+        -##center_menu
+        -#  asd
       #page-main
         = yield
       #footer_cleaner

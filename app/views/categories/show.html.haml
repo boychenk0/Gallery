@@ -3,14 +3,14 @@
     .span3
       =render 'layouts/categories_menu'
     .span9
+      #title_images
+        = @category.name.capitalize
       #images
-        %h3
-          = @category.name.capitalize
-          #images-sorted
-            sorted by
-            =link_to 'created', root_path
-            =link_to 'likes', root_path
-            =link_to 'comments', root_path
+        #images-sorted
+          -#sorted by
+          -#=link_to 'created', root_path
+          -#=link_to 'likes', root_path
+          -#=link_to 'comments', root_path
         %section{:id=>"wrapper"}
           -@images.each do |img|
             .imgholder

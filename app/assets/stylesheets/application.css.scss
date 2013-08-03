@@ -13,8 +13,19 @@
  */
 @import "bootstrap";
 @font-face {
-  font-family: 'GrutchShaded';
-  src: url('GrutchShaded.ttf');
+  font-family: acmesai;
+  src: url("/assets/fonts/acmesai.ttf") format("truetype"); /* For IE */
+  src: local("acmesai"), url("/assets/fonts/acmesai.ttf") format("truetype"); /* For non-IE */
+}
+@font-face {
+  font-family: 'FantasticFont';
+  src: url('FantasticFont.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Impact_Label';
+  src: url('Impact_Label.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,11 +34,15 @@ html, body {
   padding: 0;
 }
 body{
-  background: url("/webapp/app/desktop/images/bg.99dd9254.png?1373235165") repeat scroll 0 0 #E3E3E3;
+  background: url('textured_paper.png') repeat scroll 0 0 #E3E3E3;
+  font-family: 'acmesai';
 }
 #page {
   min-height: 100%;
   margin: 0 0 -60px 0;
+}
+#page-main{
+  margin: 5px;
 }
 #header_cleaner {
   height: 60px;
@@ -54,7 +69,6 @@ body{
 #top_panel-message{
   margin: 0;
   text-shadow: 0 1px 0 #FFFFFF;
-  color: #717171;
   font-size: 15px;
 }
 #top_panel-buttons{
@@ -68,21 +82,32 @@ body{
 }
 
 #title h1{
-  font-size: 57px;
+  font-size: 150px;
   line-height: 52px;
-  margin: 34px auto 0;
+  margin: 75px auto 0;
   max-width: 736px;
   text-align: center;
   text-shadow: 1px 2px 4px #E3E3E3, 0 0 0 #000000, 1px 2px 4px #E3E3E3, 0 1px 0 #FFFFFF;
-  font-family: 'GrutchShaded', helvetica, sans-serif;
+  font-family: 'FantasticFont', helvetica, sans-serif;
+  font-weight: lighter;
 }
 #title p{
   font-size: 18px;
-  margin: 20px auto;
+  margin: 25px auto;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.67);
   color: #6C6C6C;
   text-align: center;
 }
+//#center_menu{
+//  height: 30px;
+//  overflow: hidden;
+//  background: blanchedalmond;
+//  border-radius: 20px 20px 20px 20px;
+//  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+//  margin: 0 7px;
+//  padding: 1em;
+//  z-index: 10;
+//}
 #footer {
   height: 50px;
 }
@@ -90,7 +115,6 @@ body{
   background: linear-gradient(#FFF4B7, #B8860B) repeat scroll 0 0 transparent;
   border-radius: 5px 5px 0 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-  color: #717171;
   font-size: 15px;
   margin: 10px 7px 0 7px;
   overflow: hidden;
@@ -112,7 +136,6 @@ body{
   height: 70%;
   padding: 30px 130px 30px 30px;
   filter: alpha(opacity=85);
-  opacity: 0.85;
   z-index: 9;
 }
 
@@ -195,45 +218,59 @@ ul li{
   width: 100%;
 }
 //---------------------------------------------------------left menu--------------------------------------------
-@font-face {
-  font-family: 'Impact_Label';
-  src: url('Impact_Label.ttf');
-  font-weight: normal;
-  font-style: normal;
+
+#search_menu{
+  background: papayawhip;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  border-radius: 10px 10px 10px 10px;
+  padding: 10px;
+  width: 95%;
+  margin-bottom: 10px;
 }
-#left_panel{
+#search_menu #title_search{
+  margin: 3px;
+  font-family: 'FantasticFont';
+  font-size: 40px;
+}
+#search_menu form{
+  margin: 0;
+}
+#search_menu #category_name{
+  width: 150px;
+}
+#category_menu{
   background: #EEEED1;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   border-radius: 10px 10px 10px 10px;
   padding: 10px;
   width: 95%;
 }
-#left_panel #title_cat{
-  font-family: 'Impact_Label', helvetica, sans-serif;
-  font-size: 30px;
+#category_menu #title_cat{
+  font-family: 'FantasticFont', helvetica, sans-serif;
+  font-size: 60px;
   text-align: center;
   margin: 20px;
 }
-#left_panel ul li {
+#category_menu ul li {
   list-style: none;
   margin-bottom: 0.8em;
   font-family: 'Impact_Label', helvetica, sans-serif;
   font-size: 23px;
   padding: 12px;
 }
-#left_panel span{
+#category_menu span{
   height: 30px;
   float: left;
   margin-right: 5px;
 }
 
-#left_panel li a {
+#category_menu li a {
   color: #544738;
   text-decoration: none;
   float: left;
 }
 
-#left_panel .left a:hover {
+#category_menu .left a:hover {
 
   /*Transition*/
   -webkit-transition:All .3s ease;
@@ -246,7 +283,7 @@ ul li{
   -o-transform: rotate(-10deg) scale(1.2);
 }
 
-#left_panel .right a:hover {
+#category_menu .right a:hover {
 
   /*Transition*/
   -webkit-transition:All .3s ease;
@@ -257,4 +294,7 @@ ul li{
   -webkit-transform: rotate(10deg) scale(1.2);
   -moz-transform: rotate(10deg) scale(1.2);
   -o-transform: rotate(10deg) scale(1.2);
+}
+#sign_in{
+
 }
