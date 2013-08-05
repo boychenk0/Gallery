@@ -38,14 +38,15 @@
           - else
             %p{:id=>'top_panel-message'}
               %strong= t('.welcome')
-              = current_user.nickname
+              = current_user.nickname.capitalize
             #top_panel-buttons
               = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-inverse'
               -#= link_to t('.home'),  root_path, :class => 'btn btn-inverse'
               -#= link_to t('.events'), events_path, :class => 'btn btn-inverse'
         #title
-          %h1
-            = t('.welcome_to_my_gallery')
+          =link_to root_path do
+            %h1
+              = t('.welcome_to_my_gallery')
           %p
             = t('.we_are_glad_to')
         -##center_menu

@@ -14,8 +14,8 @@
 @import "bootstrap";
 @font-face {
   font-family: acmesai;
-  src: url("/assets/fonts/acmesai.ttf") format("truetype"); /* For IE */
-  src: local("acmesai"), url("/assets/fonts/acmesai.ttf") format("truetype"); /* For non-IE */
+  src: url("fonts/acmesai.TTF") format("truetype"); /* For IE */
+  src: local("acmesai"), url("fonts/acmesai.TTF") format("truetype"); /* For non-IE */
 }
 @font-face {
   font-family: 'FantasticFont';
@@ -42,7 +42,7 @@ body{
   margin: 0 0 -60px 0;
 }
 #page-main{
-  margin: 5px;
+  margin: 3px;
 }
 #header_cleaner {
   height: 60px;
@@ -76,8 +76,13 @@ body{
   right: 14px;
   top: 10px;
 }
+#title a:hover{
+  text-decoration: none;
+}
 #title{
   min-height: 100px;
+}
+#title a{
   color: #211922;
 }
 

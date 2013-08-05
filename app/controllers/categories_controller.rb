@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
 
   def show
     session[:return_to] = request.fullpath
-    @categories = Category.all
     @category = Category.find(params[:id])
     @images = @category.images.includes(:category).order('created_at DESC').page(params[:page]).per(5)
   end

@@ -52,6 +52,7 @@ group :development do
   gem 'html2haml'
   gem 'bullet'
   gem 'annotate', '>=2.5.0'
+  gem 'hirb', '~> 0.7.1'
 end
 
 group :development, :test do

@@ -2,7 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'rack/handler'
+require 'hirb'
+Hirb.enable
 Rack::Handler::WEBrick = Rack::Handler.get(:puma)
+
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line

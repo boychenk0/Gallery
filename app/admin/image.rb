@@ -1,7 +1,7 @@
 ActiveAdmin.register Image do
 
   action_item do
-    link_to "Parse", admin_images_parse_path
+    link_to 'Parse', admin_parse_path
   end
 
   index  do

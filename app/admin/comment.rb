@@ -4,7 +4,6 @@ ActiveAdmin.register Comment  do
     column :id
     column :body
     column :created_at
-    column :updated_at
     column 'image' do |com|
       link_to "to imageFIXME!!!"
       #image_tag(com.image, :size => '128x128')

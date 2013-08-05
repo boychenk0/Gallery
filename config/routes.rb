@@ -3,10 +3,10 @@ TitsProj::Application.routes.draw do
   root :to => 'images#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resource :admin do
-    post 'images/parse/create_image' => 'admin/images#create_parse_image' #for parsing
-    post 'images/parse' => 'admin/images#parse_images'#for create_img
-    get  'images/parse' => 'admin/images#parse'#parse page
+  namespace :admin do
+    get  '/parse' => 'images#parse'
+    post '/parse/create_image' => 'images#create_parse_image' #for parsing
+    post '/parse' => 'images#parse_images'#for create_img
   end
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
     get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
