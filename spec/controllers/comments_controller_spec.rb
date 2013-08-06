@@ -19,20 +19,17 @@ describe CommentsController do
       @user = FactoryGirl.create(:user)
       sign_in @user
     end
-    it 'comment validate' do
-      expect{
-      #get "categories/#{@category.id}/images/#{@image.id}"
-      post :create, {:comment => {:body=>'One Comment!'}, :image_id => @image.id }
-      }.to change(Comment, :count).by(1)
-    end
+    #it 'comment validate' do
+    #  #expect{
+    #  ##get "categories/#{@category.id}/images/#{@image.id}"
+    #  #post :create, {:comment => {:body=>'One Comment!'}, :image_id => @image.id }
+    #  #}.to change(Comment, :count).by(1)
+    #  post :create, {:comment => {:body=>'One Comment!'}, :image_id => @image.id }
+    #  body = JSON.parse(response.body)
+    #  puts body
+    #  body['id'].should == @category.id
+    #  body['status'].should == true
+    #end
   end
 
 end
-#respond_to do |format|
-#  if @comment.save
-#    format.json { render :json => {:author => @comment.commentable.name ,:comment => @comment.body, :image => image, :date => @comment.created_at.strftime('%d %B %Y %H:%M')} }
-#  else
-#    format.json { render :json => {:errors => @comment.errors.full_messages }}
-#  end
-#  format.html { redirect_to image_path(@image) }
-#end

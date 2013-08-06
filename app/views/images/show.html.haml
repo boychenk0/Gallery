@@ -13,21 +13,10 @@
         - else
           %span{:class => 'like'}
             = image_tag 'unlike.jpg', :width => 120, :id => @image.id, :class => 'imglike'
-
     .span6
       #comments
-        %h2
-          =t('.comments')
-        #comments-form
-          = form_for ([@image, @image.comments.build]), :remote =>true do |f|
-            %p= f.text_area :body
-            %p= f.submit t('.add_comment'), :class => "btn"
-        #comments-body
-          - @comments.each_with_index do |comment, index|
-            .com{:id => index}
-              %strong=comment.user.nickname
-              %span=comment.created_at.strftime("%Y-%m-%d %H:%M")
-              %hr
-              %p{:class=>'rewiev-text'}= comment.body
-        .text-center
-          = paginate @comments
+        #comments_main
+          = render 'comments/comments_show'
+        #comments_paginate
+          .text-center
+            = paginate @comments, :window => 1, :remote => true#, :params => { comment: nil, body:nil, _: nil, _method: nil, authenticity_token: nil, commit: nil, utf8: nil}#, :params => {:controller => 'images', :action => 'show'}#

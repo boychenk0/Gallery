@@ -3,7 +3,8 @@ ActiveAdmin.register Image do
   action_item do
     link_to 'Parse', admin_parse_path
   end
-
+  filter :category
+  filter :url
   index  do
       selectable_column
       column :id, :sortable => true

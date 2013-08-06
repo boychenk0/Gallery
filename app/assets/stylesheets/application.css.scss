@@ -19,13 +19,15 @@
 }
 @font-face {
   font-family: 'FantasticFont';
-  src: url('FantasticFont.ttf');
+  src: url("fonts/FantasticFont.ttf") format("truetype"); /* For IE */
+  src: local("FantasticFont"), url("fonts/FantasticFont.ttf") format("truetype"); /* For non-IE */
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Impact_Label';
-  src: url('Impact_Label.ttf');
+  src: url("fonts/Impact_Label.ttf") format("truetype"); /* For IE */
+  src: local("Impact_Label"), url("fonts/Impact_Label.ttf") format("truetype"); /* For non-IE */
   font-weight: normal;
   font-style: normal;
 }

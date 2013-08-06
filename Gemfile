@@ -20,7 +20,7 @@ gem 'curb'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'rmagick'
 gem 'pusher', '~> 0.9.4'
-
+gem 'ransack', '~> 0.7.2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -66,6 +66,7 @@ group :production do
 end
 
 group :test do
+  gem 'simplecov', :require => false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'

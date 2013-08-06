@@ -1,0 +1,14 @@
+%h2
+  =t('.comments')
+#comments-error
+#comments-form
+  = form_for ([@image, @image.comments.build]), :remote =>true do |f|
+    %p= f.text_area :body
+    %p= f.submit 'Add comment', :class => "btn"
+#comments-body
+  - @comments.each_with_index do |comment, index|
+    .com{:id => index}
+      %strong=comment.user.nickname
+      %span=comment.created_at.strftime("%Y-%m-%d %H:%M")
+      %hr
+      %p{:class=>'rewiev-text'}= comment.body

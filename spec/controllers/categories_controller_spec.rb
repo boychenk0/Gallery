@@ -65,6 +65,7 @@ describe CategoriesController do
       post :subscribe, :id => @category.id #subscribed
       post :subscribe, :id => @category.id #usubscribed
       body = JSON.parse(response.body)
+      puts body
       body['id'].should == @category.id
       body['status'].should == false
     end

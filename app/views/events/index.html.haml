@@ -1,3 +1,9 @@
+= search_form_for @search, url: events_path do |f|
+  .field
+    =f.label :nickname_cont, 'Nickname'
+    =f.text_field :nickname_cont
+  .actions
+    =f.submit 'Search'
 %table{:id =>'hor-minimalist-b'}
   %thead
     %tr

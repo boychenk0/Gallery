@@ -1,25 +1,31 @@
-class CommentsController < ApplicationController
+class CommentsController < ImagesController
   before_filter :authenticate_user!
-
   def create
     @image = Image.find(params[:image_id])
     @comment = @image.comments.build(params[:comment].merge(:user => current_user))
-    #if @comment.save
-    #    #Event.track_event('comments', {:comment => @comment, :user => current_user})
-    #end
-    respond_to do |format|
-      if @comment.save
-        Event.track_event('comments', {:comment => @comment, :user => current_user})
-        format.json { render :json => {:comment => @comment, :user => @comment.user, :date => @comment.created_at.strftime("%Y-%m-%d %H:%M")} }
-      else
-        format.json { render :json => {:errors => @comment.errors.full_messages }}
-      end
+    @comments = @image.comments.order('created_at DESC').where("body != ''").page(params[:page]).preload(:user)
+    if @comment.save
+      Event.track_event('comments', {:comment => @comment, :user => current_user})
+    else
+      render :json => {:errors => @comment.errors.messages}
     end
-    #Pusher.url = "http://74c9b81466fe7a2eb84e:21002de0cdb237e1d3da@api.pusherapp.com/apps/48385"
-    #Pusher['test_channel'].trigger('my_event', {message: @comment.to_json})
-    #redirect_to "/categories/#{@image.category.id}/images/#{@image.id}"
   end
 end
+#Pusher.url = "http://74c9b81466fe7a2eb84e:21002de0cdb237e1d3da@api.pusherapp.com/apps/48385"
+#Pusher['test_channel'].trigger('my_event', {message: @comment.to_json})
+#redirect_to "/categories/#{@image.category.id}/images/#{@image.id}"
+#respond_to do |format|
+#if @comment.save
+#  Event.track_event('comments', {:comment => @comment, :user => current_user})
+#  #render_to_string 'comments/comments_show'
+#  #format.json { render :json => {:comment => @comment, :user => @comment.user, :date => @comment.created_at.strftime("%Y-%m-%d %H:%M")} }
+#
+#  format.json { render :json => {:success=>true, :html=>(render text: 'comments_show', :layout => false)} }
+#  format.html { }
+#else
+#  format.json { render :json => {:errors => @comment.errors.full_messages }}
+#end
+#end
 
 ######################################################################################################################################
 ###  describe "CRUD" do
