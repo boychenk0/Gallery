@@ -13,7 +13,6 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @comments = @image.comments.order('created_at DESC').where("body != ''").page(params[:page]).per(5).preload(:user)
     @comment = @image.comments.build
-    logger.info user_signed_in?
     if user_signed_in? && !(Like.where(:image_id => @image.id, :user_id => current_user.id)).blank?
       @status = false
     else

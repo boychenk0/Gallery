@@ -12,7 +12,7 @@ TitsProj::Application.routes.draw do
     get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
   end
   resources :messages, only:[:create]
-  resources :images, only: [:index, :create] do
+  resources :images, only: [:index] do
     post '/like' => 'images#like', on: :collection #for likes
     resources :comments, only:[:create]
   end

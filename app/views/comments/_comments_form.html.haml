@@ -1,0 +1,4 @@
+#comments-form
+  = form_for ([@image, @image.comments.build]), :remote =>true do |f|
+    %p= f.text_area :body
+    %p= f.submit 'Add comment', :class => "btn"

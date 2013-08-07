@@ -56,9 +56,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails'
   gem 'puma'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 2.8.1'
+  #gem 'capybara-webkit'
+  gem 'database_cleaner', '~> 0.6.7'
 end
 
 group :production do
@@ -66,11 +67,15 @@ group :production do
 end
 
 group :test do
+  gem 'factory_girl_rails', '>= 1.6.0'
   gem 'simplecov', :require => false
-  gem 'capybara'
-  gem 'database_cleaner'
+  gem 'capybara', '>= 1.1.2'
+  #gem 'database_cleaner'
   gem 'email_spec'
-  gem "rspec", "~> 2.14.1"
+  #gem 'cucumber-rails', '>= 1.2.1'
+  gem 'launchy'
+  #gem "rspec", "~> 2.14.1"
   gem "shoulda-matchers", "~> 2.2.0"
+  #gem 'selenium-webdriver'
 end
 

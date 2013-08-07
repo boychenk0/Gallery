@@ -1,10 +1,3 @@
-%h2
-  =t('.comments')
-#comments-error
-#comments-form
-  = form_for ([@image, @image.comments.build]), :remote =>true do |f|
-    %p= f.text_area :body
-    %p= f.submit 'Add comment', :class => "btn"
 #comments-body
   - @comments.each_with_index do |comment, index|
     .com{:id => index}

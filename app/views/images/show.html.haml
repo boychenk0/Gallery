@@ -3,7 +3,6 @@
     .span6
       .image-show
         = image_tag @image.url.url(:thumb),  :class => 'img-polaroid'
-
       #likeblock
         %span{:class => 'likecount'}
           = @image.likes.size
@@ -16,7 +15,11 @@
     .span6
       #comments
         #comments_main
-          = render 'comments/comments_show'
+          %h2
+            =t('.comments')
+          #comments-error
+          = render 'comments/comments_form'
+          = render 'comments/comments_body_show'
         #comments_paginate
           .text-center
             = paginate @comments, :window => 1, :remote => true#, :params => { comment: nil, body:nil, _: nil, _method: nil, authenticity_token: nil, commit: nil, utf8: nil}#, :params => {:controller => 'images', :action => 'show'}#

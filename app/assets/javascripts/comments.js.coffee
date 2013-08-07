@@ -1,7 +1,10 @@
 $(document).ready ->
-  $("form#new_comment").bind "ajax:success", (evt, data, status, xhr) ->
-    console.log data
-    $('#comments-error').html("#{data.errors.body}")
+  $("form#new_comment").bind("ajax:success", (evt, data, status, xhr) ->
+    if data.errors
+      $('#comments-error').html("Comment #{data.errors.body}")
+  ).bind "ajax:error", (evt, data) ->
+    if data.status == 401
+      document.location.href = 'http://localhost:3000/users/sign_in'
 #    console.log dat
 ##    console.log data
 ##    $('#comments-body').prepend("<div class='com'><strong>#{data.user.nickname}</strong><span> #{data.date}</span><hr><p class='reviev-text'>#{data.comment.body}</p></div>");

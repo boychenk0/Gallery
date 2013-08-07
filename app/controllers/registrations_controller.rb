@@ -2,7 +2,6 @@ class RegistrationsController < Devise::RegistrationsController
   include SimpleCaptcha::ControllerHelpers
 
   def create
-    logger.info 'aaaaaaa'*20
     if simple_captcha_valid?
       super
       Event.track_event('authf', {:user => current_user})
