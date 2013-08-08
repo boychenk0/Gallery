@@ -1,0 +1,14 @@
+%section{:id=>"wrapper"}
+  -@images.each do |img|
+    .imgholder
+      %div{:class=>"outer1 circle"}
+      %div{:class=>"outer2 circle"}
+      %figure
+        = link_to "/categories/#{img.category.id}/images/#{img.id}" do
+          = image_tag img.url
+        %figcaption{:class=>"caption"}
+          .text-center
+            = pluralize(img.comments.size, 'comment')
+            %br
+            = pluralize(img.likes.size, 'like')
+  .clearfix

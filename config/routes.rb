@@ -10,6 +10,7 @@ TitsProj::Application.routes.draw do
   end
   devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
     get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
+    match '/auth/failure' => 'images#index'
   end
   resources :messages, only:[:create]
   resources :images, only: [:index] do

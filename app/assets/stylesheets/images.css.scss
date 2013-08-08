@@ -207,7 +207,7 @@
   width: 152px;
   float: right;
   margin-right: 15px;
-  margin-top: -480px;
+  margin-top: -595px;
   position: relative;
   z-index: 1;
 }
@@ -221,33 +221,73 @@
   line-height: 1.41;
 }
 #comments{
-  background: #FFF8DC;
-  width: 100%;
+  background: #8B795E;
+  width: 93%;
   border-radius: 10px 10px 10px 10px;
-  padding: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  padding: 20px;
+}
+#comments-title{
+  font-family: 'FantasticFont';
+  font-size: 70px;
+  font-weight: lighter;
+  margin: 20px 0px 10px 10px;
+}
+#comments-error{
+
+}
+#comments-body{
+  width: 100%;
+}
+#comments-body .com:after{
+  content:"";
+  display:block;
+  height:0;
+  overfloww:hidden;
+  clear:both;
+}
+#comments-body .com{
+  padding: 15px;
+  width: 90%;
+  margin: 10px 10px;
+  color: #ffffff;
+  line-height: 1.4;
+  background: #222222;
+  //border-radius:10px;
+}
+#comments-body .com .info{
+  width: 20%;
+  display: inline-block;
+}
+#comments-body .com .comment{
+  float: right;
+  display: inline-block;
+  width: 79%;
+}
+#comments-body .com .comment span{
+  font-size: 10px;
+  color: #aaaaaa;
+}
+#comments-body .com .avatar_show{
+  width: 100px;
+  background: #ffffff;
+  margin-bottom: 2px;
+}
+#comments-body .com .nickname{
+  width: 100px;
+  font-size: 10px;
+  word-wrap: break-word;
+  text-align: center;
 }
 #comment_body{
-  height: 120px;
-  width: 500px;
-}
-.comment{
-  width: 40%;
-}
-.com{
-  max-width: 563px;
-  padding: 10px;
-  width: 100%;
-  margin: 10px;
-  font-size: 1em;
-  color: #666666;
-  line-height: 1.4;
-  empty-cells: show;
-  font-family: "Roboto",Arial,sans-serif;
-  background: #FFDEAD;
-  border-radius:10px;
+  height: 150px;
+  width: 95%;
 }
 .com hr{
   margin: 0;
+}
+#comments-form{
+  margin: 0 10px 10px;
 }
 .rewiev-text{
   overflow-x: hidden;

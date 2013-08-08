@@ -73,5 +73,6 @@
       - created_at
       - last_sign_in_at
       - provider
+      - avatar
 
 

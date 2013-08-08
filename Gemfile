@@ -21,6 +21,7 @@ gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'rmagick'
 gem 'pusher', '~> 0.9.4'
 gem 'ransack', '~> 0.7.2'
+gem 'paperclip', '~> 3.5.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

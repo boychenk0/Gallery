@@ -28,7 +28,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   apply_simple_captcha
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :uid, :provider, :nickname, :captcha, :captcha_key
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :uid, :provider, :nickname, :captcha, :captcha_key, :avatar
+
+  has_attached_file :avatar, :styles => {:small => '100x100>',
+                                        :url  => '/assets/users/:id/:style/:basename.:extension',
+                                        :path => ':rails_root/public/assets/users/:id/:style/:basename.:extension'}
+  #validates_attachment_presence :avatar
+  validates_attachment_size :avatar, :less_than => 3.megabyte
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/jpg']
+
   has_many :images, :through => :likes
   has_many :categories, :through => :subscribes
   has_many :comments, :dependent => :destroy
@@ -38,4 +46,8 @@ class User < ActiveRecord::Base
   has_many :messages, :dependent=>:destroy
 
   validates :nickname, :presence => true
+
+  def avatar_from_url(url)
+    self.avatar = open(url)
+  end
 end

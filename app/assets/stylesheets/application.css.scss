@@ -37,7 +37,7 @@ html, body {
 }
 body{
   background: url('textured_paper.png') repeat scroll 0 0 #E3E3E3;
-  font-family: 'acmesai';
+  font-family:  helvetica, sans-serif;
 }
 #page {
   min-height: 100%;
@@ -46,10 +46,10 @@ body{
 #page-main{
   margin: 3px;
 }
-#header_cleaner {
-  height: 60px;
-  clear: both;
-}
+//#header_cleaner {
+//  height: 60px;
+//  clear: both;
+//}
 #footer_cleaner {
   height: 60px;
   clear: both;
@@ -65,7 +65,7 @@ body{
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   margin: 0 7px;
   padding: 1em;
-  position:fixed; left:0; top:0; right:0;
+  //position:fixed; left:0; top:0; right:0;
   z-index: 10;
 }
 #top_panel-message{
