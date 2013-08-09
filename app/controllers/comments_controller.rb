@@ -8,7 +8,7 @@ class CommentsController < ImagesController
     respond_to do |format|
       if @comment.save
         Event.track_event('comments', {:comment => @comment, :user => current_user})
-        format.js{}
+        format.js
       else
         format.json {render :json => {:errors => @comment.errors.messages}}
       end

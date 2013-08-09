@@ -21,7 +21,10 @@ $(document).ready ->
     $("#chat").toggle "fast"
     $(this).toggleClass "active"
     false
-
+  $("#category_content").mouseenter (event) ->
+    $(event.currentTarget).css('overflow-y', 'scroll')
+    $(event.currentTarget).mouseleave (event) ->
+      $(event.currentTarget).css('overflow-y', 'hidden')
   Pusher.host = '127.0.0.1'
   Pusher.ws_port = 8080
   Pusher.wss_port = 8080

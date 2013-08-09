@@ -33,7 +33,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:small => '100x100>',
                                         :url  => '/assets/users/:id/:style/:basename.:extension',
                                         :path => ':rails_root/public/assets/users/:id/:style/:basename.:extension'}
-  #validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 3.megabyte
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/jpg']
 
@@ -46,8 +45,4 @@ class User < ActiveRecord::Base
   has_many :messages, :dependent=>:destroy
 
   validates :nickname, :presence => true
-
-  def avatar_from_url(url)
-    self.avatar = open(url)
-  end
 end

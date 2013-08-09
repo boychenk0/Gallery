@@ -10,7 +10,7 @@
     #title_cat
       Categories
     %hr
-    %ul
+    %ul{:id => 'category_content'}
       %li{:class=>'right'}
         = link_to root_path do
           = t('.all_image') + " (#{Image.count})" #FIX ME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
