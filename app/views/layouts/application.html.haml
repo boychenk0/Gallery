@@ -33,16 +33,12 @@
               = link_to '/auth/facebook' do
                 =image_tag 'LoginWithFacebook.png', :size => '150x40'
               = link_to t('.registration'), new_user_registration_path, :class => 'btn btn-inverse'
-              -#= link_to t('.home'),  root_path, :class => 'btn btn-inverse'
-              -#= link_to t('.events'), events_path, :class => 'btn btn-inverse'
           - else
             %p{:id=>'top_panel-message'}
               %strong= t('.welcome')
               = current_user.nickname.capitalize
             #top_panel-buttons
               = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-inverse'
-              -#= link_to t('.home'),  root_path, :class => 'btn btn-inverse'
-              -#= link_to t('.events'), events_path, :class => 'btn btn-inverse'
         #title
           =link_to root_path do
             %h1
@@ -56,5 +52,5 @@
       #footer_cleaner
     #footer
       #footer-message
+        = link_to 'Admin', admin_root_path, :class => 'btn btn-inverse'
         = t('.powered')
-

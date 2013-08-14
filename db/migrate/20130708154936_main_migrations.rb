@@ -17,7 +17,7 @@ class MainMigrations < ActiveRecord::Migration
     end
 
     create_table :comments do |t|
-      t.string :body, :null=>false
+      t.text :body, :null=>false
       t.integer :image_id, :null => false
       t.integer :user_id, :null => false
       t.datetime :created_at, :null => false

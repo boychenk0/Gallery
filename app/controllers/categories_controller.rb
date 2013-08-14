@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
     session[:return_to] = request.fullpath
     @category = Category.find(params[:id])
     @images = @category.images.includes(:category).order('created_at DESC').page(params[:page]).per(5)
+    @categories = Category.category_sort_by_images_count.includes(:users)
   end
 
   #subscribe

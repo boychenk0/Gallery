@@ -1,11 +1,9 @@
-%h3
-  = @user
-%h5 Likes
 %table{:id =>'hor-minimalist-b'}
   %thead
     %tr
       %th №
       %th Картинка
+      %th Комментарий
       %th Дата
   %tfoot
     %tr
@@ -19,6 +17,8 @@
         %td
           = link_to "/categories/#{e.eventable.image.category.id}/images/#{e.eventable.image.id}", :id => e.eventable.image.id do
             =image_tag e.eventable.image.url, :height=>50, :width => 50
+        %td
+          = truncate(e.eventable.body, length: 20, omission: '... (continued)')
         %td
           =e.created_at
 

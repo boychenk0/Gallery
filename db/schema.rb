@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20130808084131) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "body",       :null => false
+    t.text     "body",       :null => false
     t.integer  "image_id",   :null => false
     t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
