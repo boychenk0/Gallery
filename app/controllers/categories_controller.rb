@@ -1,11 +1,12 @@
 class CategoriesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
+  cache_sweeper :subscribe_sweeper, :only => [:subscribe]
 
   def show
     session[:return_to] = request.fullpath
     @category = Category.find(params[:id])
     @images = @category.images.includes(:category).order('created_at DESC').page(params[:page]).per(5)
-    @categories = Category.category_sort_by_images_count.includes(:users)
+    #@categories = Category.category_sort_by_images_count.includes(:users)
   end
 
   #subscribe

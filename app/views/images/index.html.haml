@@ -1,7 +1,8 @@
 .container-fluid
   .row-fluid
     .span3
-      =render 'categories/categories_menu'
+      -cache("categories_content/#{user_signed_in? ? current_user.cache_key : ''}") do
+        =render 'categories/categories_menu'
     .span9
       #title_images
         =t('.all_image')
@@ -11,10 +12,11 @@
           -#-#=link_to 'created', root_path
           -#-#=link_to 'likes', root_path
           -#-#=link_to 'comments', root_path
-        #images-list
-          =render 'images/images_list'
-        .btn-group.paginate
-          = paginate @images, :remote => true, :window => 1
+        -cache("images_list/all_images") do
+          #images-list
+            =render 'images/images_list'
+          .btn-group.paginate
+            = paginate @images, :remote => true, :window => 1
 
 
 

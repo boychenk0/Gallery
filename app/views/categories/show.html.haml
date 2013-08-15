@@ -1,7 +1,8 @@
 .container-fluid
   .row-fluid
     .span3
-      =render 'categories/categories_menu'
+      -cache("categories_content/#{user_signed_in? ? current_user.cache_key : ''}") do
+        =render 'categories/categories_menu'
     .span9
       #title_images
         = @category.name.capitalize
@@ -11,28 +12,8 @@
           -#=link_to 'created', root_path
           -#=link_to 'likes', root_path
           -#=link_to 'comments', root_path
-        #images-list
-          = render 'images/images_list'
-        -#%section{:id=>"wrapper"}
-        -#  -@images.each do |img|
-        -#    .imgholder
-        -#      %div{:class=>"outer1 circle"}
-        -#      %div{:class=>"outer2 circle"}
-        -#      %figure
-        -#        = link_to "/categories/#{img.category.id}/images/#{img.id}" do
-        -#          = image_tag img.url
-        -#        %figcaption{:class=>"caption"}
-        -#          .text-center
-        -#            = pluralize(img.comments.size, t('.comment'))
-        -#            %br
-        -#            = pluralize(img.likes.size, t('.like'))
-        -#  .clearfix
-        .btn-group.paginate
-          = paginate @images, :remote => true, :window => 1
-
-
-
-
-
-
-
+        -cache("images_list/#{@category.cache_key}") do
+          #images-list
+            = render 'images/images_list'
+          .btn-group.paginate
+            = paginate @images, :remote => true, :window => 1

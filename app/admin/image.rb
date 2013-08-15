@@ -49,7 +49,7 @@ ActiveAdmin.register Image do
   end
 
   controller do
-    cache_sweeper :image_sweeper, :only => [:create_parse_image]
+    cache_sweeper :image_sweeper, :only => [:create, :destroy, :update, :create_parse_image]
 
     def scoped_collection
       Image.includes(:category)
@@ -66,6 +66,14 @@ ActiveAdmin.register Image do
       category.images.create(:url => params[:image][:url])
       flash[:notice] = 'Images created'
       redirect_to admin_images_path
+    end
+
+    def destroy
+      super
+    end
+
+    def update
+      super
     end
 
     #get

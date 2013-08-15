@@ -1,3 +1,4 @@
+
 AdminUser.create(:email => 'admin@example.com')
 User.create(:nickname => 'Test', :email => 'user@example.com', :password => '123123123')
 
@@ -19,7 +20,7 @@ catchrist = Category.find_by_name('christmas')
 10.times do |i|
   Image.create(:url => File.open("#{path_to_images}/c#{i}.jpg"), :category => catchrist)
 end
-catnature = Category.find_by_name('christmas')
+catnature = Category.find_by_name('nature')
 5.times do |i|
   Image.create(:url => File.open("#{path_to_images}/n#{i}.jpg"), :category => catnature)
 end

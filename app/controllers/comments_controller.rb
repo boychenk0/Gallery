@@ -1,5 +1,6 @@
 class CommentsController < ImagesController
   before_filter :authenticate_user!
+  cache_sweeper :comment_sweeper, :only => [:create]
 
   def create
     @image = Image.find(params[:image_id])
@@ -14,5 +15,6 @@ class CommentsController < ImagesController
       end
     end
   end
+
 end
 

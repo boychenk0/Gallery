@@ -12,8 +12,8 @@
     %ul{:id => 'category_content'}
       %li{:class=>'right'}
         = link_to root_path do
-          = t('.all_image') + " (#{@images_count})"
-        - @categories.each.with_index do |category, index|
+          = t('.all_image') + " (#{Image.count})"
+        - Category.category_sort_by_images_count.includes(:users).each.with_index do |category, index|
           %li{:class => (index % 2).zero? ? 'left' : 'right'}
             %span
               -if user_signed_in? && category.users.include?(current_user)

@@ -3,7 +3,7 @@
 # Table name: comments
 #
 #  id         :integer          not null, primary key
-#  body       :string(255)      not null
+#  body       :text             not null
 #  image_id   :integer          not null
 #  user_id    :integer          not null
 #  created_at :datetime         not null
@@ -19,7 +19,7 @@ describe Comment do
   it {should allow_mass_assignment_of(:user)}
 
   it {should have_db_column(:id).of_type(:integer).with_options(:null => false, :primary_key => true)}
-  it {should have_db_column(:body).of_type(:string).with_options(:limit => 255, :null => false)}
+  it {should have_db_column(:body).of_type(:text).with_options(:null => false)}
   it {should have_db_column(:image_id).of_type(:integer).with_options(:null => false)}
   it {should have_db_column(:user_id).of_type(:integer).with_options(:null => false)}
   it {should have_db_column(:created_at).of_type(:datetime).with_options(:null => false)}

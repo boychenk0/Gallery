@@ -1,12 +1,10 @@
 class ImagesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
-  cache_sweeper :image_sweeper, :only => [:like]
+  cache_sweeper :like_sweeper, :only => [:like]
 
   def index
     session[:return_to] = request.fullpath
-    @images_count = Image.count
     @images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
-    @categories = Category.category_sort_by_images_count.includes(:users)
   end
 
   def show
