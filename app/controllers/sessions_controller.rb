@@ -3,7 +3,7 @@ class SessionsController < Devise::SessionsController
   def create
     super
     if user_signed_in?
-      Event.track_event('sessions.create', {:user => current_user})
+      Event.track_event('sessions.create', {:user_id => current_user.id})
     end
   end
 
@@ -11,7 +11,7 @@ class SessionsController < Devise::SessionsController
     user = current_user
     super
     if !user_signed_in?
-      Event.track_event('sessions.destroy', {:user => user})
+      Event.track_event('sessions.destroy', {:user_id => user.id})
     end
   end
 
@@ -23,7 +23,7 @@ class SessionsController < Devise::SessionsController
                                        :avatar => open(auth[:info][:image].gsub('square', 'large')))
     #@user.update_attributes(:avatar => open(auth[:info][:image].gsub('square', 'large')))
     sign_in @user
-    Event.track_event('authf', {:user => @user})
+    Event.track_event('authf', {:user_id => @user.id})
     redirect_to session[:return_to]
   end
 

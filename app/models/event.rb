@@ -16,6 +16,6 @@ class Event < ActiveRecord::Base
   belongs_to :eventable, :polymorphic => true
 
   def self.track_event(type, data = {})
-    ActiveSupport::Notifications.instrument(type, data)
+    Resque.enqueue(EventsTracking, type, data)
   end
 end

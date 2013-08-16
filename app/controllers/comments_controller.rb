@@ -8,7 +8,7 @@ class CommentsController < ImagesController
     @comments = @image.comments.order('created_at DESC').where("body != ''").page(params[:page]).preload(:user)
     respond_to do |format|
       if @comment.save
-        Event.track_event('comments', {:comment => @comment, :user => current_user})
+        Event.track_event('comments', {:comment_id => @comment.id, :user_id => current_user.id})
         format.js
       else
         format.json {render :json => {:errors => @comment.errors.messages}}

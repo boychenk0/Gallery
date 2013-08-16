@@ -22,8 +22,6 @@ class EventsController < ApplicationController
   end
 
   def likes
-    #Container.find_all_by_content_type("Food", :include => :content)
-    #@events = Event.find_all_by_eventable_type('Like', :include => :eventable).order('created_at DESC').page(params[:page]).per(10)
     @events = Event.where(:eventable_type => 'Like', :user_id =>params[:user_id]).order('created_at DESC').page(params[:page]).per(10).includes(:eventable => [:image => :category])
     @user = User.find(params[:user_id]).nickname
   end

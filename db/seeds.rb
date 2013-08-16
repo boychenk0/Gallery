@@ -1,6 +1,8 @@
+path_to_images = "#{Rails.root}/db/data_seed"
 
 AdminUser.create(:email => 'admin@example.com')
-User.create(:nickname => 'Test', :email => 'user@example.com', :password => '123123123')
+
+User.create(:nickname => 'Test', :email => 'user@example.com', :password => '123123123', :avatar => File.open("#{path_to_images}/avatar.jpg"))
 
 Category.create(:name => 'abstractions')
 Category.create(:name => 'christmas')
@@ -9,8 +11,6 @@ Category.create(:name => 'nature')
 Category.create(:name => 'animals')
 Category.create(:name => 'auto')
 Category.create(:name => 'business')
-
-path_to_images = "#{Rails.root}/db/data_seed"
 
 catabstr = Category.find_by_name('abstractions')
 5.times do |i|

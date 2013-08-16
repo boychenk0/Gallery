@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :message
 
   def track_url
-    Event.track_event('track_url', {:url => request.url, :user => current_user}) if user_signed_in?
+    Event.track_event('track_url', {:url => request.url, :user_id => current_user.id}) if user_signed_in?
   end
 
   def message

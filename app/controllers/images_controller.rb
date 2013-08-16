@@ -26,7 +26,7 @@ class ImagesController < ApplicationController
     if (@l = Like.where(:image_id => like_id, :user_id => current_user.id)).blank?
       like = current_user.likes.create(:image_id => like_id)
       status = true
-      Event.track_event('like', {:like => like, :user => current_user})
+      Event.track_event('like', {:like_id => like.id, :user_id => current_user.id})
     else
       @l.destroy_all
       status = false
