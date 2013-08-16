@@ -321,6 +321,7 @@ DEPENDENCIES
   devise
   email_spec
   factory_girl_rails (>= 1.6.0)
+  formtastic (~> 2.2.1)
   galetahub-simple_captcha
   haml-rails
   hirb (~> 0.7.1)

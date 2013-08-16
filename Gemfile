@@ -3,12 +3,8 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '3.2.13'
 gem 'jquery-rails'
-#gem "jquery-ui-rails", "~> 4.0.3"
-#kaminari for paginate
 gem 'kaminari'
-#carrerwave for images
 gem 'carrierwave'
-#activeAcmin
 gem 'activeadmin'
 gem 'devise'
 gem 'haml-rails'
@@ -24,22 +20,7 @@ gem 'ransack', '~> 0.7.2'
 gem 'paperclip', '~> 3.5.1'
 gem 'redis', '~> 3.0.4'
 gem 'resque', :require => 'resque/server'
-
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+gem 'formtastic', '~> 2.2.1'
 
 group :assets do
   gem 'bootstrap-sass', '~> 2.3.2.0'
@@ -62,7 +43,6 @@ end
 group :development, :test do
   gem 'puma'
   gem 'rspec-rails', '>= 2.8.1'
-  #gem 'capybara-webkit'
   gem 'database_cleaner', '~> 0.6.7'
 end
 
@@ -74,12 +54,8 @@ group :test do
   gem 'factory_girl_rails', '>= 1.6.0'
   gem 'simplecov', :require => false
   gem 'capybara', '>= 1.1.2'
-  #gem 'database_cleaner'
   gem 'email_spec'
-  #gem 'cucumber-rails', '>= 1.2.1'
   gem 'launchy'
-  #gem "rspec", "~> 2.14.1"
-  gem "shoulda-matchers", "~> 2.2.0"
-  #gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 2.2.0'
 end
 
