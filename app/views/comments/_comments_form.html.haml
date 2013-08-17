@@ -1,0 +1,4 @@
+#comments-form
+  = semantic_form_for ([@image, @image.comments.build]), :remote =>true do |f|
+    %p= f.inputs :body
+    %p= f.actions :submit, :class => 'btn'

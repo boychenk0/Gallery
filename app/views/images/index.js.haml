@@ -1,0 +1,2 @@
+$('#images-list').html("#{escape_javascript render partial: 'images/images_list'}");
+$('.btn-group.paginate').html("<div class='text-center'>#{escape_javascript (paginate @images, :remote => true, :window => 1).to_s}</div>");

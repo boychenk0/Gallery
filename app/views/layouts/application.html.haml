@@ -1,38 +1,56 @@
 !!!
 %html
   %head
-    %title Gallery
+    %title
+      = t('.gallery')
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %div{:id=>'page'}
-      %div{:id=>'page-header'}
-        %div{:id=>'page-header-top_panel'}
+    #chat
+      #chat-body
+        - @messages.each do |mes|
+          .chat-mes
+            %strong=mes.user.nickname
+            %span=mes.created_at
+            %p=mes.body
+      #chat-form
+        =form_for @message, :remote => true do |f|
+          = f.text_area :body
+          = f.submit 'Send', :class => 'btn'
+      %div{:style=>'clear:both;'}
+      %div{:style=>'clear:both;'}
+    %a{:id=>'trigger', :href=>'#'}Chat
+    #page
+      -##header_cleaner
+      #header
+        #top_panel
           -if !user_signed_in?
-            %p{:id=>'page-header-top_panel-message'}
-              %strong Welcome, Guest
-            %div{:id=>'page-header-top_panel-buttons'}
-              = link_to 'Login', new_user_session_path, :class => 'btn btn-primary'
-              = link_to 'Facebook login', '/auth/facebook', :class => 'btn btn-primary'
-              = link_to 'Registration', new_user_registration_path, :class => 'btn btn-primary'
-              = link_to 'Home',  root_path, :class => 'btn btn-primary'
+            %p{:id=>'top_panel-message'}
+              %strong=t('.welcome_g')
+            #top_panel-buttons
+              = link_to t('.login'), new_user_session_path, :class => 'btn btn-inverse'
+              = link_to '/auth/facebook' do
+                =image_tag 'LoginWithFacebook.png', :size => '150x40'
+              = link_to t('.registration'), new_user_registration_path, :class => 'btn btn-inverse'
           - else
-            %p{:id=>'page-header-top_panel-message'}
-              %strong Welcome,
-              = current_user.email
-            %div{:id=>'page-header-top_panel-buttons'}
-              = link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'btn btn-primary'
-              = link_to 'Home',  root_path, :class => 'btn btn-primary'
-
-        %div{:id=>'page-header-panel'}
-          %h1 Welcome to my Gallery
-          %p We are glad to see boobs lovers
-      %div{:id => 'page-main'}
+            %p{:id=>'top_panel-message'}
+              %strong= t('.welcome')
+              = current_user.nickname.capitalize
+            #top_panel-buttons
+              = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-inverse'
+        #title
+          =link_to root_path do
+            %h1
+              = t('.welcome_to_my_gallery')
+          %p
+            = t('.we_are_glad_to')
+        -##center_menu
+        -#  asd
+      #page-main
         = yield
-
-      %div{:id => 'page-footer_cleaner'}
-    %div{:id => 'footer'}
-      %div{:id=>'footer-message'}
-        POWERED by YaR
-
+      #footer_cleaner
+    #footer
+      #footer-message
+        = link_to 'Admin', admin_root_path, :class => 'btn btn-inverse'
+        = t('.powered')

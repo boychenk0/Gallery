@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714162634) do
+ActiveRecord::Schema.define(:version => 20130808084131) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,34 +47,60 @@ ActiveRecord::Schema.define(:version => 20130714162634) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "categories", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                        :null => false
+    t.integer  "images_count", :default => 0, :null => false
     t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.integer  "images_count", :default => 0
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "body"
-    t.integer  "image_id"
+    t.text     "body",       :null => false
+    t.integer  "image_id",   :null => false
+    t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
   end
+
+  add_index "comments", ["image_id"], :name => "index_comments_on_image_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.string   "eventable_type", :null => false
+    t.integer  "eventable_id",   :null => false
+    t.datetime "created_at",     :null => false
+  end
+
+  add_index "events", ["eventable_type", "eventable_id"], :name => "index_events_on_eventable_type_and_eventable_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "images", :force => true do |t|
-    t.string   "url"
-    t.integer  "category_id"
+    t.string   "url",                           :null => false
+    t.integer  "comments_count", :default => 0, :null => false
+    t.integer  "likes_count",    :default => 0, :null => false
+    t.integer  "category_id",                   :null => false
     t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "likes_count",    :default => 0
-    t.integer  "comments_count", :default => 0
   end
 
+  add_index "images", ["category_id"], :name => "index_images_on_category_id"
+
   create_table "likes", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "image_id"
+    t.integer  "user_id",    :null => false
+    t.integer  "image_id",   :null => false
     t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  end
+
+  add_index "likes", ["image_id"], :name => "index_likes_on_image_id"
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+
+  create_table "messages", :force => true do |t|
+    t.string   "body",       :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+  end
+
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
+  create_table "navigations", :force => true do |t|
+    t.string "url", :null => false
   end
 
   create_table "simple_captcha_data", :force => true do |t|
@@ -86,9 +112,18 @@ ActiveRecord::Schema.define(:version => 20130714162634) do
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
 
+  create_table "subscribes", :force => true do |t|
+    t.integer  "user_id",     :null => false
+    t.integer  "category_id", :null => false
+    t.datetime "created_at",  :null => false
+  end
+
+  add_index "subscribes", ["category_id"], :name => "index_subscribes_on_category_id"
+  add_index "subscribes", ["user_id"], :name => "index_subscribes_on_user_id"
+
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",  :null => false
+    t.string   "encrypted_password",     :default => "",  :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -97,11 +132,15 @@ ActiveRecord::Schema.define(:version => 20130714162634) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.float    "uid"
-    t.string   "provider"
-    t.string   "nickname"
+    t.float    "uid",                    :default => 0.0
+    t.string   "provider",               :default => ""
+    t.string   "nickname",               :default => "",  :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

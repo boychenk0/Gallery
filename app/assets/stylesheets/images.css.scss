@@ -1,94 +1,295 @@
-// Place all the styles related to the images controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-// -----------------------------css menu ---------------------------------------------------------
-#cssmenu {
-  margin: 0;
-  padding: 0;
-  font-family: Verdana, Helvetica, Arial, sans-serif;
+//// Place all the styles related to the images controller here.
+//// They will automatically be included in application.css.
+//// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#title_images{
+  text-align: center;
+  background: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  border-radius: 10px 10px 10px 10px;
+  padding: 20px;
+  font-family: 'FantasticFont';
+  font-size: 60px;
+  font-weight: lighter;
+  margin-bottom: 10px;
 }
-#cssmenu{
-  width: 218px;
+#images{
+  background: #F0FFF0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  border-radius: 10px 10px 10px 10px;
+  padding: 10px;
 }
-#cssmenu ul{
-  list-style: none;
-  text-indent: 0px;
+//#images h3{
+//  text-align: center;
+//}
+#images-sorted{
+  font-size: 10px;
 }
-#cssmenu li{
-  margin-top: 3px;
+.paginate{
+  display: block;
+  text-align: center;
 }
-#cssmenu a{
-  font: 12px Verdana;
-  padding: 4px;
-  color: #646464;
-  display:block;
-  padding: 6px 30px;
-  height: 20px;
-  text-decoration: none;
-  background: url('background.gif');
+// ------------------------------photos---------------------------------------------------
+.imgholder{
+  position:relative;
+  width:120px;
+  height:120px;
+  border-radius:100px;
+  float:left;
+  margin:40px 30px;
 }
-#cssmenu a:hover{
-  background: url('highlight.gif') no-repeat right;
-  padding: 6px 40px;
+/* thumbnails style */
+.imgholder img{
+  position:absolute;
+  left:0;
+  top:0;
+  width:120px;
+  height:120px;
+  z-index:5;
+  border-radius:100px;
+  -moz-border-radius:100px;
+  -webkit-border-radius:100px;
+  opacity:0.3;
+  filter: alpha(opacity = 30);
+  box-shadow:0 0 5px #000;
+  -moz-box-shadow:0 0 5px #000;
+  -webkit-box-shadow:0 0 5px #000;
+
+  //transform: scale(0.5,0.5);
+  //-ms-transform: scale(0.5,0.5);
+  //-moz-transform: scale(0.5,0.5);
+  //-webkit-transform: scale(0.5,0.5);
+
+  transition:
+    opacity 1s,
+    transform 1s ease-in-out 0.3s;
+  -moz-transition:
+    opacity 1s,
+    -moz-transform 1s ease-in-out 0.3s;
+  -webkit-transition:
+    opacity 1s,
+    -webkit-transform 1s ease-in-out 0.3s;
 }
-#cssmenu-title{
-  width: 218px;
-  font-family: Verdana, Helvetica, Arial, sans-serif;
-  padding: 6px 30px;
+.imgholder:hover img{
+  opacity:1;
+  filter: alpha(opacity = 100);
+  transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  -moz-transform: scale(1,1);
+  -webkit-transform: scale(1,1);
 }
-//---------------------------------------end css menu------------------------------------------------
-#img_comment_body{
-  height: 120px;
-  width: 500px;
+
+.imgholder figcaption{
+  position:absolute;
+  left:-5px;
+  top:40%;
+  width:130px;
+  color:#004E87;
+  font-weight:bold;
+  text-shadow:-1px -1px 0 #fff;
+  z-index:4;
+
+  transition:
+    top 0.5s ease-out;
+  -moz-transition:
+    top 0.5s ease-out;
+  -webkit-transition:
+    top 0.5s ease-out;
+}
+.imgholder:hover figcaption{
+  top:120%;
+}
+/* decorations style */
+.imgholder .circle{
+  position:absolute;
+  border-radius:100px;
+  -moz-border-radius:100px;
+  -webkit-border-radius:100px;
+}
+.imgholder .outer1{
+  top:-8px;
+  left:-8px;
+  width:120px;
+  height:120px;
+  z-index:2;
+
+  border:8px solid;
+  border-color:#FFDEAD;
+  box-shadow:0 0 3px #EECFA1;
+  -moz-ox-shadow:0 0 3px #CDB38B;
+  -webkit-box-shadow:0 0 3px #8B795E;
+
+  background: #ffffff;
+  background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #e2efff 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffffff), color-stop(100%,#e2efff));
+  background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#e2efff 100%);
+  background: -o-radial-gradient(center, ellipse cover, #ffffff 0%,#e2efff 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #ffffff 0%,#e2efff 100%);
+  background: radial-gradient(center, ellipse cover, #ffffff 0%,#e2efff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2efff',GradientType=1 );
+
+  transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+
+  transition:
+    transform 1.8s ease-in-out,
+    box-shadow 1s ease-out,
+    border-color 1.5s;
+  -moz-transition:
+    -moz-transform 1.8s ease-in-out,
+    -moz-box-shadow 1s ease-out,
+    border-color 1.5s;
+  -webkit-transition:
+    -webkit-transform 1.8s ease-in-out,
+    -webkit-box-shadow 1s ease-out,
+    border-color 1.5s;
+}
+.imgholder:hover .outer1{
+  border-color:#EEE8CD #CDC8B1 #EEE8CD #CDC8B1;
+  box-shadow:0 0 10px #EECBAD;
+  -moz-box-shadow:0 0 10px #EECBAD;
+  -webkit-box-shadow:0 0 10px #EECBAD;
+  transform:rotate(-10deg);
+  -ms-transform:rotate(-10deg);
+  -moz-transform:rotate(-10deg);
+  -webkit-transform:rotate(-10deg);
+}
+.imgholder .outer2{
+  top:-18px;
+  left:-18px;
+  width:136px;
+  height:136px;
+  z-index:1;
+
+  border:10px solid;
+  border-color: #CDB38B #8B795E #CDB38B #8B795E;
+  box-shadow:0 0 20px #EECFA1;
+  -moz-box-shadow:0 0 20px #EECFA1;
+  -webkit-box-shadow:0 0 20px #EECFA1;
+  opacity:0;
+  filter: alpha(opacity = 0);
+
+  transform: scale(1.3,1.3) rotate(180deg);
+  -ms-transform: scale(1.3,1.3) rotate(180deg);
+  -moz-transform: scale(1.3,1.3) rotate(180deg);
+  -webkit-transform: scale(1.3,1.3) rotate(180deg);
+
+  transition:
+    opacity 0.5s,
+    transform 0.7s ease-out;
+  -moz-transition:
+    opacity 0.5s,
+    -moz-transform 0.7s ease-out;
+  -webkit-transition:
+    opacity 0.5s,
+    -webkit-transform 0.7s ease-out;
+}
+.imgholder:hover .outer2{
+  opacity:0.9;
+  filter: alpha(opacity = 90);
+  transform: scale(1,1) rotate(-10deg);
+  -ms-transform: scale(1,1) rotate(-10deg);
+  -moz-transform: scale(1,1) rotate(-10deg);
+  -webkit-transform: scale(1,1) rotate(-10deg);
+}
+// --------------------end----------photos---------------------------------------------------
+
+//---------------------------------------show ----------------------------------------------------------
+.image-show{
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10px;
 }
 #likeblock{
   height: 50px;
-  width: 150px;
+  width: 152px;
   float: right;
-  margin-right: 55px;
-  margin-top: -65px;
+  margin-right: 15px;
+  margin-top: -595px;
   position: relative;
-}
-.imageshow{
-  width: 49%;
-  float: left;
+  z-index: 1;
 }
 .likecount{
   font-family: 'Cardo', serif;
-  font-size: 20px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 700;
   text-shadow: 6px 6px 6px #ccc;
   text-transform: none;
   line-height: 1.41;
 }
-.comment{
-  width: 40%;
+#comments{
+  background: #8B795E;
+  width: 93%;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  padding: 20px;
 }
-.com{
-  max-width: 563px;
-  padding-left: 15px;
+#comments-title{
+  font-family: 'FantasticFont';
+  font-size: 70px;
+  font-weight: lighter;
+  margin: 20px 0px 10px 10px;
+}
+#comments-error{
+
+}
+#comments-body{
   width: 100%;
+}
+#comments-body .com:after{
+  content:"";
+  display:block;
+  height:0;
+  overfloww:hidden;
+  clear:both;
+}
+#comments-body .com{
+  padding: 15px;
+  width: 90%;
+  margin: 10px 10px;
+  color: #ffffff;
+  line-height: 1.4;
+  background: #222222;
+  //border-radius:10px;
+}
+#comments-body .com .info{
+  width: 20%;
   display: inline-block;
-  position: relative;
-  border: 0 none;
+}
+#comments-body .com .comment{
+  float: right;
+  display: inline-block;
+  width: 79%;
+}
+#comments-body .com .comment span{
+  font-size: 10px;
+  color: #aaaaaa;
+}
+#comments-body .com .avatar_show{
+  width: 100px;
+  background: #ffffff;
+  margin-bottom: 2px;
+}
+#comments-body .com .nickname{
+  width: 100px;
+  font-size: 10px;
+  word-wrap: break-word;
+  text-align: center;
+}
+#comment_body{
+  height: 150px;
+  width: 95%;
+}
+.com hr{
   margin: 0;
-  font-size: 1em;
-  color: #666666;
-  line-height: 1.4;
-  border-collapse: collapse;
-  empty-cells: show;
-  font-family: "Roboto",Arial,sans-serif;
 }
-#name{
-  line-height: 1.4;
-  font-size: 1em;
-  border-collapse: collapse;
-  empty-cells: show;
-  color: #666666;
-  font-family: "Roboto",Arial,sans-serif;
+#comments-form{
+  margin: 0 10px 10px;
 }
-.reviev-text{
+.rewiev-text{
   overflow-x: hidden;
   padding-bottom: 0;
   margin-top: 7px;
@@ -100,3 +301,6 @@
   line-height: 1.4;
   font-family: "Roboto",Arial,sans-serif;
 }
+
+
+

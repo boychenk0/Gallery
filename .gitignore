@@ -28,7 +28,6 @@ db/*.sqlite3
 .redcar/
 .sass-cache
 /config/config.yml
-/config/database.yml
 /coverage.data
 /coverage/
 /db/*.javadb/
@@ -72,3 +71,5 @@ pickle-email-*.html
 
 # vim artifacts
 **.swp
+/public
+/coverage

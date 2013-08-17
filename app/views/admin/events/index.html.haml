@@ -1,0 +1,36 @@
+-#= search_form_for @search, url: events_path do |f|
+-#  .field
+-#    =f.label :nickname_cont, 'Nickname'
+-#    =f.text_field :nickname_cont
+-#  .actions
+-#    =f.submit 'Search'
+%table{:id =>'hor-minimalist-b'}
+  %thead
+    %tr
+      %th Пользователь
+      %th{:colspan => 5} Действия
+  %tfoot
+    %tr
+      %td{:colspan => 5}
+        -#=paginate @users
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          =user.nickname
+        %td
+          =link_to 'navigation', "users/#{user.id}/navigation/"
+        %td
+          =link_to 'sign_in', "users/#{user.id}/sign_in/", :user_id => user.id, :event => 'sign_in'
+        %td
+          =link_to 'sign_out', "users/#{user.id}/sign_out/", :user_id => user.id, :event => 'sign_out'
+        %td
+          =link_to 'likes', "users/#{user.id}/likes/", :user_id => user.id, :event => 'likes'
+        %td
+          =link_to 'comments', "users/#{user.id}/comments/", :user_id => user.id, :event => 'comments'
+
+
+
+
+
+

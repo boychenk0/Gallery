@@ -1,0 +1,12 @@
+%div.image_list
+  %ul.images_parsing
+    - count = 0
+    - @images.map do |img|
+      %li.img{:id=>"#{count+=1}"}
+        = image_tag img, :height => 280, :width => 280
+        .imgselect
+          = t('.category')
+          %select{:name=>'category'}
+            -@categories.each do |cat|
+              %option{:value=>"#{cat.id}"}=cat.name
+        =button_to_function "OK", "create_image(this)", class: "btn pull-right"

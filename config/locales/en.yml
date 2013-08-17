@@ -2,4 +2,40 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  layouts:
+      application:
+        gallery: "Gallery"
+        welcome_g: "Welcome, Guest"
+        welcome: "Welcome, "
+        login: "Login"
+        f_login: "Facebook login"
+        registration: "Registration"
+        home: "Home"
+        sign_out: "Sign out"
+        welcome_to_my_gallery: "Welcome to my Gallery"
+        we_are_glad_to: "We are glad to see boobs lovers"
+        powered: "POWERED by YaR"
+        events: "Events"
+  images:
+    index:
+      all_image: "All images"
+      like: "like"
+      comment: "comment"
+    show:
+      comments: "Comments"
+      add_comment: "Add comment"
+  categories:
+    index:
+      categories: "Categories"
+      like: "like"
+      comment: "comment"
+    show:
+      categories: "Categories"
+      all_image: "All images"
+      like: "like"
+      comment: "comment"
+  admin:
+    parsing:
+      parse_images:
+        category: "Category:"
+

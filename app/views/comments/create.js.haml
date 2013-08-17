@@ -1,0 +1,4 @@
+console.log("#{@comments}")
+$('#comments-body').html("#{escape_javascript render partial: 'comments/comments_body_show'}");
+$('#comment_body').val("")
+$('#comments-error').html("")

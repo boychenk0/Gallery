@@ -1,0 +1,26 @@
+#left_panel
+  -##search_menu
+  -#  #title_search
+  -#    Search by image:
+  -#  =form_for Category.new do |f|
+  -#    = f.text_field :name
+  -#    = f.submit 'Search', :class => 'btn btn-inverse'
+  #category_menu
+    #title_cat
+      Categories
+    %hr
+    %ul{:id => 'category_content'}
+      %li{:class=>'right'}
+        = link_to root_path do
+          = t('.all_image') + " (#{Image.count})"
+        - Category.category_sort_by_images_count.includes(:users).each.with_index do |category, index|
+          %li{:class => (index % 2).zero? ? 'left' : 'right'}
+            %span
+              -if user_signed_in? && category.users.include?(current_user)
+                =image_tag 'unsubscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
+              - else
+                =image_tag 'subscribe1.jpg', :height=>25, :width=>25, :id=>"#{category.id}", :class=>'subscribe'
+            =link_to category do
+              %span
+                = category.name
+                (#{category.images.size})

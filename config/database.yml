@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  username: 
+  password: 
+  database: tits_proj_development
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  username:
+  password:
+  database: tits_proj_test
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  username: 
+  password: 
+  database: gallery_prod

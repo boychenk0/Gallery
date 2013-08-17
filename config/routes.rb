@@ -1,78 +1,33 @@
 TitsProj::Application.routes.draw do
 
   root :to => 'images#index'
-  get '/auth/:provider/callback' => 'images#authf' # For socials networks
-  post 'admin/parsing' => 'admin/parsing#parse_images' # for parsing
-  post 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
-  get 'admin/parsing/create_image' => 'admin/parsing#create_image'#for create_img
-  post '/images/like' => 'images#like'#for likes
+  mount Resque::Server, :at => '/resque'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
+  namespace :admin do
+    get '/events' => 'users#events'
+    get '/users/:user_id/navigation/' => 'users#navigation'
+    get '/users/:user_id/sign_in/' => 'users#sign_in'
+    get '/users/:user_id/sign_out/' => 'users#sign_out'
+    get '/users/:user_id/likes/' => 'users#likes'
+    get '/users/:user_id/comments/' => 'users#comments'
+    get  '/parse' => 'images#parse'
+    post '/parse/create_image' => 'images#create_parse_image' #for parsing
+    post '/parse' => 'images#parse_images'#for create_img
+  end
+  devise_for :users, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
+    get '/auth/:provider/callback' => 'sessions#authf' # For socials networks
+    match '/auth/failure' => 'images#index'
+  end
+  resources :messages, only:[:create]
   resources :images, only: [:index] do
+    post '/like' => 'images#like', on: :collection #for likes
     resources :comments, only:[:create]
   end
   resources :categories, only: [:index, :show] do
-    resources :images, only: [:show]
+    post '/subscribe' => 'categories#subscribe', on: :collection #for subscribe
+    resources :images, only: [:show] do
+      resource :comments, only:[:create]
+    end
   end
-
-  devise_for :users, :controllers => {:registrations =>
-                                         "registrations"}
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

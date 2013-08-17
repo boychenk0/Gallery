@@ -1,0 +1,16 @@
+%table{:id =>'hor-minimalist-b'}
+  %thead
+    %tr
+      %th №
+      %th Дата
+  %tfoot
+    %tr
+      %td{:colspan => 5}
+        =paginate @events
+  %tbody
+    - @events.each do |e|
+      %tr
+        %td
+          = '33'
+        %td
+          =e.created_at

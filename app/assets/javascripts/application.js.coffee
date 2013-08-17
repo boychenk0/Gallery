@@ -13,6 +13,30 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
-#= require jquery.gpop.js
+#= require pusher.min
 #= require_tree .
+
+$(document).ready ->
+  $("#trigger").click ->
+    $("#chat").toggle "fast"
+    $(this).toggleClass "active"
+    false
+#  $("#category_content").mouseenter (event) ->
+#    $(event.currentTarget).css('overflow-y', 'scroll')
+#    $(event.currentTarget).mouseleave (event) ->
+#      $(event.currentTarget).css('overflow-y', 'hidden')
+  Pusher.host = '127.0.0.1'
+  Pusher.ws_port = 8080
+  Pusher.wss_port = 8080
+  pusher = new Pusher("74c9b81466fe7a2eb84e")
+  channel = pusher.subscribe("test_channel")
+  console.log pusher.connection.state
+  channel.bind("my_event", (response) ->
+    console.log(response)
+    $('#chat-body').append("<div class='chat-mes'><strong>#{response.user['nickname']}</strong><span>#{response.message['created_at']}</span><p>#{response.message['body']}</p></div>")
+    $('#message_body').val('')
+  )
+  $('form#new_message').bind "ajax:error", (evt, data) ->
+    if data.status == 401
+      document.location.href = 'http://localhost:3000/users/sign_in'
 
