@@ -1,6 +1,6 @@
 TitsProj::Application.routes.draw do
 
-  root :to => 'images#index'
+  root :to => 'categories#index'
   mount Resque::Server, :at => '/resque'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

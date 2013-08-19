@@ -1,6 +1,13 @@
 class CategoriesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:index, :show]
   cache_sweeper :subscribe_sweeper, :only => [:subscribe]
+
+  def index
+    @categories = Category.category_sort_by_images_count.includes(:users).page(params[:page]).per(5)
+    @images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
+    @likes = Like.last_likes.page(params[:page]).per(5)
+    @comments = Comment.last_comments.page(params[:page]).per(5)
+  end
 
   def show
     session[:return_to] = request.fullpath

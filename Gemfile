@@ -21,6 +21,7 @@ gem 'paperclip', '~> 3.5.1'
 gem 'redis', '~> 3.0.4'
 gem 'resque', :require => 'resque/server'
 gem 'formtastic', '~> 2.2.1'
+#gem 'rails_team_logo', :git => 'https://github.com/SBS-team/rails_team_logo', :branch => 'dev'
 
 group :assets do
   gem 'bootstrap-sass', '~> 2.3.2.0'

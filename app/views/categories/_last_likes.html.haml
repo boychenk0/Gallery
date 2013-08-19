@@ -1,0 +1,35 @@
+-@likes.each do |like|
+  .like_item
+    .like_item-image
+      =image_tag like.image.url, :size => '50x50'
+    .like_item-created_at
+      =like.created_at
+    .like_item-user
+      %strong
+        =like.user.nickname
+
+
+-##likes_list-table
+
+  -#%table{:id => 'likes_table'}
+  -#  %thead
+  -#    %tr
+  -#      %th User
+  -#      %th Image
+  -#      %th Date
+  -#  %tfoot
+  -#    %tr
+  -#      %td{:colspan => 4}
+  -#        =paginate @likes
+  -#  %tbody
+  -#    -@likes.each do |like|
+  -#      %tr
+  -#        %td
+  -#          = like.user.nickname
+  -#        %td
+  -#          .table_image
+  -#            =image_tag like.image.url, :size => '50x50'
+  -#          .table_category
+  -#            = like.image.category.name
+  -#        %td
+  -#          = like.created_at

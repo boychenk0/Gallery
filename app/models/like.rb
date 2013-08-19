@@ -18,4 +18,6 @@ class Like < ActiveRecord::Base
   validates :image, :presence => true
   validates :user, :presence => true
   validates :image_id, :uniqueness => {:scope => :user_id }
+
+  scope :last_likes, :order =>'created_at DESC'
 end

@@ -1,0 +1,11 @@
+-@comments.each do |com|
+  .com_item
+    .com_item-image
+      =image_tag com.image.url, :size => '50x50'
+    .com_item-body
+      =com.body
+    .com_item-created_at
+      =com.created_at
+    .com_item-user
+      %strong
+        =com.user.nickname
