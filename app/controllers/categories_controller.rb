@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.category_sort_by_images_count.includes(:users).page(params[:page]).per(5)
     @images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
-    @likes = Like.last_likes.page(params[:page]).per(5)
-    @comments = Comment.last_comments.page(params[:page]).per(5)
+    @likes = Like.last_likes
+    @comments = Comment.last_comments
   end
 
   def show

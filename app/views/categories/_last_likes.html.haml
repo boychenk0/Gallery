@@ -1,12 +1,23 @@
 -@likes.each do |like|
   .like_item
-    .like_item-image
-      =image_tag like.image.url, :size => '50x50'
-    .like_item-created_at
-      =like.created_at
-    .like_item-user
-      %strong
+    .user
+      .avatar_show
+        =image_tag like.user.avatar.url
+      .nickname
         =like.user.nickname
+    .like
+      %span
+        =like.created_at.strftime('%d %b %H:%M:%S')
+    .image
+      =image_tag like.image.url
+
+    -#.like_item-image
+    -#  =image_tag like.image.url, :size => '50x50'
+    -#.like_item-created_at
+    -#  =like.created_at.strftime('%d %b %H:%M:%S')
+    -#.like_item-user
+    -#  %strong
+    -#    =like.user.nickname
 
 
 -##likes_list-table
