@@ -1,46 +1,16 @@
--@likes.each do |like|
+-Like.last_likes.includes(:user, :image => [:category]).each do |like|
   .like_item
     .user
-      .avatar_show
-        =image_tag like.user.avatar.url
-      .nickname
-        =like.user.nickname
+      %strong
+        User:
+      =like.user.nickname
     .like
-      %span
-        =like.created_at.strftime('%d %b %H:%M:%S')
+      +1 like
     .image
-      =image_tag like.image.url
-
-    -#.like_item-image
-    -#  =image_tag like.image.url, :size => '50x50'
-    -#.like_item-created_at
-    -#  =like.created_at.strftime('%d %b %H:%M:%S')
-    -#.like_item-user
-    -#  %strong
-    -#    =like.user.nickname
-
-
--##likes_list-table
-
-  -#%table{:id => 'likes_table'}
-  -#  %thead
-  -#    %tr
-  -#      %th User
-  -#      %th Image
-  -#      %th Date
-  -#  %tfoot
-  -#    %tr
-  -#      %td{:colspan => 4}
-  -#        =paginate @likes
-  -#  %tbody
-  -#    -@likes.each do |like|
-  -#      %tr
-  -#        %td
-  -#          = like.user.nickname
-  -#        %td
-  -#          .table_image
-  -#            =image_tag like.image.url, :size => '50x50'
-  -#          .table_category
-  -#            = like.image.category.name
-  -#        %td
-  -#          = like.created_at
+      %strong
+        Likes_count:
+      =like.image.likes_count
+      %strong
+        Category:
+      =like.image.category.name
+      =link_to 'To image', category_image_path(like.image.category.id, like.image.id)

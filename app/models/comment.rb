@@ -21,5 +21,5 @@ class Comment < ActiveRecord::Base
   validates :body, :presence => true, :length => {:maximum => 500}
   paginates_per 5
 
-  scope :last_comments, :order => 'created_at DESC'
+  scope :last_comments, :order => 'created_at DESC', :limit => 5
 end

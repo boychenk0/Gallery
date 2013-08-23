@@ -2,7 +2,7 @@ path_to_images = "#{Rails.root}/db/data_seed"
 
 AdminUser.create(:email => 'admin@example.com')
 
-User.create(:nickname => 'Test', :email => 'user@example.com', :password => '123123123', :avatar => File.open("#{path_to_images}/avatar.jpg"))
+User.create(:nickname => 'Test User', :email => 'user@example.com', :password => '123123123', :avatar => File.open("#{path_to_images}/avatar.jpg"))
 
 Category.create(:name => 'abstractions')
 Category.create(:name => 'christmas')

@@ -3,12 +3,23 @@
 //// You can use Sass (SCSS) here: http://sass-lang.com/
 
 //
-.paginate{
-  display: block;
-  text-align: center;
+
+
+#image_show{
+  background: cornsilk;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  #image_show-title{
+    background: #FFF6BF;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.33);
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+  }
+  #image_show-content{
+    margin: 25px;
+  }
 }
-
-
 //---------------------------------------show ----------------------------------------------------------
 .image-show{
   height: 100%;
@@ -40,19 +51,57 @@
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
   padding: 20px;
+  #comments-title{
+    font-family: 'FantasticFont';
+    font-size: 70px;
+    font-weight: lighter;
+    margin: 20px 0px 10px 10px;
+  }
+  #comments-error{}
+  #comments-form{
+    margin: 0 10px 10px;
+  }
+  #comments-body{
+    width: 100%;
+    .com{
+      padding: 15px;
+      width: 90%;
+      margin: 10px 10px;
+      color: #ffffff;
+      line-height: 1.4;
+      background: #222222;
+      //border-radius:10px;
+      .info{
+        width: 20%;
+        display: inline-block;
+      }
+      .comment{
+        float: right;
+        display: inline-block;
+        width: 79%;
+        span{
+          font-size: 10px;
+          color: #aaaaaa;
+        }
+      }
+      .avatar_show{
+        width: 100px;
+        background: #ffffff;
+        margin-bottom: 2px;
+      }
+      .nickname{
+        width: 100px;
+        font-size: 10px;
+        word-wrap: break-word;
+        text-align: center;
+      }
+      hr{
+        margin: 0;
+      }
+    }
+  }
 }
-#comments-title{
-  font-family: 'FantasticFont';
-  font-size: 70px;
-  font-weight: lighter;
-  margin: 20px 0px 10px 10px;
-}
-#comments-error{
 
-}
-#comments-body{
-  width: 100%;
-}
 #comments-body .com:after{
   content:"";
   display:block;
@@ -60,49 +109,12 @@
   overfloww:hidden;
   clear:both;
 }
-#comments-body .com{
-  padding: 15px;
-  width: 90%;
-  margin: 10px 10px;
-  color: #ffffff;
-  line-height: 1.4;
-  background: #222222;
-  //border-radius:10px;
-}
-#comments-body .com .info{
-  width: 20%;
-  display: inline-block;
-}
-#comments-body .com .comment{
-  float: right;
-  display: inline-block;
-  width: 79%;
-}
-#comments-body .com .comment span{
-  font-size: 10px;
-  color: #aaaaaa;
-}
-#comments-body .com .avatar_show{
-  width: 100px;
-  background: #ffffff;
-  margin-bottom: 2px;
-}
-#comments-body .com .nickname{
-  width: 100px;
-  font-size: 10px;
-  word-wrap: break-word;
-  text-align: center;
-}
+//form window
 #comment_body{
   height: 150px;
   width: 95%;
 }
-.com hr{
-  margin: 0;
-}
-#comments-form{
-  margin: 0 10px 10px;
-}
+
 .rewiev-text{
   overflow-x: hidden;
   padding-bottom: 0;

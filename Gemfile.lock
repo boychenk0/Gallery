@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/SBS-team/rails_team_logo
+  revision: f18951d707c9880bb9c6dfb462281a778059c7ad
+  specs:
+    rails_team_logo (1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -338,6 +344,7 @@ DEPENDENCIES
   puma
   pusher (~> 0.9.4)
   rails (= 3.2.13)
+  rails_team_logo!
   ransack (~> 0.7.2)
   redis (~> 3.0.4)
   resque

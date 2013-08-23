@@ -1,8 +1,0 @@
-#portfolio
-  -@categories.each do |cat|
-    .item
-      =link_to category_path(cat.id) do
-        =image_tag cat.images.first.url, :alt => cat.name
-      %span
-        =cat.name
-        (#{cat.images_count})

@@ -1,23 +1,31 @@
 .container-fluid
   .row-fluid
-    .span6
-      .image-show
-        = image_tag @image.url.url(:thumb),  :class => 'img-polaroid'
-      #likeblock
-        %span{:class => 'likecount'}
-          = @image.likes.size
-        - if @status == true
-          %span{:class => 'like'}
-            = image_tag 'like.jpg', :width => 120, :id => @image.id, :class => 'imglike'
-        - else
-          %span{:class => 'like'}
-            = image_tag 'unlike.jpg', :width => 120, :id => @image.id, :class => 'imglike'
-    .span6
-      #comments
-        #comments-title=t('.comments')
-        #comments-error
-        = render 'comments/comments_form'
-        = render 'comments/comments_body_show'
-        #comments-paginate
-          .text-center
-            = paginate @comments, :window => 1, :remote => true#, :params => { comment: nil, body:nil, _: nil, _method: nil, authenticity_token: nil, commit: nil, utf8: nil}#, :params => {:controller => 'images', :action => 'show'}#
+    .span12
+      #image_show
+        #image_show-title
+          %h3.text-center
+            Image
+        #image_show-content
+          .row-fluid
+            .span6
+              .image-show
+                = image_tag @image.url.url(:thumb),  :class => 'img-polaroid'
+              #likeblock
+                %span{:class => 'likecount'}
+                  = @image.likes.size
+                - if @status == true
+                  %span{:class => 'like'}
+                    = image_tag 'like.jpg', :width => 120, :id => @image.id, :class => 'imglike'
+                - else
+                  %span{:class => 'like'}
+                    = image_tag 'unlike.jpg', :width => 120, :id => @image.id, :class => 'imglike'
+            .span6
+              #comments
+                #comments-title=t('.comments')
+                #comments-error
+                = render 'comments/comments_form'
+                #comments-body
+                  = render 'comments/comments_body_show'
+                #comments-paginate
+                  .text-center
+                    = paginate @comments, :window => 1, :remote => true#, :params => { comment: nil, body:nil, _: nil, _method: nil, authenticity_token: nil, commit: nil, utf8: nil}#, :params => {:controller => 'images', :action => 'show'}#

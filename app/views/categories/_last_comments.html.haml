@@ -1,15 +1,18 @@
--@comments.each do |com|
+-Comment.last_comments.includes(:user, :image=> [:category]).each do |com|
   .com_item
     .user
-      .avatar_show
-        =image_tag com.user.avatar.url
-      .nickname
-        =com.user.nickname
+      %strong
+        User:
+      =com.user.nickname
     .comment
-      %p
-        =truncate(com.body, :length => 50, :omission => '...')
-      %hr
-      %span
-        =com.created_at.strftime('%d %b %H:%M:%S')
+      %strong
+        Comment:
+      =truncate(com.body, :length => 15, :omission => 'continued')
     .image
-      =image_tag com.image.url
+      %strong
+        Likes:
+      =com.image.comments_count
+      %strong
+        Category:
+      =com.image.category.name
+      =link_to 'To image', category_image_path(com.image.category.id, com.image.id)

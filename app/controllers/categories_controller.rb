@@ -3,16 +3,16 @@ class CategoriesController < ApplicationController
   cache_sweeper :subscribe_sweeper, :only => [:subscribe]
 
   def index
-    @categories = Category.category_sort_by_images_count.includes(:users).page(params[:page]).per(5)
-    @images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
-    @likes = Like.last_likes
-    @comments = Comment.last_comments
+    #@categories = Category.category_sort_by_images_count.includes(:images => [:category]).page(params[:page]).per(5)
+    #@images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
+    #@likes = Like.last_likes.includes(:user, :image => [:category])
+    #@comments = Comment.last_comments.includes(:user, :image=> [:category])
   end
 
   def show
     session[:return_to] = request.fullpath
     @category = Category.find(params[:id])
-    @images = @category.images.includes(:category).order('created_at DESC').page(params[:page]).per(5)
+    @images = @category.images.includes(:category).order('created_at DESC').page(params[:page]).per(10)
   end
 
   #subscribe

@@ -10,8 +10,9 @@ class CommentSweeper < ActionController::Caching::Sweeper
   end
 
   def expire_cache(comment)
-    expire_fragment("images_list/#{comment.image.category.cache_key}")
-    expire_fragment("images_list/all_images")
+    #expire_fragment("images_list/#{comment.image.category.cache_key}")
+    #expire_fragment("images_list/all_images")
+    expire_fragment("last comments")
   end
 
 end

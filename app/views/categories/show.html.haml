@@ -1,13 +1,29 @@
 .container-fluid
   .row-fluid
     .span12
-      #images-list
-        #category_title.text-center
-          = @category.name
-        - @category.images.each do |img|
-          #image-item
-            =link_to "#{@category.id}/images/#{img.id}" do
-              =image_tag img.url, :alt => img.url
+      #categories_show
+        #categories_show-t.text-center
+          %h3
+            =@category.name.capitalize
+        #portfolio
+          -@images.each do |img|
+            .item
+              =link_to "#{@category.id}/images/#{img.id}" do
+                =image_tag img.url, :alt => img.url
+              %span
+                Likes:
+                =img.likes_count
+                Comments:
+                =img.comments_count
+        .btn-group.paginate
+          = paginate @images, :window => 1
+      -##images-list
+      -#  #category_title.text-center
+      -#    = @category.name
+      -#  - @category.images.each do |img|
+      -#    #image-item
+      -#      =link_to "#{@category.id}/images/#{img.id}" do
+      -#        =image_tag img.url, :alt => img.url
 
 
     -#.span3

@@ -1,0 +1,14 @@
+%section{:id=>"wrapper"}
+  -@categories.each do |cat|
+    .imgholder
+      %div{:class=>"outer1 circle"}
+      %div{:class=>"outer2 circle"}
+      %figure
+        = link_to category_path(cat.id) do
+          = image_tag cat.images.first.url
+        %figcaption{:class=>"caption"}
+          .text-center
+            =cat.name
+            %br
+            = pluralize(cat.images_count, 'image')
+  .clearfix

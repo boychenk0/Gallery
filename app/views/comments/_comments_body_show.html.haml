@@ -1,12 +1,11 @@
-#comments-body
-  - @comments.each_with_index do |comment, index|
-    .com{:id => index}
-      .info
-        .avatar_show
-          = image_tag comment.user.avatar.url(:small)
-        .nickname
-          =comment.user.nickname
-      .comment
-        %p= comment.body
-        %hr
-        %span=comment.created_at.strftime("%Y-%m-%d %H:%M")
+- @comments.each_with_index do |comment, index|
+  .com{:id => index}
+    .info
+      .avatar_show
+        = image_tag comment.user.avatar.url(:small)
+      .nickname
+        =comment.user.nickname
+    .comment
+      %p= comment.body
+      %hr
+      %span=comment.created_at.strftime("%Y-%m-%d %H:%M")
