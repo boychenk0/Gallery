@@ -1,8 +1,9 @@
 class CategoriesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  cache_sweeper :subscribe_sweeper, :only => [:subscribe]
+
 
   def index
+    session[:return_to] = request.fullpath
     #@categories = Category.category_sort_by_images_count.includes(:images => [:category]).page(params[:page]).per(5)
     #@images = Image.includes(:category).order('created_at DESC').page(params[:page]).per(5)
     #@likes = Like.last_likes.includes(:user, :image => [:category])
@@ -15,16 +16,4 @@ class CategoriesController < ApplicationController
     @images = @category.images.includes(:category).order('created_at DESC').page(params[:page]).per(10)
   end
 
-  #subscribe
-  def subscribe
-    category = Category.find(params[:id])
-    if (@s = Subscribe.where(:category_id=>category.id, :user_id=>current_user.id)).blank?
-      current_user.subscribes.create(:category=>category)
-      status = true
-    else
-      @s.destroy_all
-      status = false
-    end
-    render :json=>{:status=>status, :id=>category.id}, layout: false
-  end
 end

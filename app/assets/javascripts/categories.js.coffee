@@ -8,7 +8,7 @@ $(document).ready ->
   $(".subscribe").click ->
     id = $(this).attr("id")
     $.ajax
-      url: "/categories/subscribe"
+      url: "/categories/#{id}/subscribes"
       data:
         id: id
       dataType: "json"

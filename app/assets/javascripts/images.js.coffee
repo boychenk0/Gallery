@@ -5,7 +5,7 @@ $(document).ready ->
   $(".like").click ->
     id = $(".imglike").attr("id")
     $.ajax
-      url: "/images/like"
+      url: "/images/#{id}/likes"
       data:
         id: id
       dataType: "json"

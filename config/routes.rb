@@ -21,11 +21,14 @@ TitsProj::Application.routes.draw do
   end
   resources :messages, only:[:create]
   resources :images, only: [:index] do
-    post '/like' => 'images#like', on: :collection #for likes
+    resource :likes, only:[:create]
+    #post '/like' => 'images#like', on: :collection #for likes
     resources :comments, only:[:create]
   end
+
   resources :categories, only: [:index, :show] do
-    post '/subscribe' => 'categories#subscribe', on: :collection #for subscribe
+    resource :subscribes, only: [:create]
+    #post '/subscribe' => 'categories#subscribe', on: :collection #for subscribe
     resources :images, only: [:show] do
       resource :comments, only:[:create]
     end
